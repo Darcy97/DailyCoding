@@ -5,7 +5,7 @@
  * Description: Tuple
  ***/
 
-namespace DefaultNamespace
+namespace DarcyStudio
 {
     public class ForTuple
     {

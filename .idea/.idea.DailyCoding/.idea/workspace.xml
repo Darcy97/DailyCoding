@@ -2,14 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2068b2c4-137b-4450-afb0-76a9f9208819" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/C#InDepth.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/C#InDepth/ForString.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/C#InDepth/ForString.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/C#InDepth/ForTuple.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/C#InDepth/ForTuple.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.DailyCoding/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.DailyCoding/.idea/contentModel.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.DailyCoding/.idea/indexLayout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.DailyCoding/.idea/indexLayout.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.DailyCoding/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.DailyCoding/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/C#InDepth/ForTuple.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/C#InDepth/ForTuple.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,8 +20,8 @@
   </component>
   <component name="IdeDocumentHistory">
     <changedPaths>
-      <option value="$PROJECT_DIR$/Assets/Scripts/C#InDepth/ForTuple.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/C#InDepth/ForString.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/C#InDepth/ForTuple.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1tTXqT2EzbCE2KVOJAzHq41I3jE" />
@@ -72,7 +68,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1622794243675</updated>
-      <workItem from="1622794255099" duration="872000" />
+      <workItem from="1622794255099" duration="2084000" />
     </task>
     <servers />
   </component>
