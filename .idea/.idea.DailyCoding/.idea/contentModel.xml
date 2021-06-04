@@ -6,6 +6,7 @@
       <e p="Assets" t="Include">
         <e p="Scripts" t="Include">
           <e p="C#InDepth" t="Include">
+            <e p="ForAction.cs" t="Include" />
             <e p="ForString.cs" t="Include" />
             <e p="ForTuple.cs" t="Include" />
           </e>
