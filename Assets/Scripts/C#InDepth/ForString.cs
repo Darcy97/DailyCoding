@@ -14,6 +14,7 @@ public class ForString : MonoBehaviour
 {
     private void Start ()
     {
+        
         string.Format ("{0} Test", 2);
 
         const decimal price = 99.22m;
