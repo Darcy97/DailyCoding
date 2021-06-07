@@ -5,9 +5,9 @@
  * Description: Tuple
  ***/
 
-namespace DarcyStudio.CSharpInDepth
+namespace DarcyStudio.CSharpInDepth.Tuple
 {
-    public class ForTuple
+    public class TestTuple
     {
         private void Test ()
         {

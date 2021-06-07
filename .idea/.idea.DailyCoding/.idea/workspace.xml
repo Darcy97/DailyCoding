@@ -2,11 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2068b2c4-137b-4450-afb0-76a9f9208819" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/DarcyStudio/Action/Test/TestClosure.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/DarcyStudio/Action/Test/TestClosure.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/DarcyStudio/CSharpInDepth/String.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/DarcyStudio/CSharpInDepth/String/TestStringFormat.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/DarcyStudio/CSharpInDepth/String/TestStringFormat.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/DarcyStudio/CSharpInDepth/Tuple.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/DarcyStudio/CSharpInDepth/Tuple/SpecialTuple.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/DarcyStudio/CSharpInDepth/Tuple/SpecialTuple.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.DailyCoding/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.DailyCoding/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.DailyCoding/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.DailyCoding/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/MainScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/MainScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/DarcyStudio/CSharpInDepth/ForString.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/DarcyStudio/CSharpInDepth/String/ForString.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/DarcyStudio/CSharpInDepth/ForString.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/DarcyStudio/CSharpInDepth/String/ForString.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/DarcyStudio/CSharpInDepth/ForTuple.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/DarcyStudio/CSharpInDepth/Tuple/TestTuple.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/DarcyStudio/CSharpInDepth/ForTuple.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/DarcyStudio/CSharpInDepth/Tuple/TestTuple.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,9 +28,17 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/99258562-0D64-4271-98DD-F3A0E1467733/c3/9b9ac061/Stack`1.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/DarcyStudio/Action/Test/TestReusableAction.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/99258562-0D64-4271-98DD-F3A0E1467733/62/df0f7a8e/Func`2.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/99258562-0D64-4271-98DD-F3A0E1467733/bf/2bd0d406/Int32.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/99258562-0D64-4271-98DD-F3A0E1467733/b4/7d10fb3d/Void.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/943B05FB-D37D-4D6F-A8CB-5ADAF537E7F6/fc/dbf643dc/DebugLogHandler.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/99258562-0D64-4271-98DD-F3A0E1467733/ec/f7de2488/Action`2.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/943B05FB-D37D-4D6F-A8CB-5ADAF537E7F6/86/708cd673/Logger.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/99258562-0D64-4271-98DD-F3A0E1467733/85/285261d2/FormattableString.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/943B05FB-D37D-4D6F-A8CB-5ADAF537E7F6/aa/a00ffe67/Debug.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/E1319B71-95C3-43E7-9B38-5CD3AA43F5DC/66/06b60938/ParamsArray.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/99258562-0D64-4271-98DD-F3A0E1467733/15/95600dd5/String.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/E1319B71-95C3-43E7-9B38-5CD3AA43F5DC/b0/659b2c7d/String.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/E1319B71-95C3-43E7-9B38-5CD3AA43F5DC/2a/1878d756/StringBuilder.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/99258562-0D64-4271-98DD-F3A0E1467733/a7/f1d30be7/Action`1.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
@@ -46,9 +62,15 @@
       <option value="$PROJECT_DIR$/Assets/Scripts/DarcyStudio/Action/ReusableAction/VariableCatcher.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/DarcyStudio/Action/Test/SaySomethingAction.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/DarcyStudio/Action/ReusableAction/VariableCapture.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/DarcyStudio/Action/ReusableAction/README.md" />
       <option value="$PROJECT_DIR$/Assets/Scripts/DarcyStudio/Action/Test/TestReusableAction.cs" />
+      <option value="$PROJECT_DIR$/README.md" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/DarcyStudio/Action/ReusableAction/README.md" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/DarcyStudio/CSharpInDepth/Tuple/ForTuple.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/DarcyStudio/CSharpInDepth/Tuple/TestTuple.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/DarcyStudio/CSharpInDepth/Tuple/SpecialTuple.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/DarcyStudio/Action/Test/TestClosure.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/DarcyStudio/CSharpInDepth/String/ForString.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/DarcyStudio/CSharpInDepth/String/TestStringFormat.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1tTXqT2EzbCE2KVOJAzHq41I3jE" />
@@ -64,7 +86,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
-    <property name="settings.editor.selected.configurable" value="FileHeaderTextPageId" />
+    <property name="settings.editor.selected.configurable" value="ReSpellerSettingsId" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
@@ -77,10 +99,10 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="3990">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" />
+      <option name="pid" value="3990" />
       <option name="selectedOptions">
         <list />
       </option>
@@ -96,7 +118,7 @@
       <option name="presentableId" value="Default" />
       <updated>1622794243675</updated>
       <workItem from="1622794255099" duration="4362000" />
-      <workItem from="1623046803675" duration="9406000" />
+      <workItem from="1623046803675" duration="15292000" />
     </task>
     <servers />
   </component>
@@ -119,6 +141,51 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/E1319B71-95C3-43E7-9B38-5CD3AA43F5DC/b0/659b2c7d/String.cs</url>
+          <line>1777</line>
+          <properties documentPath="$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/E1319B71-95C3-43E7-9B38-5CD3AA43F5DC/b0/659b2c7d/String.cs" initialLine="1777" containingFunctionPresentation="method 'FormatHelper'">
+            <startOffsets>
+              <option value="93863" />
+            </startOffsets>
+            <endOffsets>
+              <option value="93882" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/E1319B71-95C3-43E7-9B38-5CD3AA43F5DC/2a/1878d756/StringBuilder.cs</url>
+          <line>885</line>
+          <properties documentPath="$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/E1319B71-95C3-43E7-9B38-5CD3AA43F5DC/2a/1878d756/StringBuilder.cs" initialLine="885" containingFunctionPresentation="method 'AppendFormatHelper'">
+            <startOffsets>
+              <option value="43930" />
+            </startOffsets>
+            <endOffsets>
+              <option value="43949" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/E1319B71-95C3-43E7-9B38-5CD3AA43F5DC/66/06b60938/ParamsArray.cs</url>
+          <line>57</line>
+          <properties documentPath="$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/E1319B71-95C3-43E7-9B38-5CD3AA43F5DC/66/06b60938/ParamsArray.cs" initialLine="57" containingFunctionPresentation="method 'GetAtSlow'">
+            <startOffsets>
+              <option value="1722" />
+            </startOffsets>
+            <endOffsets>
+              <option value="1737" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

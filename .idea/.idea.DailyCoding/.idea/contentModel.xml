@@ -19,8 +19,14 @@
               </e>
             </e>
             <e p="CSharpInDepth" t="Include">
-              <e p="ForString.cs" t="Include" />
-              <e p="ForTuple.cs" t="Include" />
+              <e p="String" t="Include">
+                <e p="ForString.cs" t="Include" />
+                <e p="TestStringFormat.cs" t="Include" />
+              </e>
+              <e p="Tuple" t="Include">
+                <e p="SpecialTuple.cs" t="Include" />
+                <e p="TestTuple.cs" t="Include" />
+              </e>
             </e>
           </e>
         </e>
