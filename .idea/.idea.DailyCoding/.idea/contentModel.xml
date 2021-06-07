@@ -8,8 +8,8 @@
           <e p="DarcyStudio" t="Include">
             <e p="Action" t="Include">
               <e p="ReusableAction" t="Include">
-                <e p="ActionPool.cs" t="Include" />
                 <e p="IAction.cs" t="Include" />
+                <e p="ObjectPool.cs" t="Include" />
               </e>
               <e p="Test" t="Include">
                 <e p="SaySomethingAction.cs" t="Include" />
