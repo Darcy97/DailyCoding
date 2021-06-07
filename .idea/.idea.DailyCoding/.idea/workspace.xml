@@ -2,13 +2,25 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2068b2c4-137b-4450-afb0-76a9f9208819" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/C#InDepth/ForAction.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/C#InDepth/ForAction.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/DarcyStudio.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/DarcyStudio/Action/ReusableAction.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/DarcyStudio/Action/ReusableAction/ActionPool.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/DarcyStudio/Action/ReusableAction/ActionPool.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/DarcyStudio/Action/ReusableAction/IAction.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/DarcyStudio/Action/ReusableAction/IAction.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/DarcyStudio/Action/Test.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/DarcyStudio/Action/Test/SaySomethingAction.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/DarcyStudio/Action/Test/SaySomethingAction.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.DailyCoding/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.DailyCoding/.idea/contentModel.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.DailyCoding/.idea/indexLayout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.DailyCoding/.idea/indexLayout.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.DailyCoding/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.DailyCoding/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/MainScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/MainScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/C#InDepth.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/DarcyStudio/CSharpInDepth.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/C#InDepth/ForAction.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/C#InDepth/ForAction.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/C#InDepth/ForString.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/DarcyStudio/CSharpInDepth/ForString.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/C#InDepth/ForString.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/DarcyStudio/CSharpInDepth/ForString.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/C#InDepth/ForTuple.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/DarcyStudio/CSharpInDepth/ForTuple.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/C#InDepth/ForTuple.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/DarcyStudio/CSharpInDepth/ForTuple.cs.meta" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,14 +31,31 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/99258562-0D64-4271-98DD-F3A0E1467733/c3/9b9ac061/Stack`1.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/DarcyStudio/Action/Test/TestReusableAction.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/99258562-0D64-4271-98DD-F3A0E1467733/b4/7d10fb3d/Void.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/99258562-0D64-4271-98DD-F3A0E1467733/85/285261d2/FormattableString.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/99258562-0D64-4271-98DD-F3A0E1467733/a7/f1d30be7/Action`1.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <changedPaths>
       <option value="$PROJECT_DIR$/Assets/Scripts/C#InDepth/ForTuple.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/C#InDepth/ForString.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/C#InDepth/ForAction.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Action/ForAction.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Action/ActionPool.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Action/IAction.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/DarcyStudio/CSharpInDepth/ForString.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/DarcyStudio/CSharpInDepth/ForTuple.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/DarcyStudio/Action/IAction.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/DarcyStudio/Action/ForAction.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/DarcyStudio/Action/ActionPool.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/DarcyStudio/Action/TestActionPool.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/DarcyStudio/Action/Test/TestActionPool.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/DarcyStudio/Action/Test/TestReusableAction.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/DarcyStudio/Action/ReusableAction/IAction.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/DarcyStudio/Action/Test/SaySomethingAction.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/DarcyStudio/Action/ReusableAction/ActionPool.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1tTXqT2EzbCE2KVOJAzHq41I3jE" />
@@ -73,7 +102,8 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1622794243675</updated>
-      <workItem from="1622794255099" duration="4221000" />
+      <workItem from="1622794255099" duration="4362000" />
+      <workItem from="1623046803675" duration="2727000" />
     </task>
     <servers />
   </component>
@@ -92,6 +122,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
