@@ -10,11 +10,11 @@
               <e p="ReusableAction" t="Include">
                 <e p="IAction.cs" t="Include" />
                 <e p="ObjectPool.cs" t="Include" />
-                <e p="readme.md" t="Include" />
                 <e p="VariableCapture.cs" t="Include" />
               </e>
               <e p="Test" t="Include">
                 <e p="SaySomethingAction.cs" t="Include" />
+                <e p="TestClosure.cs" t="Include" />
                 <e p="TestReusableAction.cs" t="Include" />
               </e>
             </e>

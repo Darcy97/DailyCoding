@@ -2,14 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2068b2c4-137b-4450-afb0-76a9f9208819" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/DarcyStudio/Action/ReusableAction/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/DarcyStudio/Action/ReusableAction/VariableCapture.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/DarcyStudio/Action/ReusableAction/VariableCapture.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/DarcyStudio/Action/ReusableAction/readme.md.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/DarcyStudio/Action/Test/TestClosure.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/DarcyStudio/Action/Test/TestClosure.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.DailyCoding/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.DailyCoding/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.DailyCoding/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.DailyCoding/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/DarcyStudio/Action/Test/SaySomethingAction.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/DarcyStudio/Action/Test/SaySomethingAction.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/DarcyStudio/Action/Test/TestReusableAction.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/DarcyStudio/Action/Test/TestReusableAction.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/MainScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/MainScene.unity" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,9 +45,10 @@
       <option value="$PROJECT_DIR$/Assets/Scripts/DarcyStudio/Action/ReusableAction/ObjectPool.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/DarcyStudio/Action/ReusableAction/VariableCatcher.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/DarcyStudio/Action/Test/SaySomethingAction.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/DarcyStudio/Action/Test/TestReusableAction.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/DarcyStudio/Action/ReusableAction/VariableCapture.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/DarcyStudio/Action/ReusableAction/README.md" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/DarcyStudio/Action/Test/TestReusableAction.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/DarcyStudio/Action/Test/TestClosure.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1tTXqT2EzbCE2KVOJAzHq41I3jE" />
@@ -98,7 +96,7 @@
       <option name="presentableId" value="Default" />
       <updated>1622794243675</updated>
       <workItem from="1622794255099" duration="4362000" />
-      <workItem from="1623046803675" duration="8478000" />
+      <workItem from="1623046803675" duration="9406000" />
     </task>
     <servers />
   </component>
