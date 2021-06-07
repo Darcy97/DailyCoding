@@ -10,12 +10,11 @@ using UnityEngine;
 
 namespace DarcyStudio.Action.Test
 {
-    public class SaySomethingAction : IAction<string>
+    public class SaySomethingAction : VariableCapture<string>, IAction<string>
     {
 
         private static int _curID = -1;
 
-        private string _para;
         private int    _number;
 
         private readonly int _serialID; //用来记录序列 ID 验证是否重用 Action  
@@ -26,15 +25,9 @@ namespace DarcyStudio.Action.Test
             _curID    += 1;
         }
 
-        public void SetPara (string str)
-        {
-            _para = str;
-        }
-         
-        
         public void Invoke (string arg)
         {
-            Debug.Log ($"Say: {_para} to: {arg}     -- Serial id: {_serialID}");
+            Debug.Log ($"Say: {Arg} to: {arg}     -- Serial id: {_serialID}");
         }
     }
 }

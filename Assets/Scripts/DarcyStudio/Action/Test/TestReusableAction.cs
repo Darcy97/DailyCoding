@@ -33,7 +33,7 @@ namespace DarcyStudio.Action.Test
         private void TestLowGcAction (string para, float waitTime)
         {
             var action = _objectPool.Pop ();
-            action.SetPara (para);
+            action.Capture (para);
             Method (action, waitTime);
         }
 
