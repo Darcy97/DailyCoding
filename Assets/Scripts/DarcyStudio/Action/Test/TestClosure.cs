@@ -24,7 +24,7 @@ namespace DarcyStudio.Action.Test
             //这个 会延迟 1s 执行闭包
             Do (() =>
             {
-                Debug.LogError ($"A = {a}");
+                Debug.Log ($"A = {a}");
                 a = 3;
             });
 
@@ -35,7 +35,7 @@ namespace DarcyStudio.Action.Test
             yield return new WaitForSeconds (1.1f);
 
             //所以执行这里时闭包已经被执行，a = 3
-            Debug.LogError ($"A = {a}");
+            Debug.Log ($"A = {a}");
         }
 
         private void Do (System.Action action)
