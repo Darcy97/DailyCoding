@@ -10,7 +10,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace DarcyStudio.Action.ReusableAction
+namespace DarcyStudio.Closure.ReusableAction
 {
     public class ObjectPool<T> where T : new ()
     {

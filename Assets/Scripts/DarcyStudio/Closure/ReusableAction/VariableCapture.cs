@@ -11,7 +11,7 @@
 
 // ReSharper disable MemberCanBePrivate.Global
 
-namespace DarcyStudio.Action.ReusableAction
+namespace DarcyStudio.Closure.ReusableAction
 {
     public class VariableCapture<T>
     {

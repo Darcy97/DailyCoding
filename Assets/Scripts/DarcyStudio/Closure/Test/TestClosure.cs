@@ -8,7 +8,7 @@
 using System.Collections;
 using UnityEngine;
 
-namespace DarcyStudio.Action.Test
+namespace DarcyStudio.Closure.Test
 {
     public class TestClosure : MonoBehaviour
     {

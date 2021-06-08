@@ -5,7 +5,7 @@
  * Description: IAction
  ***/
 
-namespace DarcyStudio.Action.ReusableAction
+namespace DarcyStudio.Closure.ReusableAction
 {
     public interface IAction
     {

@@ -6,10 +6,10 @@
  ***/
 
 using System.Collections;
-using DarcyStudio.Action.ReusableAction;
+using DarcyStudio.Closure.ReusableAction;
 using UnityEngine;
 
-namespace DarcyStudio.Action.Test
+namespace DarcyStudio.Closure.Test
 {
     public class TestReusableAction : MonoBehaviour
     {

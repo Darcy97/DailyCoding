@@ -5,10 +5,10 @@
  * Description: Say some thing
  ***/
 
-using DarcyStudio.Action.ReusableAction;
+using DarcyStudio.Closure.ReusableAction;
 using UnityEngine;
 
-namespace DarcyStudio.Action.Test
+namespace DarcyStudio.Closure.Test
 {
     public class SaySomethingAction : VariableCapture<string>, IAction<string>
     {
