@@ -5,13 +5,12 @@
  * Description: Tuple Split
  ***/
 
-using System;
+using DarcyStudio.CSharpInDepth.Tuple;
 using UnityEngine;
-using UnityEngine.UI;
 
-namespace DarcyStudio.CSharpInDepth.Tuple
+namespace DarcyStudio.CSharpInDepth.VariableSplit
 {
-    public class VariableSplit:MonoBehaviour
+    public class VariableSplitTest:MonoBehaviour
     {
         private void Test ()
         {
