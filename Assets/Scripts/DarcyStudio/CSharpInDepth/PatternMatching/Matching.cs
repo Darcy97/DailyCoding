@@ -34,7 +34,11 @@ namespace DarcyStudio.CSharpInDepth.PatternMatching
 
     public abstract class Shape
     {
-
+        public static Shape CreateRandomShape ()
+        {
+            //Random 假装是 Random
+            return new Circle ();
+        }
     }
 
     public class Rectangle : Shape
