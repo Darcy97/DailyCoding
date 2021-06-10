@@ -6,6 +6,7 @@
  ***/
 
 using System;
+using UnityEngine;
 
 namespace DarcyStudio.CSharpInDepth.PatternMatching
 {
@@ -29,6 +30,17 @@ namespace DarcyStudio.CSharpInDepth.PatternMatching
                 default:
                     throw new ArgumentException ();
             }
+        }
+
+        private void Test (Shape shape)
+        {
+            if (shape is Circle circle)
+            {
+                Debug.Log (circle);
+            }
+
+            // Debug.Log (circle);//非法 因为编译器无法确定 circle 是否被赋值，这取决于 shape
+            circle = new Circle ();
         }
     }
 
