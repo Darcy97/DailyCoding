@@ -42,6 +42,22 @@ namespace DarcyStudio.CSharpInDepth.PatternMatching
             // Debug.Log (circle);//非法 因为编译器无法确定 circle 是否被赋值，这取决于 shape
             circle = new Circle ();
         }
+
+        /// <summary>
+        /// 哨兵语句
+        /// </summary>
+        private void TestSentinel (int n)
+        {
+            switch (n)
+            {
+                case var t when t > 2:
+                    break;
+                case var _ when n > 2:
+                    break;
+            }
+        }
+        
+        // 模式匹配与基于常量的 Switch 语句 有一个重大差别，模式匹配的 switch 语句 case 的顺序会影响执行结果，因为每个条件可能不是互斥的
     }
 
     public abstract class Shape
