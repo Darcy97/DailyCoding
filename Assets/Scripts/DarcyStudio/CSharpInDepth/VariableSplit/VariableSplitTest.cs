@@ -16,7 +16,7 @@ namespace DarcyStudio.CSharpInDepth.VariableSplit
         {
             var tuple = (10, "text");
             var (a, b)     = tuple; //隐式分解
-            (var c, var d) = tuple; //显示分解
+            (var c, var d) = tuple; //显式分解
 
             int    e;
             string f;
