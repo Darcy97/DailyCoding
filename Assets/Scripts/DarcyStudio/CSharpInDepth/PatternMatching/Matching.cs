@@ -56,7 +56,7 @@ namespace DarcyStudio.CSharpInDepth.PatternMatching
                     break;
             }
         }
-        
+
         // 模式匹配与基于常量的 Switch 语句 有一个重大差别，模式匹配的 switch 语句 case 的顺序会影响执行结果，因为每个条件可能不是互斥的
     }
 
@@ -76,7 +76,7 @@ namespace DarcyStudio.CSharpInDepth.PatternMatching
 
     public class Circle : Shape
     {
-
+        public float Radius;
     }
 
     public class Triangle : Shape
