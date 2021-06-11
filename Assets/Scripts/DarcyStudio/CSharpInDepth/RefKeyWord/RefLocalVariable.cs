@@ -5,11 +5,13 @@
  * Description: Description
  ***/
 
+using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace DarcyStudio.CSharpInDepth.RefKeyWord
 {
-    public class RefLocalVariable
+    public class RefLocalVariable : MonoBehaviour
     {
 
         private void Test ()
@@ -22,10 +24,10 @@ namespace DarcyStudio.CSharpInDepth.RefKeyWord
             // ref int z; //非法 必须在声明时初始化
             // z = 2;
 
-            var     x = 10;
-            ref var y = ref RefReturn (ref x);
-            y++;
-            Debug.Log (x); //  结果是 11 
+            var     x1 = 10;
+            ref var y1 = ref RefReturn (ref x1);
+            y1++;
+            Debug.Log (x1); //  结果是 11 
             // 如上调用 等价于 ref int y = ref x;
         }
 
@@ -39,5 +41,41 @@ namespace DarcyStudio.CSharpInDepth.RefKeyWord
             return ref p;
         }
 
+        private void TestArrayHolder ()
+        {
+            var     holder = new ArrayHolder ();
+            ref var x      = ref holder[0];
+            ref var y      = ref holder[0];
+
+            x = 20;
+            Debug.Log (y); //  y = 20
+        }
+
+        private void Start ()
+        {
+            // TestArrayHolder ();
+
+            var (even, odd) = CountEvenAndOdd (new[] {1, 2, 3, 10, 5});
+            Debug.Log ($"Even num {even}, Odd num {odd}");
+        }
+
+        private (int even, int odd) CountEvenAndOdd (IEnumerable<int> values)
+        {
+            var result = (even: 0, odd: 0);
+            foreach (var value in values)
+            {
+                ref var counter = ref (value & 1) == 0 ? ref result.even : ref result.odd;
+                counter++;
+            }
+
+            return result;
+        }
+
+    }
+
+    internal class ArrayHolder
+    {
+        private readonly int[] array = new int[10];
+        public ref int this [int index] => ref array[index];
     }
 }
