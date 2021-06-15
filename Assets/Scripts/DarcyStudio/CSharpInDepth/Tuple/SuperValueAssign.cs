@@ -51,6 +51,7 @@ namespace DarcyStudio.CSharpInDepth.Tuple
             (x, y) = (point.X, point.Y);
         }
 
+        //  下面这段字不用 Rider 的可以略过 
         //  这里有个有意思的事情
         //  Rider 2020.3 会推荐我写成下面这样
         //  通过隐式调用分解方法获取 x，y

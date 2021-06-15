@@ -59,6 +59,12 @@ namespace DarcyStudio.CSharpInDepth.RefKeyWord
             Debug.Log ($"Even num {even}, Odd num {odd}");
         }
 
+        /// <summary>
+        /// 这个用法很有趣
+        /// 虽然实际情况不会这么做
+        /// </summary>
+        /// <param name="values"></param>
+        /// <returns></returns>
         private (int even, int odd) CountEvenAndOdd (IEnumerable<int> values)
         {
             var result = (even: 0, odd: 0);

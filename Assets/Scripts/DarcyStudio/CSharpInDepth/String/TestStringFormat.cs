@@ -22,18 +22,17 @@ namespace DarcyStudio.CSharpInDepth.String
     {
         private ProfilerMarker _profilerMarker0 = new ProfilerMarker ("String.FormatInt.ToObj");
 
-        ProfilerMarker profilerMarker1 = new ProfilerMarker ("String.FormatInt.Directly");
+        private ProfilerMarker profilerMarker1 = new ProfilerMarker ("String.FormatInt.Directly");
 
-        ProfilerMarker profilerMarker2 = new ProfilerMarker ("String.FormatInt.ToString");
+        private ProfilerMarker profilerMarker2 = new ProfilerMarker ("String.FormatInt.ToString");
 
         private void Update ()
         {
             //按键盘 A 触发
-            if (Input.GetKeyDown (KeyCode.A))
-            {
-                Debug.LogError ("Test");
-                Test ();
-            }
+            if (!Input.GetKeyDown (KeyCode.A))
+                return;
+            Debug.LogError ("Test");
+            Test ();
         }
 
         /// <summary>
@@ -46,7 +45,7 @@ namespace DarcyStudio.CSharpInDepth.String
         /// </summary>
         private void Test ()
         {
-            var para = 222222;
+            const int para = 222222;
 
             _profilerMarker0.Begin ();
 

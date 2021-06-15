@@ -14,9 +14,7 @@ namespace DarcyStudio.Closure.Test
     {
 
         private static int _curID = -1;
-
-        private int    _number;
-
+        
         private readonly int _serialID; //用来记录序列 ID 验证是否重用 Action  
 
         public SaySomethingAction ()
