@@ -16,6 +16,7 @@ namespace DarcyStudio.GameComponent.UI
 
 
     [DisallowMultipleComponent]
+    [AddComponentMenu ("UGUI Extension/Click Through")]
     public class ClickThrough : MonoBehaviour, IPointerClickHandler
     {
 
