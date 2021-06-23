@@ -7,7 +7,7 @@
 
 using UnityEditor;
 
-namespace DarcyStudio.GameComponent.SortingLayerDrawerAttribute.Editor
+namespace DarcyStudio.GameComponent.Attribute.Editor
 {
     public readonly struct DrawerValuePair
     {

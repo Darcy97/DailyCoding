@@ -4,13 +4,13 @@
  * Time: 14:16:50
  * Description: Description
  ***/
+
 using UnityEngine;
 
-
-namespace DarcyStudio.GameComponent.SortingLayerDrawerAttribute
+namespace DarcyStudio.GameComponent.Attribute.SortingLayerDrawerAttribute
 {
 
-    public class SortingLayerAttribute : PropertyAttribute
+    public sealed class SortingLayerAttribute : PropertyAttribute
     {
         public SortingLayerAttribute ()
         {

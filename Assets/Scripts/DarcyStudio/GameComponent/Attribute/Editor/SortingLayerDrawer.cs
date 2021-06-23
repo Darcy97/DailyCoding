@@ -7,11 +7,12 @@
 
 using System.Collections.Generic;
 using System.Reflection;
+using DarcyStudio.GameComponent.Attribute.SortingLayerDrawerAttribute;
 using UnityEditor;
 using UnityEditorInternal;
 using UnityEngine;
 
-namespace DarcyStudio.GameComponent.SortingLayerDrawerAttribute.Editor
+namespace DarcyStudio.GameComponent.Attribute.Editor
 {
     [CustomPropertyDrawer (typeof (SortingLayerAttribute))]
     public class SortingLayerDrawer : PropertyDrawer
