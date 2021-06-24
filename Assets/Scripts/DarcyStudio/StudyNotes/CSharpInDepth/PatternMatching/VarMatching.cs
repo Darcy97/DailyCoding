@@ -7,7 +7,7 @@
 
 using System;
 
-namespace DarcyStudio.CSharpInDepth.PatternMatching
+namespace DarcyStudio.StudyNotes.CSharpInDepth.PatternMatching
 {
     public class VarMatching
     {

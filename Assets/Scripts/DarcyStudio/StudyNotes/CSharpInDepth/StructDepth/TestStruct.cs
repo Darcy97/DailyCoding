@@ -5,12 +5,11 @@
  * Description: Description
  ***/
 
-using System;
 using System.Runtime.InteropServices;
-using DarcyStudio.CSharpInDepth.PatternMatching;
+using DarcyStudio.StudyNotes.CSharpInDepth.PatternMatching;
 using UnityEngine;
 
-namespace DarcyStudio.CSharpInDepth.StructDepth
+namespace DarcyStudio.StudyNotes.CSharpInDepth.StructDepth
 {
     public class TestStruct : MonoBehaviour
     {

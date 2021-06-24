@@ -8,7 +8,7 @@
 using System;
 using UnityEngine;
 
-namespace DarcyStudio.CSharpInDepth.PatternMatching
+namespace DarcyStudio.StudyNotes.CSharpInDepth.PatternMatching
 {
     public class Matching
     {

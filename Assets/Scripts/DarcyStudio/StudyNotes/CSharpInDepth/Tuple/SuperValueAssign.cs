@@ -5,7 +5,7 @@
  * Description: ValueAssign
  ***/
 
-namespace DarcyStudio.CSharpInDepth.Tuple
+namespace DarcyStudio.StudyNotes.CSharpInDepth.Tuple
 {
     public class SuperValueAssign
     {

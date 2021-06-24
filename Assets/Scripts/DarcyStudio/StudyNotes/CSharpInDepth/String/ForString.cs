@@ -9,7 +9,7 @@ using System;
 using System.Globalization;
 using UnityEngine;
 
-namespace DarcyStudio.CSharpInDepth.String
+namespace DarcyStudio.StudyNotes.CSharpInDepth.String
 {
     public class ForString : MonoBehaviour
     {

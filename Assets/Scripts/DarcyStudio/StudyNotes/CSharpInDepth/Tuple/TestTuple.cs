@@ -5,7 +5,7 @@
  * Description: Tuple
  ***/
 
-namespace DarcyStudio.CSharpInDepth.Tuple
+namespace DarcyStudio.StudyNotes.CSharpInDepth.Tuple
 {
     public class TestTuple
     {

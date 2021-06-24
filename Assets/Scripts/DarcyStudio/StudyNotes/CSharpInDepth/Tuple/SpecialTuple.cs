@@ -5,9 +5,7 @@
  * Description: Womple(独素元组) and Giant tuple(巨型元组)
  ***/
 
-using System;
-
-namespace DarcyStudio.CSharpInDepth.Tuple
+namespace DarcyStudio.StudyNotes.CSharpInDepth.Tuple
 {
     public class SpecialTuple
     {

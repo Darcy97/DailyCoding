@@ -8,7 +8,7 @@
 using DarcyStudio.Extension;
 using UnityEngine;
 
-namespace DarcyStudio.CSharpInDepth.VariableSplit
+namespace DarcyStudio.StudyNotes.CSharpInDepth.VariableSplit
 {
     public class TestUnityVariable
     {

@@ -5,10 +5,10 @@
  * Description: Tuple Split
  ***/
 
-using DarcyStudio.CSharpInDepth.Tuple;
+using DarcyStudio.StudyNotes.CSharpInDepth.Tuple;
 using UnityEngine;
 
-namespace DarcyStudio.CSharpInDepth.VariableSplit
+namespace DarcyStudio.StudyNotes.CSharpInDepth.VariableSplit
 {
     public class VariableSplitTest:MonoBehaviour
     {

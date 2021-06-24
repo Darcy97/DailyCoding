@@ -7,7 +7,7 @@
 
 using UnityEngine;
 
-namespace DarcyStudio.CSharpInDepth.LocalMethod
+namespace DarcyStudio.StudyNotes.CSharpInDepth.LocalMethod
 {
     public class Example
     {

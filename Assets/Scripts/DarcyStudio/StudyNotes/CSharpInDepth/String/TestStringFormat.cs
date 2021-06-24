@@ -12,11 +12,10 @@
  * 理论上分析也是，string.format 参数类型为 Object 所以必然会有一次 int -> object 的装箱 
  ***/
 
-using System;
 using Unity.Profiling;
 using UnityEngine;
 
-namespace DarcyStudio.CSharpInDepth.String
+namespace DarcyStudio.StudyNotes.CSharpInDepth.String
 {
     public class TestStringFormat : MonoBehaviour
     {

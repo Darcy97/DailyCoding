@@ -5,11 +5,10 @@
  * Description: Description
  ***/
 
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace DarcyStudio.CSharpInDepth.RefKeyWord
+namespace DarcyStudio.StudyNotes.CSharpInDepth.RefKeyWord
 {
     public class RefLocalVariable : MonoBehaviour
     {
