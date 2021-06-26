@@ -5,9 +5,12 @@
  * Description: Description
  ***/
 
+using System;
 using DarcyStudio.GameComponent.Attribute.SelectObjectAttribute;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Video;
+using Object = UnityEngine.Object;
 
 namespace DarcyStudio.GameComponent.Attribute.Editor
 {
@@ -47,30 +50,54 @@ namespace DarcyStudio.GameComponent.Attribute.Editor
                 var tPath  = AssetDatabase.GetAssetPath (picker);
                 var result = tPath.Substring (0, tPath.IndexOf ('.'));
                 property.stringValue = result;
-                _prefabName           = result;
+                _prefabName          = result;
             }
-
-            //拖拽先写一个只支持 GameObject 的
-            if (drag.SearchType == SearchType.Prefab)
+            
+            var prefab = GetDragObject (position, Event.current, drag.SearchType);
+            if (prefab)
             {
-                var prefab = GetDragObject<GameObject> (position, Event.current);
-                if (prefab)
-                {
-                    //在这里给他赋值就是不行 必须在外面赋值 可能是由于 unity 的时序逻辑导致的
-                    // property.stringValue = prefab.name;
-                    var tPath  = AssetDatabase.GetAssetPath (prefab);
-                    var result = tPath.Substring (0, tPath.IndexOf ('.'));
-                    _prefabName = result;
-                }
-
-                if (!string.IsNullOrEmpty (_prefabName) && property.stringValue != _prefabName)
-                {
-                    property.stringValue = _prefabName;
-                    EditorUtility.SetDirty (property.serializedObject.targetObject);
-                }
+                //在这里给他赋值就是不行 必须在外面赋值 可能是由于 unity 的时序逻辑导致的
+                // property.stringValue = prefab.name;
+                var tPath  = AssetDatabase.GetAssetPath (prefab);
+                var result = tPath.Substring (0, tPath.IndexOf ('.'));
+                _prefabName = result;
             }
+
+            if (!string.IsNullOrEmpty (_prefabName) && property.stringValue != _prefabName)
+            {
+                property.stringValue = _prefabName;
+                EditorUtility.SetDirty (property.serializedObject.targetObject);
+            }
+
 
             EditorGUI.EndProperty ();
+        }
+
+        private static Object GetDragObject (Rect rect, Event @event, SearchType searchType)
+        {
+            switch (searchType)
+            {
+                case SearchType.Prefab:
+                    return GetDragObject<GameObject> (rect, @event);
+                case SearchType.AudioClip:
+                    return GetDragObject<AudioClip> (rect, @event);
+                case SearchType.Texture:
+                    return GetDragObject<Texture> (rect, @event);
+                case SearchType.Sprite:
+                    return GetDragObject<Sprite> (rect, @event);
+                case SearchType.Animator:
+                    return GetDragObject<Animator> (rect, @event);
+                case SearchType.Font:
+                    return GetDragObject<Font> (rect, @event);
+                case SearchType.Material:
+                    return GetDragObject<Material> (rect, @event);
+                case SearchType.Shader:
+                    return GetDragObject<Shader> (rect, @event);
+                case SearchType.VideoClip:
+                    return GetDragObject<VideoClip> (rect, @event);
+                default:
+                    throw new ArgumentOutOfRangeException (nameof (searchType), searchType, null);
+            }
         }
 
         /// <summary>
@@ -90,10 +117,10 @@ namespace DarcyStudio.GameComponent.Attribute.Editor
             if (DragAndDrop.objectReferences[0].GetType () == typeof (T))
             {
                 DragAndDrop.visualMode = DragAndDropVisualMode.Link;
-                
+
                 if (@event.type != EventType.DragExited && @event.type != EventType.DragUpdated)
                     return @object;
-                
+
                 DragAndDrop.AcceptDrag ();
                 GUI.changed = true;
                 @object     = (T) DragAndDrop.objectReferences[0];
