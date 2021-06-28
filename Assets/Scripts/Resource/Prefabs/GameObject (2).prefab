@@ -56,4 +56,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1567ceea054a4a719090df0457584be7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Prefab: Assets/Plugins/Editor/VipPack4
+  Prefab: Assets/Scripts/Resource/AudioClip/VipPack4
