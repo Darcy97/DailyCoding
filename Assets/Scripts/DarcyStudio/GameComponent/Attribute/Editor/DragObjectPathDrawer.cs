@@ -105,21 +105,23 @@ namespace DarcyStudio.GameComponent.Attribute.Editor
         /// </summary>
         /// <typeparam name="T">指定类型资源</typeparam>
         /// <param name="rect">监测区域</param>
-        /// <param name="event">事件</param>
+        /// <param name="event">事件</param>i
         /// <returns></returns>
-        private static T GetDragObject<T> (Rect rect, Event @event) where T : UnityEngine.Object
+        private static T GetDragObject<T> (Rect rect, Event @event) where T : Object
         {
-            T @object = default;
             if (!rect.Contains (@event.mousePosition))
-                return @object;
+                return null;
             if (DragAndDrop.objectReferences.Length <= 0)
-                return @object;
+                return null;
+            
+            T @object = default;
+            
             if (DragAndDrop.objectReferences[0].GetType () == typeof (T))
             {
                 DragAndDrop.visualMode = DragAndDropVisualMode.Link;
 
                 if (@event.type != EventType.DragExited && @event.type != EventType.DragUpdated)
-                    return @object;
+                    return null;
 
                 DragAndDrop.AcceptDrag ();
                 GUI.changed = true;
