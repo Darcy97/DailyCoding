@@ -41,7 +41,6 @@ namespace DarcyStudio.StudyNotes.CSharpInDepth.ArrayDepth
         {
             for (var i = 0; i < testTimes; i++)
             {
-                Debug.LogError ("tsfsdafasfsafsdaf" + "sdfsdafasdfsdafsadfsda");
 
                 var list1 = new List<int> ();
 
@@ -49,7 +48,7 @@ namespace DarcyStudio.StudyNotes.CSharpInDepth.ArrayDepth
 
                 var list3 = new List<int> ();
 
-                for (var j = 0; j < 10; j++)
+                for (var j = 0; j < 100; j++)
                 {
                     list1.Add (0);
                     list2.Add (0);
@@ -57,9 +56,9 @@ namespace DarcyStudio.StudyNotes.CSharpInDepth.ArrayDepth
                 }
 
                 //测试结果 
-                // Remove First  0.8ms
+                // Remove First  0.68ms
                 // Remove Middle 0.44ms
-                // Remove Last   0.25ms
+                // Remove Last   0.24ms
 
                 _profilerMarkerRemoveFirst.Begin ();
 
@@ -70,14 +69,14 @@ namespace DarcyStudio.StudyNotes.CSharpInDepth.ArrayDepth
 
                 _profilerMarkerRemoveLast.Begin ();
 
-                list2.RemoveAt (9);
+                list2.RemoveAt (99);
 
                 _profilerMarkerRemoveLast.End ();
 
 
                 _profilerMarkerRemoveMiddle.Begin ();
 
-                list3.RemoveAt (4);
+                list3.RemoveAt (50);
 
                 _profilerMarkerRemoveMiddle.End ();
             }
