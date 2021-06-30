@@ -44,7 +44,7 @@ namespace DarcyStudio.Closure.ReusableAction
                 // 这里为什么要取最后一个呢，因为只有取最后一个才是效率最高的
                 // 因为数据是连续的，所以如果从中间取或者取最后一个，需要将后面所有元素向前移动一位，从 C# 反编译后的源码来看也是这样
                 // 其实数据量小的时候差别几乎可以忽略，不过总是要有一点点追求😬
-                // 有时间可以简单测试下
+                // 有时间可以简单测试下 unity 编辑器内测试了下 见 DarcyStudio.StudyNotes.CSharpInDepth.ArrayDepth.ArrayDepthTest
 
                 // 这部分是 Rider 反编译的源码 从下面第六行可以看出来 如果移除的不是最后一个元素
                 // 会进行一次 Array.copy 没有仔细研究里面的逻辑，底层应该是有优化的，不过肯定效率会低一点
