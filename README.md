@@ -7,7 +7,7 @@
 -->
 # DailyCoding
 
-    Daily essays about unity
+    Daily essays about Unity and C#
     
     1. 看书学习记录
     2. 日常工作中 Idea 的尝试
