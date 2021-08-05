@@ -15,15 +15,17 @@
  * 还有个问题，就是不同字体，这个顶点列表排序好像不太一样，但是不影响使用
  ***/
 
+using DarcyStudio.Extension;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace DarcyStudio.GameComponent.UI
 {
+    [DisallowMultipleComponent]
+    [RequireComponent (typeof (Text))]
+    [AddComponentMenu ("UI/SkewImage (UI)", 99)]
     public class SkewText : BaseMeshEffect
     {
-
-        [SerializeField] private bool turnOn = true;
 
         [SerializeField] private float offsetYTop;
         [SerializeField] private float offsetYBottom;
@@ -63,38 +65,38 @@ namespace DarcyStudio.GameComponent.UI
 
         private void SetVertexPosition (ref UIVertex vertex, bool isTop = true)
         {
-            var (x, y) = GetOffsetXY (vertex.position.x, vertex.position.y, isTop);
-            var sourcePos = vertex.position;
-            vertex.position.x = sourcePos.x + x;
-            vertex.position.y = sourcePos.y + y;
+            var (x, y)          = GetOffsetXY (vertex.position.x, vertex.position.y, isTop);
+            var (posX, posY, _) = vertex.position;
+            vertex.position.x   = posX + x;
+            vertex.position.y   = posY + y;
         }
 
         public override void ModifyMesh (VertexHelper vh)
         {
-            if (!turnOn)
+            if (!IsActive ())
                 return;
-            UIVertex vertexLeftTop     = new UIVertex ();
-            UIVertex vertexRightTop    = new UIVertex ();
-            UIVertex vertexRightBottom = new UIVertex ();
-            UIVertex vertexLeftBottom  = new UIVertex ();
+            var vertexLeftTop     = new UIVertex ();
+            var vertexRightTop    = new UIVertex ();
+            var vertexRightBottom = new UIVertex ();
+            var vertexLeftBottom  = new UIVertex ();
 
             vh.PopulateUIVertex (ref vertexLeftTop,     0);
             vh.PopulateUIVertex (ref vertexRightBottom, vh.currentVertCount - 2);
             vh.PopulateUIVertex (ref vertexRightTop,    vh.currentVertCount - 3);
 
-            var textLeftTopPos     = vertexLeftTop.position;
-            var textRightBottomPos = vertexRightBottom.position;
-            var textRightTopPos    = vertexRightTop.position;
+            var textLeftTopPos  = vertexLeftTop.position;
+            var textRightTopPos = vertexRightTop.position;
 
+            var (rightBottomX, rightBottomY, _) = vertexRightBottom.position;
 
             _startX = textLeftTopPos.x;
-            _endX   = textRightBottomPos.x;
+            _endX   = rightBottomX;
 
             _diffX      = _endX  - _startX;
             _afterDiffX = _diffX + offsetX;
 
             _fontRightTopPosY    = textRightTopPos.y;
-            _fontRightBottomPosY = textRightBottomPos.y;
+            _fontRightBottomPosY = rightBottomY;
 
             for (var i = 0; i < vh.currentVertCount / 4; i++)
             {

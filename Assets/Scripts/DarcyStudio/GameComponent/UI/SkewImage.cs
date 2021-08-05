@@ -14,13 +14,10 @@ namespace DarcyStudio.GameComponent.UI
 {
 
     [DisallowMultipleComponent]
-    [RequireComponent (typeof (RectTransform))]
-    [RequireComponent (typeof (CanvasRenderer))]
+    [RequireComponent (typeof (Image))]
     [AddComponentMenu ("UI/SkewImage (UI)", 99)]
-    [ExecuteInEditMode]
     public class SkewImage : BaseMeshEffect
     {
-        [SerializeField] private bool turnOn;
 
         [SerializeField] private Vector3 offsetLeftBottom = Vector3.zero;
 
@@ -87,6 +84,8 @@ namespace DarcyStudio.GameComponent.UI
 
         public override void ModifyMesh (VertexHelper vh)
         {
+            if (!IsActive ())
+                return;
             var count = vh.currentVertCount;
             for (var i = 0; i < count; i++)
             {
