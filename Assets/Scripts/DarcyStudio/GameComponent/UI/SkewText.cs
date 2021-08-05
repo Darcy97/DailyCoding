@@ -20,7 +20,7 @@ using UnityEngine.UI;
 
 namespace DarcyStudio.GameComponent.UI
 {
-    public class PerspectiveText : BaseMeshEffect
+    public class SkewText : BaseMeshEffect
     {
 
         [SerializeField] private bool turnOn = true;
