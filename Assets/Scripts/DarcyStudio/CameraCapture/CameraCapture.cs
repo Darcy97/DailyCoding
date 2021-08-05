@@ -41,9 +41,11 @@ namespace DarcyStudio.CaptureScreen
             Directory.CreateDirectory (Path.Combine (_rootFolder, Folder));
         }
 
-        private string GetFilePath (string model, string animationName, int frameCount, int cameraIndex, int modelIndex, int animationIndex)
+        private string GetFilePath (string model, string animationName, int frameCount, int cameraIndex, int modelIndex,
+            int                            animationIndex)
         {
-            return $"{Folder}/{model}_{modelIndex:D04}/{animationName}_{animationIndex:D04}/camera{cameraIndex:D02}/{frameCount:D04}-shot.png";
+            return
+                $"{Folder}/{model}_{modelIndex:D04}/{animationName}_{animationIndex:D04}/camera{cameraIndex:D02}/{frameCount:D04}-shot.png";
         }
 
         private void SaveTextureToFile (Texture2D texture, string fileName)
@@ -70,7 +72,6 @@ namespace DarcyStudio.CaptureScreen
                 Capture (index, c, _textureSizeX, _textureSizeY, modelName, animationName, modelIndex, animationIndex);
                 index++;
             }
-
         }
 
         private void Capture (int cameraIndex, Camera camera, float textureSizeX, float textureSizeY, string modelName,
@@ -99,7 +100,9 @@ namespace DarcyStudio.CaptureScreen
 
             camera.targetTexture = null;
             RenderTexture.active = null;
-            SaveTextureToFile (screenShot, GetFilePath (modelName, animationName, _frameCount, cameraIndex, modelIndex, animationIndex));
+            SaveTextureToFile (screenShot,
+                GetFilePath (modelName, animationName, _frameCount, cameraIndex, modelIndex, animationIndex));
+            RenderTexture.ReleaseTemporary (rt);
         }
     }
 }
