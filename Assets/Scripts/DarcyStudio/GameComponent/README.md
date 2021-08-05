@@ -16,6 +16,7 @@
 >> 3. [SkewImage] - 可以扭曲的图片
 >> 4. [SkewText] - 可以扭曲的文字
 >> 5. [TurnTable] - 一个转盘工具
+>> 6. [LoopShineEffect] - 扫光
 
 [ClickThrough]: UI/ClickThrough.cs
 
@@ -26,6 +27,8 @@
 [SkewText]: UI/SkewText.cs
 
 [TurnTable]: Turntable/Turntable.cs
+
+[LoopShineEffect]: UI/LoopShineEffect.cs
 
 > Tools
 >> 1. [Log] - 一个 Log 小工具
