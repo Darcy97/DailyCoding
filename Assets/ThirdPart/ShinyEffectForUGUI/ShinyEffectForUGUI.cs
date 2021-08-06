@@ -213,7 +213,7 @@ namespace Coffee.UIExtensions
 #endif
 
 
-        private ProfilerMarker _profilerMarker0 = new ProfilerMarker ("TEST.ShinyEffectForUGUI");
+        // private ProfilerMarker _profilerMarker0 = new ProfilerMarker ("TEST.ShinyEffectForUGUI");
 
         /// <summary>
         /// Modifies the mesh.
@@ -223,7 +223,7 @@ namespace Coffee.UIExtensions
             if (!IsActive ())
                 return;
 
-            _profilerMarker0.Begin ();
+            // _profilerMarker0.Begin ();
             // rect.
             Rect rect = graphic.rectTransform.rect;
 
@@ -252,7 +252,7 @@ namespace Coffee.UIExtensions
                 vh.SetUIVertex (vertex, i);
             }
 
-            _profilerMarker0.End ();
+            // _profilerMarker0.End ();
         }
 
         /// <summary>
