@@ -23,7 +23,7 @@ namespace DarcyStudio.GameComponent.UI
 {
     [DisallowMultipleComponent]
     [RequireComponent (typeof (Text))]
-    [AddComponentMenu ("UI/SkewImage (UI)", 99)]
+    [AddComponentMenu ("UI/Skew Text (UI)", 99)]
     public class SkewText : BaseMeshEffect
     {
 
@@ -73,8 +73,9 @@ namespace DarcyStudio.GameComponent.UI
 
         public override void ModifyMesh (VertexHelper vh)
         {
-            if (!IsActive ())
+            if (!CanSkew (vh))
                 return;
+
             var vertexLeftTop     = new UIVertex ();
             var vertexRightTop    = new UIVertex ();
             var vertexRightBottom = new UIVertex ();
@@ -115,6 +116,13 @@ namespace DarcyStudio.GameComponent.UI
                 vh.SetUIVertex (vertexRightBottom, i * 4 + 2);
                 vh.SetUIVertex (vertexLeftBottom,  i * 4 + 3);
             }
+        }
+
+        private bool CanSkew (VertexHelper vh)
+        {
+            if (!IsActive ())
+                return false;
+            return vh.currentVertCount >= 3;
         }
     }
 }
