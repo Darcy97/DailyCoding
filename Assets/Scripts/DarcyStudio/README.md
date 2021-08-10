@@ -18,3 +18,10 @@
 [Extension]: Extension
 
 [MarkDown]: MarkDown/ExampleMarkDown.md
+
+### Coding Rules
+
+> 1. 少写注释 尽量不写
+> 2. 少做不必要的设计
+> 3. 不断重构
+> 4. 不断学习
