@@ -180,7 +180,6 @@ namespace Coffee.UIExtensions
 #if UNITY_EDITOR
         public void OnBeforeSerialize ()
         {
-            BeforeSerialize ();
         }
 
         public void OnAfterDeserialize ()
@@ -201,12 +200,7 @@ namespace Coffee.UIExtensions
                 EditorApplication.delayCall += AssetDatabase.SaveAssets;
             };
         }
-
-        protected virtual void BeforeSerialize ()
-        {
-            
-        }
-
+        
         public static Material GetMaterial (string shaderName)
         {
             string name = Path.GetFileName (shaderName);
