@@ -26,7 +26,8 @@ namespace DarcyStudio.GameComponent.UI
 
 
         [SerializeField] [DisableEdit] private float loopTime = 1f;
-        private                                float _time;
+
+        private float _time;
 
         private void CalculateCurveTime ()
         {
