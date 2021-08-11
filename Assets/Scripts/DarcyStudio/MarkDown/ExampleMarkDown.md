@@ -16,7 +16,7 @@
 
 > 1. 链接文件 [Key] - 猫片
 > 2. 链接网址 [Baidu]
->
+> 3. 链接上级目录的文件 [README](../GameComponent/README.md)
 
 # 引入图片
 
