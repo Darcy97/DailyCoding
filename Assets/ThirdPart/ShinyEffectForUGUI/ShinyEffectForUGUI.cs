@@ -33,16 +33,27 @@ namespace Coffee.UIExtensions
         //################################
         // Serialize Members.
         //################################
-        [SerializeField] [Range (0,     1)] float m_Location = 0;
-        [SerializeField] [Range (0,     1)] float m_Width    = 0.25f;
-        [SerializeField] [Range (0.01f, 1)] float m_Softness = 1f;
+        [Header ("位置")] [SerializeField] [Range (0, 1)]
+        float m_Location = 0;
 
-        [FormerlySerializedAs ("m_Alpha")] [SerializeField] [Range (0, 1)]
+        [Header ("宽度")] [SerializeField] [Range (0, 1)]
+        float m_Width = 0.25f;
+
+        [Header ("柔软度")] [SerializeField] [Range (0.01f, 1)]
+        float m_Softness = 1f;
+
+        [Header ("透明度")] [FormerlySerializedAs ("m_Alpha")] [SerializeField] [Range (0, 1)]
         float m_Brightness = 1f;
 
-        [SerializeField] [Range (-180, 180)] float    m_Rotation;
-        [SerializeField] [Range (0,    1)]   float    m_Highlight = 1;
-        [SerializeField]                     Material m_EffectMaterial;
+        [Header ("角度")] [SerializeField] [Range (-180, 180)]
+        float m_Rotation;
+
+        [Header ("亮度")] [SerializeField] [Range (0, 1)]
+        float m_Highlight = 1;
+
+        [Header ("颜色")] [SerializeField] private Color color = Color.white;
+
+        [SerializeField] Material m_EffectMaterial;
 
 
         //################################
@@ -200,7 +211,7 @@ namespace Coffee.UIExtensions
                 EditorApplication.delayCall += AssetDatabase.SaveAssets;
             };
         }
-        
+
         public static Material GetMaterial (string shaderName)
         {
             string name = Path.GetFileName (shaderName);
@@ -248,6 +259,8 @@ namespace Coffee.UIExtensions
                     _PackToFloat (Mathf.Clamp01 (nomalizedPos.y), softness, width, brightness),
                     _PackToFloat (location,                       highlight)
                 );
+
+                vertex.uv2 = new Vector2 (_PackToFloat (color.r, color.g, color.b, color.a), 0);
 
                 vh.SetUIVertex (vertex, i);
             }

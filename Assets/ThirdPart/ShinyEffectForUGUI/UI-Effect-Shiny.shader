@@ -65,6 +65,7 @@ Shader "UI/Hidden/UI-Effect-Shiny"
 				UNITY_VERTEX_INPUT_INSTANCE_ID
 
 				float2 uv1 : TEXCOORD1;
+				float2 uv2 : TEXCOORD2;
 			};
 
 			struct v2f
@@ -77,6 +78,7 @@ Shader "UI/Hidden/UI-Effect-Shiny"
 				
 				half4 effectFactor : TEXCOORD2;
 				half2 effectFactor2 : TEXCOORD3;
+				half4 effectColor : TANGENT;
 			};
 			
 			fixed4 _Color;
@@ -131,6 +133,7 @@ Shader "UI/Hidden/UI-Effect-Shiny"
 				OUT.color = IN.color * _Color;
 
 				OUT.effectFactor = UnpackToVec4(IN.uv1.x);
+				OUT.effectColor = UnpackToVec4(IN.uv2.x);
 				OUT.effectFactor2 = UnpackToVec2(IN.uv1.y);
 
 				OUT.effectFactor2.x = OUT.effectFactor2.x * 2 - 0.5;
@@ -152,7 +155,7 @@ Shader "UI/Hidden/UI-Effect-Shiny"
 
 				half normalized = 1 - saturate(abs(pos / IN.effectFactor.z));
 				half shinePower = smoothstep(0, IN.effectFactor.y*2, normalized);
-				half3 reflectColor = lerp(1, color.rgb * 10, IN.effectFactor2.y);
+				half3 reflectColor = lerp(1, color.rgb * 10 * IN.effectColor.rgb * 10, IN.effectFactor2.y);
 
 				color.rgb += originAlpha * (shinePower / 2) * IN.effectFactor.w * reflectColor;
 				return color;
