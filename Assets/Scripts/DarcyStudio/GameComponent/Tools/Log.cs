@@ -76,6 +76,14 @@ namespace DarcyStudio.GameComponent.Tools
             Debug.LogError (error);
         }
 
+        public static void Error (string format, object arg0)
+        {
+            if (!CanLog (LogLevel.Info))
+                return;
+            Debug.LogError (string.Format (format, arg0));
+        }
+
+
         private static bool CanLog (LogLevel level)
         {
             return level >= _logLevel;

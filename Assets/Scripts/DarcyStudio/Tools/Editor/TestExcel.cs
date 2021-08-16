@@ -9,6 +9,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using DarcyStudio.GameComponent.Tools;
 using ExcelDataReader;
@@ -127,7 +128,6 @@ namespace DarcyStudio.Tools
 
             return current;
         }
-        
 
 
         // public static void SaveFile<T> (this List<T> current, string sheetName, string filePath)
@@ -167,20 +167,18 @@ namespace DarcyStudio.Tools
         //         }
         //     }
 
-            // worksheet.Cells[0, 1]             = new Cell ((short) 1);
-            // worksheet.Cells[2, 0]             = new Cell (9999999);
-            // worksheet.Cells[3, 3]             = new Cell ((decimal) 3.45);
-            // worksheet.Cells[2, 2]             = new Cell ("Text string");
-            // worksheet.Cells[2, 4]             = new Cell ("Second string");
-            // worksheet.Cells[4, 0]             = new Cell (32764.5,      "#,##0.00");
-            // worksheet.Cells[5, 1]             = new Cell (DateTime.Now, @"YYYY-MM-DD");
-            // worksheet.Cells.ColumnWidth[0, 1] = 3000;
+        // worksheet.Cells[0, 1]             = new Cell ((short) 1);
+        // worksheet.Cells[2, 0]             = new Cell (9999999);
+        // worksheet.Cells[3, 3]             = new Cell ((decimal) 3.45);
+        // worksheet.Cells[2, 2]             = new Cell ("Text string");
+        // worksheet.Cells[2, 4]             = new Cell ("Second string");
+        // worksheet.Cells[4, 0]             = new Cell (32764.5,      "#,##0.00");
+        // worksheet.Cells[5, 1]             = new Cell (DateTime.Now, @"YYYY-MM-DD");
+        // worksheet.Cells.ColumnWidth[0, 1] = 3000;
         //     workbook.Save (file);
         // }
-        
-        
 
-        
+
         public static List<TestData> TestRead ()
         {
             var result = new List<TestData> ();
@@ -194,13 +192,13 @@ namespace DarcyStudio.Tools
             var source = new List<TestData> ();
             for (var i = 0; i < 10; i++)
             {
-                source.Add (new TestData (i, "name_" + i, DateTime.Now.ToString ()));
+                source.Add (new TestData (i, "name_" + i, DateTime.Now.ToString (CultureInfo.InvariantCulture)));
             }
 
             var path = Path.Combine (Application.streamingAssetsPath, "test2.xlsm");
             // source.SaveFile ("1", path);
         }
-        
-        
+
+
     }
 }
