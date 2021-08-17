@@ -7,7 +7,7 @@
 
 using UnityEngine;
 
-namespace DarcyStudio.GameComponent.Attribute.SortingLayerDrawerAttribute
+namespace DarcyStudio.CustomEditor.Attribute.CustomPropertyAttribute
 {
     public class DisableEditAttribute:PropertyAttribute
     {

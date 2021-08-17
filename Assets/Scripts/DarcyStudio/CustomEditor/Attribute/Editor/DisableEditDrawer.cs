@@ -5,11 +5,11 @@
  * Description: DisableEditDrawer
  ***/
 
-using DarcyStudio.GameComponent.Attribute.SortingLayerDrawerAttribute;
+using DarcyStudio.CustomEditor.Attribute.CustomPropertyAttribute;
 using UnityEditor;
 using UnityEngine;
 
-namespace DarcyStudio.GameComponent.Attribute.Editor
+namespace DarcyStudio.CustomEditor.Attribute.Editor
 {
     [CustomPropertyDrawer (typeof (DisableEditAttribute))]
     public class DisableEditDrawer : PropertyDrawer

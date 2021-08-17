@@ -6,7 +6,7 @@
  * Description: Description
  ***/
 
-using DarcyStudio.GameComponent.Tools;
+// using DarcyStudio.GameComponent.Tools;
 using UnityEditor;
 
 namespace DarcyStudio.Tools.Editor
@@ -16,14 +16,14 @@ namespace DarcyStudio.Tools.Editor
         [MenuItem ("Tools/Excel/TestWrite")]
         private static void TestWrite ()
         {
-            TestExcel.TestWrite ();
+            // TestExcel.TestWrite ();
         }
-        
+
         [MenuItem ("Tools/Excel/TestRead")]
         private static void TestRead ()
         {
-            var result = TestExcel.TestRead ();
-            Log.Error ("Data count: " + result.Count);
+            // var result = TestExcel.TestRead ();
+            // Log.Error ("Data count: " + result.Count);
         }
     }
 }
