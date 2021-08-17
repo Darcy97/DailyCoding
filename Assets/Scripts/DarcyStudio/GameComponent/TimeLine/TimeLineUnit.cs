@@ -117,18 +117,49 @@ namespace DarcyStudio.GameComponent.TimeLine
         //     return null;
         // }
 
-        public void SetRequireGameObjects (GameObject target, GameObject source, GameObject related)
+        // public void SetRequireGameObjects (GameObject related, GameObject source, params GameObject[] target)
+        // {
+        //     ForeachPlayableAssets (p =>
+        //     {
+        //         if (p is INeedTarget needTarget)
+        //         {
+        //             var index = needTarget.GetTargetIndex ();
+        //             if (target.Length > index)
+        //                 needTarget.SetTarget (target[index]);
+        //             else
+        //             {
+        //                 Log.Error ("Index out of range: {0}", index);
+        //             }
+        //         }
+        //
+        //         if (p is INeedSource needSource)
+        //             needSource.SetSource (source);
+        //
+        //         if (p is INeedRelated needRelated)
+        //             needRelated.SetRelated (related);
+        //     });
+        // }
+        
+        public void SetRequireGameObjects (GameObject related, GameObject source, GameObject[] target)
         {
             ForeachPlayableAssets (p =>
             {
-                if (p is INeedTarget needTarget)
-                    needTarget.SetTarget (target);
+                if (p is IRequireTarget needTarget)
+                {
+                    var index = needTarget.GetTargetIndex ();
+                    if (target.Length > index)
+                        needTarget.SetTarget (target[index]);
+                    else
+                    {
+                        Log.Error ("Index out of range: {0}", index);
+                    }
+                }
 
-                if (p is INeedSource needSource)
+                if (p is IRequireSource needSource)
                     needSource.SetSource (source);
 
-                if (p is INeedRelated needRelated)
-                    needRelated.SetRelated (related);
+                if (p is IRequireControlledObject needRelated)
+                    needRelated.SetControlled (related);
             });
         }
 

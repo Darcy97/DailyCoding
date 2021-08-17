@@ -6,18 +6,19 @@
  * Description:
  ***/
 
-namespace DarcyStudio.GameComponent.TimeLine
+using UnityEngine;
+using UnityEngine.Playables;
+
+namespace DarcyStudio.GameComponent.TimeLine.PlayableTrack
 {
 
-    using UnityEngine;
-    using UnityEngine.Playables;
-
-    public class MoveObjectPlayableAsset : PlayableAsset, INeedTarget, INeedSource, INeedRelated
+    public class MoveObjectPlayableAsset : PlayableAsset, IRequireTarget, IRequireSource, IRequireControlledObject
     {
         private                  GameObject     _relatedGo;
         private                  Vector3        _targetPos;
         private                  Vector3        _sourcePos;
         [SerializeField] private AnimationCurve animationCurve;
+        [SerializeField] private int            targetIndex;
 
 
         public override Playable CreatePlayable (PlayableGraph graph, GameObject owner)
@@ -36,7 +37,9 @@ namespace DarcyStudio.GameComponent.TimeLine
             _targetPos = go.transform.position;
         }
 
-        public void SetRelated (GameObject go)
+        public int GetTargetIndex () => targetIndex; // TODO // 
+
+        public void SetControlled (GameObject go)
         {
             _relatedGo = go;
         }

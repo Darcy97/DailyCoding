@@ -10,7 +10,7 @@ using UnityEngine;
 
 namespace DarcyStudio.GameComponent.TimeLine
 {
-    public interface INeedSource
+    public interface IRequireSource
     {
         void SetSource (GameObject go);
     }

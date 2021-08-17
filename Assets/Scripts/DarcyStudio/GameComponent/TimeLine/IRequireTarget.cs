@@ -10,8 +10,9 @@ using UnityEngine;
 
 namespace DarcyStudio.GameComponent.TimeLine
 {
-    public interface INeedTarget
+    public interface IRequireTarget
     {
         void SetTarget (GameObject go);
+        int  GetTargetIndex ();
     }
 }

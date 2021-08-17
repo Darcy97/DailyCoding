@@ -6,10 +6,11 @@
  * Description: Description
  ***/
 
-namespace DarcyStudio.GameComponent.TimeLine
+using UnityEngine;
+using UnityEngine.Playables;
+
+namespace DarcyStudio.GameComponent.TimeLine.PlayableTrack
 {
-    using UnityEngine;
-    using UnityEngine.Playables;
 
     public class MoveObjectPlayableBehaviour : PlayableBehaviour
     {

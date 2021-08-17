@@ -5,6 +5,9 @@
  * Time: 下午4:35:00
  * Description: Description
  * TODO: 设置一个名字，并且提供一个按钮点击后自动将该物体生成一个 Prefab 保存到指定路径
+ *
+ * 受到攻击不直接播放动画了，提供一个 PlayableScript 播放对应受击方的受击动画
+ * 发射物支持携带攻击效果
  ***/
 
 using System.Collections.Generic;
@@ -32,11 +35,11 @@ namespace DarcyStudio.GameComponent.TimeLine
 
         private void OnEnable ()
         {
-            // var unit = TimelineUtils.AddTimeline (gameObject, asset);
+            // var unit = TimelineUtils.AddTimeline (gameObject, null);
             // unit.SetExtrapolationMode (DirectorWrapMode.Hold);
-            // unit.SetBinding ("color",  gameObject);
+            // unit.SetBinding ("color", gameObject);
             // unit.SetBinding ("color1", colorGo);
-            // unit.SetRequireGameObjects (end, start, target);
+            // unit.SetRequireGameObjects (null, null, null);
             // unit.Play ();
         }
 

@@ -10,8 +10,8 @@ using UnityEngine;
 
 namespace DarcyStudio.GameComponent.TimeLine
 {
-    public interface INeedRelated
+    public interface IRequireControlledObject
     {
-        void SetRelated (GameObject go);
+        void SetControlled (GameObject go);
     }
 }
