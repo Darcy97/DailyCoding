@@ -6,6 +6,7 @@
  * Description: Description
  ***/
 
+using DarcyStudio.GameComponent.TimeLine.RequireObject;
 using UnityEngine;
 using UnityEngine.Playables;
 using UnityEngine.Timeline;
@@ -20,6 +21,7 @@ namespace DarcyStudio.GameComponent.TimeLine
             var director = target.GetComponent<PlayableDirector> ();
             if (null == director)
                 director = target.AddComponent<PlayableDirector> ();
+            director.Stop ();
             unit.Init (asset.name, director, asset);
             return unit;
         }

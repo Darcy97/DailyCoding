@@ -13,6 +13,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using DarcyStudio.GameComponent.TimeLine.RequireObject;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Playables;
@@ -20,8 +21,11 @@ using UnityEngine.Playables;
 namespace DarcyStudio.GameComponent.TimeLine
 {
     [RequireComponent (typeof (PlayableDirector))]
-    public class SkillTimeline : MonoBehaviour
+    public class SkillTimeline : MonoBehaviour, IObjectProvider
     {
+        
+        public IObject Get (ObjectType objectType) => throw new System.NotImplementedException ();
+
 
         [SerializeField] private string skillKey;
 

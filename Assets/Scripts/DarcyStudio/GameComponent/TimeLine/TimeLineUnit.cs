@@ -7,6 +7,7 @@
  ***/
 
 using System;
+using DarcyStudio.GameComponent.TimeLine.RequireObject;
 using DarcyStudio.GameComponent.Tools;
 
 namespace DarcyStudio.GameComponent.TimeLine
@@ -30,6 +31,11 @@ namespace DarcyStudio.GameComponent.TimeLine
         public void SetExtrapolationMode (DirectorWrapMode mode)
         {
             _director.extrapolationMode = mode;
+        }
+
+        public void SetPlayOnAwake (bool playOnAwake)
+        {
+            _director.playOnAwake = playOnAwake;
         }
 
         public void Init (string name, PlayableDirector director, PlayableAsset asset)
@@ -67,6 +73,17 @@ namespace DarcyStudio.GameComponent.TimeLine
                     _playableAssets.Add (timeLineClip.asset as PlayableAsset);
                 }
             }
+        }
+        
+        public void SetObjectProvider (IObjectProvider provider)
+        {
+            ForeachPlayableAssets (p =>
+            {
+                if (p is IObjectDemander demander)
+                {
+                    demander.SetProvider (provider);
+                }
+            });
         }
 
         public void SetBinding (string trackName, Object o)
@@ -139,7 +156,7 @@ namespace DarcyStudio.GameComponent.TimeLine
         //             needRelated.SetRelated (related);
         //     });
         // }
-        
+
         public void SetRequireGameObjects (GameObject related, GameObject source, GameObject[] target)
         {
             ForeachPlayableAssets (p =>

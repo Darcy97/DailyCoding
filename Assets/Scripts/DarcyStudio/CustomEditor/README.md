@@ -20,3 +20,4 @@
 > 1. 监听 Inspector 变量修改后的序列化和反序列化，在用户修改某个值时可以作出对应操作 [Example]
 
 [Example]: ../GameComponent/UI/LoopShineEffect.cs
+![img.png](img.png)

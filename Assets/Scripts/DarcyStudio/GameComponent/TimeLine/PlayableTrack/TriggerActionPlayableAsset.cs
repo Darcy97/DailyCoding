@@ -7,6 +7,7 @@
  ***/
 
 using DarcyStudio.GameComponent.TimeLine.ForAnimation;
+using DarcyStudio.GameComponent.Tools;
 using UnityEngine;
 using UnityEngine.Playables;
 

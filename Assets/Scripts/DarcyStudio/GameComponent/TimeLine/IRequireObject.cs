@@ -17,7 +17,7 @@ namespace DarcyStudio.GameComponent.TimeLine
 
     public enum ObjectType
     {
-        Other,
+        Specify,
         Self,
         Enemy1,
         Enemy2,

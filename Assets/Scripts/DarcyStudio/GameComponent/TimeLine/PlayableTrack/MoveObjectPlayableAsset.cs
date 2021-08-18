@@ -6,42 +6,31 @@
  * Description:
  ***/
 
+using DarcyStudio.GameComponent.TimeLine.RequireObject;
 using UnityEngine;
 using UnityEngine.Playables;
 
 namespace DarcyStudio.GameComponent.TimeLine.PlayableTrack
 {
 
-    public class MoveObjectPlayableAsset : PlayableAsset, IRequireTarget, IRequireSource, IRequireControlledObject
+    public class MoveObjectPlayableAsset : ObjectDemandPlayableAsset
     {
         private                  GameObject     _relatedGo;
         private                  Vector3        _targetPos;
         private                  Vector3        _sourcePos;
         [SerializeField] private AnimationCurve animationCurve;
-        [SerializeField] private int            targetIndex;
 
-
-        public override Playable CreatePlayable (PlayableGraph graph, GameObject owner)
+        protected override ObjectDemandPlayableBehaviour CreateBehaviour ()
         {
-            var bhv = new MoveObjectPlayableBehaviour (_relatedGo.transform, _sourcePos, _targetPos, animationCurve);
-            return ScriptPlayable<MoveObjectPlayableBehaviour>.Create (graph, bhv);
+            var bhv = new MoveObjectPlayableBehaviour (animationCurve);
+            return bhv;
         }
 
-        public void SetSource (GameObject go)
+        protected override Playable CreatePlayable (
+            ObjectDemandPlayableBehaviour bhv, PlayableGraph graph)
         {
-            _sourcePos = go.transform.position;
+            return ScriptPlayable<MoveObjectPlayableBehaviour>.Create (graph, bhv as MoveObjectPlayableBehaviour);
         }
 
-        public void SetTarget (GameObject go)
-        {
-            _targetPos = go.transform.position;
-        }
-
-        public int GetTargetIndex () => targetIndex; // TODO // 
-
-        public void SetControlled (GameObject go)
-        {
-            _relatedGo = go;
-        }
     }
 }
