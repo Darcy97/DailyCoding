@@ -31,6 +31,9 @@ namespace DarcyStudio.GameComponent.TimeLine.Editor
 
             // base.OnInspectorGUI ();
 
+            EditorGUILayout.PropertyField (serializedObject.FindProperty ("playableDirector"), true);
+            EditorGUILayout.PropertyField (serializedObject.FindProperty ("timelineAsset"),    true);
+
             EditorGUILayout.BeginHorizontal ();
             EditorGUILayout.PropertyField (serializedObject.FindProperty ("trackInfos"), true);
             myTarget.DrawInitButton ();

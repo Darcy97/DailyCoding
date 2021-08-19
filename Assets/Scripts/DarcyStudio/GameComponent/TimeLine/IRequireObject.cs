@@ -5,6 +5,7 @@
  * Time: 下午8:31:03
  ***/
 
+using DarcyStudio.GameComponent.TimeLine.RequireObject;
 using UnityEngine;
 
 namespace DarcyStudio.GameComponent.TimeLine
@@ -15,14 +16,5 @@ namespace DarcyStudio.GameComponent.TimeLine
         ObjectType GetRequireType ();
     }
 
-    public enum ObjectType
-    {
-        Specify,
-        Self,
-        Enemy1,
-        Enemy2,
-        Enemy3,
-        Enemy4,
-        Enemy5
-    }
+    
 }

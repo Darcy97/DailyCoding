@@ -74,7 +74,7 @@ namespace DarcyStudio.GameComponent.TimeLine.Editor
             switch ((ObjectType) objectTypeValue.enumValueIndex)
             {
                 case ObjectType.Self:
-                    GUI.backgroundColor = Color.green;
+                    GUI.backgroundColor = Color.gray;
                     break;
                 case ObjectType.Enemy1:
                 case ObjectType.Enemy2:
@@ -86,6 +86,12 @@ namespace DarcyStudio.GameComponent.TimeLine.Editor
                 case ObjectType.Specify:
                     GUI.backgroundColor = Color.cyan;
                     needSpeciy          = true;
+                    break;
+                case ObjectType.Teammate1:
+                case ObjectType.Teammate2:
+                case ObjectType.Teammate3:
+                case ObjectType.Teammate4:
+                    GUI.backgroundColor = Color.yellow;
                     break;
                 default:
                     throw new ArgumentOutOfRangeException ();

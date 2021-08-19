@@ -5,51 +5,64 @@
  * Time: 下午8:27:18
  ***/
 
-using DarcyStudio.GameComponent.TimeLine.ForAnimation;
+using DarcyStudio.GameComponent.TimeLine.ForAction;
+using DarcyStudio.GameComponent.TimeLine.RequireObject;
 using UnityEngine;
 using UnityEngine.Playables;
 
 namespace DarcyStudio.GameComponent.TimeLine.PlayableTrack
 {
-    public class TriggerActionPlayableBehaviour : PlayableBehaviour, IActionTrigger, IRequireWaitDone
+    public class TriggerActionPlayableBehaviour : ObjectDemandPlayableBehaviour,
+        IRequireWaitDone
     {
         public TriggerActionPlayableBehaviour ()
         {
         }
 
-        private readonly GameObject      _go;
-        private readonly IActionReceiver _receiver;
+        private          GameObject      _go;
+        private          IActionReceiver _receiver;
         private readonly ActionType      _actionType;
 
-        public TriggerActionPlayableBehaviour (GameObject go, ActionType actionType)
+        public TriggerActionPlayableBehaviour (ActionType actionType)
         {
-            _go       = go;
-            _receiver = _go.GetComponent<IActionReceiver> ();
-            _receiver.RegisterTrigger (this);
             _actionType = actionType;
         }
 
         public override void OnGraphStart (Playable playable)
         {
             base.OnGraphStart (playable);
+
+            if (!IsPlaying ())
+                return;
+
+            _go       = GetObject (DemandType.Controlled).GetGameObject ();
+            _receiver = _go.GetComponent<IActionReceiver> ();
+        }
+
+        public override void OnBehaviourPlay (Playable playable, FrameData info)
+        {
+            base.OnBehaviourPlay (playable, info);
             Play ();
         }
 
         private void Play ()
         {
-            _receiver.Do (_actionType);
+            _workStateListener?.StartWorking ();
+            _receiver.Do (_actionType, OnWorkDone);
         }
 
-        public void OnPlayEnd ()
+        private void OnWorkDone ()
         {
-            _waitDoneListener.NotifyDone ();
+            _workStateListener?.OnWorkDone ();
         }
 
-        private IWaitDoneListener _waitDoneListener;
+        private IWorkStateListener _workStateListener;
 
-        public void SetWaitDoneListener (IWaitDoneListener listener)
+        public bool Require () => true;
+
+        public void SetWaitDoneListener (IWorkStateListener listener)
         {
-            _waitDoneListener = listener;
+            _workStateListener = listener;
         }
     }
 }

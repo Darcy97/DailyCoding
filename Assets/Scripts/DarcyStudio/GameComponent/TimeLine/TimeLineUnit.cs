@@ -7,6 +7,7 @@
  ***/
 
 using System;
+using DarcyStudio.GameComponent.TimeLine.ForAction;
 using DarcyStudio.GameComponent.TimeLine.RequireObject;
 using DarcyStudio.GameComponent.Tools;
 
@@ -28,6 +29,10 @@ namespace DarcyStudio.GameComponent.TimeLine
 
         private List<PlayableAsset> _playableAssets;
 
+        private Action<TimelineUnit> _playFinished;
+
+        public PlayableDirector Director => _director;
+
         public void SetExtrapolationMode (DirectorWrapMode mode)
         {
             _director.extrapolationMode = mode;
@@ -38,6 +43,14 @@ namespace DarcyStudio.GameComponent.TimeLine
             _director.playOnAwake = playOnAwake;
         }
 
+        public double CurrentTime => _director.time;
+        public double Duration    => _director.duration;
+
+        // public void RegisterFinishEvent (Action<TimelineUnit> action)
+        // {
+        // _playFinished = action;
+        // }
+
         public void Init (string name, PlayableDirector director, PlayableAsset asset)
         {
             director.playableAsset = asset;
@@ -45,9 +58,49 @@ namespace DarcyStudio.GameComponent.TimeLine
             _director              = director;
             _asset                 = asset;
 
+            InitBindingsAndPlayableAssets ();
+            // InitEvent ();
+        }
+
+        public void SetWorkDoneListener (IWorkStateListener listener)
+        {
+            ForeachPlayableAssets (p =>
+            {
+                if (p is IRequireWaitDone r && r.Require ())
+                {
+                    r.SetWaitDoneListener (listener);
+                }
+            });
+        }
+
+        public void Dispose ()
+        {
+            if (_director.state == PlayState.Playing)
+                _director.Stop ();
+            _director.stopped -= OnDirectorStop;
+        }
+
+        // private void InitEvent ()
+        // {
+        //     _director.stopped += OnDirectorStop;
+        // }
+
+        private void OnDirectorStop (PlayableDirector director)
+        {
+            Log.Info ("On stop");
+            if (_playFinished == null)
+                return;
+            if (director.time > 0)
+            {
+                _playFinished?.Invoke (this);
+            }
+        }
+
+        private void InitBindingsAndPlayableAssets ()
+        {
             _bindings       = new Dictionary<string, PlayableBinding> ();
             _playableAssets = new List<PlayableAsset> ();
-            foreach (var o in asset.outputs)
+            foreach (var o in _asset.outputs)
             {
                 var trackName = o.streamName;
                 _bindings.Add (trackName, o);
@@ -74,7 +127,7 @@ namespace DarcyStudio.GameComponent.TimeLine
                 }
             }
         }
-        
+
         public void SetObjectProvider (IObjectProvider provider)
         {
             ForeachPlayableAssets (p =>
@@ -157,50 +210,61 @@ namespace DarcyStudio.GameComponent.TimeLine
         //     });
         // }
 
-        public void SetRequireGameObjects (GameObject related, GameObject source, GameObject[] target)
-        {
-            ForeachPlayableAssets (p =>
-            {
-                if (p is IRequireTarget needTarget)
-                {
-                    var index = needTarget.GetTargetIndex ();
-                    if (target.Length > index)
-                        needTarget.SetTarget (target[index]);
-                    else
-                    {
-                        Log.Error ("Index out of range: {0}", index);
-                    }
-                }
-
-                if (p is IRequireSource needSource)
-                    needSource.SetSource (source);
-
-                if (p is IRequireControlledObject needRelated)
-                    needRelated.SetControlled (related);
-            });
-        }
+        // public void SetRequireGameObjects (GameObject related, GameObject source, GameObject[] target)
+        // {
+        //     ForeachPlayableAssets (p =>
+        //     {
+        //         if (p is IRequireTarget needTarget)
+        //         {
+        //             var index = needTarget.GetTargetIndex ();
+        //             if (target.Length > index)
+        //                 needTarget.SetTarget (target[index]);
+        //             else
+        //             {
+        //                 Log.Error ("Index out of range: {0}", index);
+        //             }
+        //         }
+        //
+        //         if (p is IRequireSource needSource)
+        //             needSource.SetSource (source);
+        //
+        //         if (p is IRequireControlledObject needRelated)
+        //             needRelated.SetControlled (related);
+        //     });
+        // }
 
         private void ForeachPlayableAssets (Action<PlayableAsset> action)
         {
-            foreach (var o in _asset.outputs)
+            foreach (var playableAsset in _playableAssets)
             {
-                var track = o.sourceObject as TrackAsset;
-
-                if (track == null)
-                    continue;
-
-                var clipList = track.GetClips ();
-                foreach (var timeLineClip in clipList)
-                {
-                    var playableAsset = timeLineClip.asset as PlayableAsset;
+                if (playableAsset)
                     action (playableAsset);
-                }
             }
+
+            // foreach (var o in _asset.outputs)
+            // {
+            //     var track = o.sourceObject as TrackAsset;
+            //
+            //     if (track == null)
+            //         continue;
+            //
+            //     var clipList = track.GetClips ();
+            //     foreach (var timeLineClip in clipList)
+            //     {
+            //         var playableAsset = timeLineClip.asset as PlayableAsset;
+            //         action (playableAsset);
+            //     }
+            // }
         }
 
         public void Play ()
         {
             _director.Play ();
+        }
+
+        public void Stop ()
+        {
+            _director.Stop ();
         }
     }
 }

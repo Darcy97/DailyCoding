@@ -12,4 +12,19 @@ namespace DarcyStudio.GameComponent.TimeLine.RequireObject
     {
         void SetProvider (IObjectProvider provider);
     }
+    
+    public enum ObjectType
+    {
+        Specify,
+        Self,
+        Enemy1,
+        Enemy2,
+        Enemy3,
+        Enemy4,
+        Enemy5,
+        Teammate1,
+        Teammate2,
+        Teammate3,
+        Teammate4
+    }
 }

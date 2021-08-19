@@ -6,13 +6,12 @@
  * Description: Description
  ***/
 
-namespace DarcyStudio.GameComponent.TimeLine.ForAnimation
+using System;
+
+namespace DarcyStudio.GameComponent.TimeLine.ForAction
 {
     public interface IActionReceiver
     {
-        void Do (ActionType key);
-
-        void RegisterTrigger (IActionTrigger trigger);
-
+        void Do (ActionType key, Action finishCallback = null);
     }
 }

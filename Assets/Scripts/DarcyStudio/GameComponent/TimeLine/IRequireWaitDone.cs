@@ -5,10 +5,13 @@
  * Time: 下午9:46:30
  ***/
 
+using DarcyStudio.GameComponent.TimeLine.ForAction;
+
 namespace DarcyStudio.GameComponent.TimeLine
 {
     public interface IRequireWaitDone
     {
-        void SetWaitDoneListener (IWaitDoneListener listener);
+        bool Require ();
+        void SetWaitDoneListener (IWorkStateListener listener);
     }
 }

@@ -15,10 +15,7 @@ namespace DarcyStudio.GameComponent.TimeLine.PlayableTrack
 
     public class MoveObjectPlayableAsset : ObjectDemandPlayableAsset
     {
-        private                  GameObject     _relatedGo;
-        private                  Vector3        _targetPos;
-        private                  Vector3        _sourcePos;
-        [SerializeField] private AnimationCurve animationCurve;
+        [SerializeField] private AnimationCurve animationCurve = AnimationCurve.Linear (0, 0, 1, 1);
 
         protected override ObjectDemandPlayableBehaviour CreateBehaviour ()
         {

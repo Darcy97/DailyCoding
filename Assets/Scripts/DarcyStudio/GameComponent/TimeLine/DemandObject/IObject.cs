@@ -6,6 +6,7 @@
  * Description: IObject
  ***/
 
+using System;
 using UnityEngine;
 
 namespace DarcyStudio.GameComponent.TimeLine.RequireObject

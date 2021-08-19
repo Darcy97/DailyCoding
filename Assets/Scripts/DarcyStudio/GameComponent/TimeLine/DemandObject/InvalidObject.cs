@@ -16,13 +16,13 @@ namespace DarcyStudio.GameComponent.TimeLine.DemandObject
 
         public bool IsValid () => false;
 
-        public GameObject GetGameObject () => throw new System.NotImplementedException ();
+        public GameObject GetGameObject () => default;
 
-        public Vector3 GetPos () => throw new System.NotImplementedException ();
+        public Vector3 GetPos () => default;
 
-        public Transform GetTransform () => throw new System.NotImplementedException ();
+        public Transform GetTransform () => default;
 
-        public T GetComponent<T> () => throw new System.NotImplementedException ();
+        public T GetComponent<T> () => default;
 
         public static readonly InvalidObject Default = new InvalidObject ();
     }

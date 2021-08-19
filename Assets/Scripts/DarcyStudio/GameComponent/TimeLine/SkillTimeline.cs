@@ -10,22 +10,22 @@
  * 发射物支持携带攻击效果
  ***/
 
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using DarcyStudio.GameComponent.TimeLine.ForAction;
 using DarcyStudio.GameComponent.TimeLine.RequireObject;
-using UnityEditor;
+using DarcyStudio.GameComponent.TimeLine.Skill;
+using DarcyStudio.GameComponent.Tools;
 using UnityEngine;
 using UnityEngine.Playables;
+using UnityEngine.Timeline;
 
 namespace DarcyStudio.GameComponent.TimeLine
 {
-    [RequireComponent (typeof (PlayableDirector))]
-    public class SkillTimeline : MonoBehaviour, IObjectProvider
+    public class SkillTimeline : MonoBehaviour, ISkillPlayer, IWorkStateListener
     {
-        
-        public IObject Get (ObjectType objectType) => throw new System.NotImplementedException ();
-
 
         [SerializeField] private string skillKey;
 
@@ -36,41 +36,109 @@ namespace DarcyStudio.GameComponent.TimeLine
 
         [SerializeField] private TrackInfo[] trackInfos;
 
+        [SerializeField] private PlayableDirector playableDirector;
+        [SerializeField] private TimelineAsset    timelineAsset;
 
-        private void OnEnable ()
+        private IObjectProvider _provider;
+        private TimelineUnit    _timeline;
+
+
+        public void Init ()
         {
-            // var unit = TimelineUtils.AddTimeline (gameObject, null);
-            // unit.SetExtrapolationMode (DirectorWrapMode.Hold);
-            // unit.SetBinding ("color", gameObject);
-            // unit.SetBinding ("color1", colorGo);
-            // unit.SetRequireGameObjects (null, null, null);
-            // unit.Play ();
+            _timeline?.Dispose ();
+            _timeline = new TimelineUnit ();
+            _timeline.Init (timelineAsset.name, playableDirector, timelineAsset);
+            _timeline.SetPlayOnAwake (false);
+            _timeline.SetExtrapolationMode (DirectorWrapMode.Hold);
+            _timeline.SetWorkDoneListener (this);
         }
 
-        // [SerializeField] private GameObject start;
-        // [SerializeField] private GameObject end;
-        // [SerializeField] private GameObject target;
+        public void Dispose ()
+        {
+            _timeline?.Dispose ();
+        }
 
-        // [SerializeField] private GameObject colorGo;
+
+        // public SkillTimelineNew (GameObject playGO, TimelineAsset timelineAsset)
+        // {
+        //     _timeline = TimelineUtils.AddTimeline (playGO, timelineAsset);
+        //     _timeline.SetPlayOnAwake (false);
+        //     _timeline.RegisterFinishEvent (OnStopped);
+        //     _timeline.SetExtrapolationMode (DirectorWrapMode.Hold);
+        // }
+
+        private void Update ()
+        {
+            if (!_isPlaying)
+                return;
+
+            if (_timeline.CurrentTime >= _timeline.Duration)
+            {
+                if (_workingWorkerCount < 1)
+                {
+                    _isPlaying = false;
+                    _finishAction?.Invoke (this);
+                }
+            }
+        }
+
+        public void SetObjectProvider (IObjectProvider provider)
+        {
+            _timeline.SetObjectProvider (provider);
+            foreach (var info in trackInfos)
+            {
+                if (info.Type == TrackType.Self)
+                {
+                    _timeline.SetBinding (info.Name, provider.Get (ObjectType.Self).GetGameObject ());
+                }
+            }
+
+            // SetSourceObject (provider.Get (ObjectType.Self));
+        }
+
+        private void SetSourceObject (IObject o)
+        {
+            // _timeline.SetBinding (selfTrackName, o.GetGameObject ());
+        }
+
+        private bool                  _isPlaying = false;
+        private Action<SkillTimeline> _finishAction;
+
+        public void Play (Action<ISkillPlayer> action = null)
+        {
+            _finishAction = action;
+            _timeline.Play ();
+            _isPlaying          = true;
+            _workingWorkerCount = 0;
+        }
+
+        public void Stop ()
+        {
+            _timeline.Stop ();
+        }
+
+        public void IsFinished ()
+        {
+        }
 
 
 #if UNITY_EDITOR
-        public void DrawButtons ()
-        {
-            var color = GUI.backgroundColor;
-            GUI.backgroundColor = Color.green;
-            EditorGUILayout.Space ();
-            if (GUILayout.Button ("InitTracks"))
-            {
-                InitTrackInfos ();
-            }
-
-            if (GUILayout.Button ("Save to prefab"))
-                SaveToPrefab ();
-
-            GUI.backgroundColor = color;
-            EditorGUILayout.Space ();
-        }
+        // public void DrawButtons ()
+        // {
+        //     var color = GUI.backgroundColor;
+        //     GUI.backgroundColor = Color.green;
+        //     EditorGUILayout.Space ();
+        //     if (GUILayout.Button ("InitTracks"))
+        //     {
+        //         InitTrackInfos ();
+        //     }
+        //
+        //     if (GUILayout.Button ("Save to prefab"))
+        //         SaveToPrefab ();
+        //
+        //     GUI.backgroundColor = color;
+        //     EditorGUILayout.Space ();
+        // }
 
         public void DrawInitButton ()
         {
@@ -95,8 +163,7 @@ namespace DarcyStudio.GameComponent.TimeLine
 
         private void InitTrackInfos ()
         {
-            var director = GetComponent<PlayableDirector> ();
-            director.playOnAwake = false;
+            var director = playableDirector;
 
             if (director.playableAsset == null)
             {
@@ -147,7 +214,7 @@ namespace DarcyStudio.GameComponent.TimeLine
             _dict.Clear ();
             _stringBuilder.Clear ();
 
-            if (trackInfos.Length < 1)
+            if (trackInfos == null || trackInfos.Length < 1)
             {
                 info = "No track info";
                 return;
@@ -175,5 +242,16 @@ namespace DarcyStudio.GameComponent.TimeLine
         }
 #endif
 
+        public void OnWorkDone ()
+        {
+            _workingWorkerCount--;
+        }
+
+        private int _workingWorkerCount = 0;
+
+        public void StartWorking ()
+        {
+            _workingWorkerCount++;
+        }
     }
 }

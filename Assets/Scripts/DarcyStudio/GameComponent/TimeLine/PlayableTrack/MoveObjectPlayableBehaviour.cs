@@ -16,9 +16,10 @@ namespace DarcyStudio.GameComponent.TimeLine.PlayableTrack
 
     public class MoveObjectPlayableBehaviour : ObjectDemandPlayableBehaviour
     {
-        private Transform _controlled;
-        private Vector3   _startPos;
-        private Vector3   _targetPos;
+        private GameObject _controlledGO;
+        private Transform  _controlled;
+        private Vector3    _startPos;
+        private Vector3    _targetPos;
 
         private readonly AnimationCurve _curve;
 
@@ -27,24 +28,16 @@ namespace DarcyStudio.GameComponent.TimeLine.PlayableTrack
         private float _duration;
         private float _curTime;
 
-        private readonly bool _isValid;
+        private bool _isValid;
 
         private bool IsValid ()
         {
-            if (_curve.length >= 1)
+            if (_curve != null && _curve.length >= 1)
                 return _isValid;
 
             Log.Error ("Animation curve null ---> {0}", nameof (MoveObjectPlayableBehaviour));
 
             return false;
-        }
-
-        private bool IsPlaying ()
-        {
-#if UNITY_EDITOR
-            return Application.isPlaying;
-#endif
-            return true;
         }
 
         public MoveObjectPlayableBehaviour ()
@@ -66,13 +59,36 @@ namespace DarcyStudio.GameComponent.TimeLine.PlayableTrack
             if (!IsValid ())
                 return;
 
-            _controlled = GetObject (DemandType.Controlled).GetTransform ();
-            _startPos   = GetObject (DemandType.Source).GetPos ();
-            _targetPos  = GetObject (DemandType.Target).GetPos ();
+            var prefab = GetObject (DemandType.Controlled).GetGameObject ();
+            if (!prefab)
+            {
+                _isValid = false;
+                return;
+            }
+
+            var start = GetObject (DemandType.Source);
+            _controlledGO = Object.Instantiate (prefab, start.GetTransform ());
+            _controlled   = _controlledGO.transform;
+            _startPos     = start.GetPos ();
+            _targetPos    = GetObject (DemandType.Target).GetPos ();
 
             _curTime        = 0;
             _duration       = (float) playable.GetDuration ();
             _curveTotalTime = _curve[_curve.length - 1].time;
+            HideControlled ();
+        }
+
+        public override void OnPlayableDestroy (Playable playable)
+        {
+            base.OnPlayableDestroy (playable);
+            if (!_controlledGO)
+                return;
+            if (!IsPlaying ())
+            {
+                Object.DestroyImmediate (_controlledGO);
+            }
+            else
+                Object.Destroy (_controlledGO);
         }
 
         public override void OnGraphStop (Playable playable)
@@ -81,9 +97,17 @@ namespace DarcyStudio.GameComponent.TimeLine.PlayableTrack
 
             if (!IsValid ())
                 return;
+            HideControlled ();
+        }
 
-            _curTime = _duration;
-            DoMove ();
+        private void ShowControlled ()
+        {
+            _controlledGO.SetActive (true);
+        }
+
+        private void HideControlled ()
+        {
+            _controlledGO.SetActive (false);
         }
 
         public override void OnBehaviourPlay (Playable playable, FrameData info)
@@ -92,6 +116,8 @@ namespace DarcyStudio.GameComponent.TimeLine.PlayableTrack
 
             if (!IsValid ())
                 return;
+
+            ShowControlled ();
 
             _curTime += info.deltaTime;
             DoMove ();

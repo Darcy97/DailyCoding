@@ -15,7 +15,6 @@ namespace DarcyStudio.GameComponent.TimeLine.PlayableTrack
     {
         public ObjectDemandPlayableBehaviour ()
         {
-            
         }
 
         private ObjectDemandPlayableAsset _playableAsset;
@@ -28,6 +27,14 @@ namespace DarcyStudio.GameComponent.TimeLine.PlayableTrack
         protected IObject GetObject (DemandType type)
         {
             return _playableAsset.GetObject (type);
+        }
+
+        protected bool IsPlaying ()
+        {
+#if UNITY_EDITOR
+            return Application.isPlaying;
+#endif
+            return true;
         }
 
     }
