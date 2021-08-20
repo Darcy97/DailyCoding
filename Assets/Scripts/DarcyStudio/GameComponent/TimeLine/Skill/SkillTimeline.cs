@@ -16,13 +16,12 @@ using System.Linq;
 using System.Text;
 using DarcyStudio.GameComponent.TimeLine.ForAction;
 using DarcyStudio.GameComponent.TimeLine.RequireObject;
-using DarcyStudio.GameComponent.TimeLine.Skill;
-using DarcyStudio.GameComponent.Tools;
+using DarcyStudio.GameComponent.TimeLine.WorkState;
 using UnityEngine;
 using UnityEngine.Playables;
 using UnityEngine.Timeline;
 
-namespace DarcyStudio.GameComponent.TimeLine
+namespace DarcyStudio.GameComponent.TimeLine.Skill
 {
     public class SkillTimeline : MonoBehaviour, ISkillPlayer, IWorkStateListener
     {

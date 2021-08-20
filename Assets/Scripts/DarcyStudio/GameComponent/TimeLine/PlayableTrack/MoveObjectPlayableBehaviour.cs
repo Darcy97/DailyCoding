@@ -10,6 +10,7 @@ using DarcyStudio.GameComponent.TimeLine.RequireObject;
 using DarcyStudio.GameComponent.Tools;
 using UnityEngine;
 using UnityEngine.Playables;
+using YieldUtils = DarcyStudio.GameComponent.Tools.YieldUtils;
 
 namespace DarcyStudio.GameComponent.TimeLine.PlayableTrack
 {
@@ -22,6 +23,7 @@ namespace DarcyStudio.GameComponent.TimeLine.PlayableTrack
         private Vector3    _targetPos;
 
         private readonly AnimationCurve _curve;
+        private readonly float          _delayDisappearTime;
 
         private float _curveTotalTime;
 
@@ -46,10 +48,11 @@ namespace DarcyStudio.GameComponent.TimeLine.PlayableTrack
         }
 
         public MoveObjectPlayableBehaviour (
-            AnimationCurve curve)
+            AnimationCurve curve, float delayDisappearTime)
         {
-            _isValid = true;
-            _curve   = curve;
+            _isValid        = true;
+            _curve          = curve;
+            _delayDisappearTime = delayDisappearTime;
         }
 
         public override void OnGraphStart (Playable playable)
@@ -58,6 +61,8 @@ namespace DarcyStudio.GameComponent.TimeLine.PlayableTrack
 
             if (!IsValid ())
                 return;
+
+            _isWaitingKillControlled = false;
 
             var prefab = GetObject (DemandType.Controlled).GetGameObject ();
             if (!prefab)
@@ -83,21 +88,7 @@ namespace DarcyStudio.GameComponent.TimeLine.PlayableTrack
             base.OnPlayableDestroy (playable);
             if (!_controlledGO)
                 return;
-            if (!IsPlaying ())
-            {
-                Object.DestroyImmediate (_controlledGO);
-            }
-            else
-                Object.Destroy (_controlledGO);
-        }
-
-        public override void OnGraphStop (Playable playable)
-        {
-            base.OnGraphStop (playable);
-
-            if (!IsValid ())
-                return;
-            HideControlled ();
+            DestroyControlled ();
         }
 
         private void ShowControlled ()
@@ -147,11 +138,40 @@ namespace DarcyStudio.GameComponent.TimeLine.PlayableTrack
 
             var percent = _curTime / _duration;
             if (percent > 1)
+            {
                 percent = 1;
+                KillControlled ();
+            }
 
             var curCurveTime = percent * _curveTotalTime;
             var value        = _curve.Evaluate (curCurveTime);
             _controlled.position = Vector3.Lerp (_startPos, _targetPos, value);
+        }
+
+        private bool _isWaitingKillControlled;
+
+        private void KillControlled ()
+        {
+            if (_delayDisappearTime > 0)
+            {
+                _isWaitingKillControlled = true;
+                YieldUtils.DelayAction (_controlledGO.GetComponent<MonoBehaviour> (),
+                    () => { Object.Destroy (_controlledGO); }, _delayDisappearTime);
+            }
+            else
+            {
+                HideControlled ();
+            }
+        }
+
+        private void DestroyControlled ()
+        {
+            if (!IsPlaying ())
+            {
+                Object.DestroyImmediate (_controlledGO);
+            }
+            else
+                Object.Destroy (_controlledGO);
         }
     }
 }

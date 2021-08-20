@@ -6,7 +6,7 @@
  * Description: 动画触发对象
  ***/
 
-namespace DarcyStudio.GameComponent.TimeLine.ForAction
+namespace DarcyStudio.GameComponent.TimeLine.WorkState
 {
     public interface IWorkStateListener
     {

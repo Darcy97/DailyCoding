@@ -16,10 +16,11 @@ namespace DarcyStudio.GameComponent.TimeLine.PlayableTrack
     public class MoveObjectPlayableAsset : ObjectDemandPlayableAsset
     {
         [SerializeField] private AnimationCurve animationCurve = AnimationCurve.Linear (0, 0, 1, 1);
+        [SerializeField] private float          delayDisappearTime = 0;
 
         protected override ObjectDemandPlayableBehaviour CreateBehaviour ()
         {
-            var bhv = new MoveObjectPlayableBehaviour (animationCurve);
+            var bhv = new MoveObjectPlayableBehaviour (animationCurve, delayDisappearTime);
             return bhv;
         }
 

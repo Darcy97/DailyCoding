@@ -7,7 +7,7 @@
 
 using DarcyStudio.GameComponent.TimeLine.ForAction;
 
-namespace DarcyStudio.GameComponent.TimeLine
+namespace DarcyStudio.GameComponent.TimeLine.WorkState
 {
     public interface IRequireWaitDone
     {

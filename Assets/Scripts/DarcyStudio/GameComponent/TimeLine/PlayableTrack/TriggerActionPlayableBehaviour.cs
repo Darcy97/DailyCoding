@@ -7,13 +7,13 @@
 
 using DarcyStudio.GameComponent.TimeLine.ForAction;
 using DarcyStudio.GameComponent.TimeLine.RequireObject;
+using DarcyStudio.GameComponent.TimeLine.WorkState;
 using UnityEngine;
 using UnityEngine.Playables;
 
 namespace DarcyStudio.GameComponent.TimeLine.PlayableTrack
 {
-    public class TriggerActionPlayableBehaviour : ObjectDemandPlayableBehaviour,
-        IRequireWaitDone
+    public class TriggerActionPlayableBehaviour : ObjectDemandPlayableBehaviour
     {
         public TriggerActionPlayableBehaviour ()
         {
@@ -57,8 +57,6 @@ namespace DarcyStudio.GameComponent.TimeLine.PlayableTrack
         }
 
         private IWorkStateListener _workStateListener;
-
-        public bool Require () => true;
 
         public void SetWaitDoneListener (IWorkStateListener listener)
         {

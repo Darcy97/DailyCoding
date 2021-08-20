@@ -37,7 +37,7 @@ namespace DarcyStudio.GameComponent.TimeLine.ForAction
             _animator.Rebind ();
         }
 
-        public void SetTrigger (string trigger, Action endCallback = null)
+        public void Play (string trigger, Action endCallback = null)
         {
             _playEndCallback = endCallback;
             _animator.SetTrigger (trigger);

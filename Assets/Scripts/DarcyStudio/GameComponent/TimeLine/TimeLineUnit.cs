@@ -9,6 +9,7 @@
 using System;
 using DarcyStudio.GameComponent.TimeLine.ForAction;
 using DarcyStudio.GameComponent.TimeLine.RequireObject;
+using DarcyStudio.GameComponent.TimeLine.WorkState;
 using DarcyStudio.GameComponent.Tools;
 
 namespace DarcyStudio.GameComponent.TimeLine

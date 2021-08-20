@@ -7,23 +7,23 @@
 
 using System;
 using System.Collections.Generic;
+using DarcyStudio.GameComponent.TimeLine.ForAction.ActionPerformer;
 using DarcyStudio.GameComponent.Tools;
 using UnityEngine;
 
 namespace DarcyStudio.GameComponent.TimeLine.ForAction
 {
-    [RequireComponent (typeof (SuperAnimator))]
     public class ActionReceiver : MonoBehaviour, IActionReceiver
     {
 
-        [SerializeField] private ActionConfig[] actionConfigs;
-        private                  SuperAnimator  _animator;
+        [SerializeField] private ActionResponseConfig[] actionConfigs;
+        private                  SuperAnimator          _animator;
 
-        private Dictionary<ActionType, ActionConfig> actionInfoDict;
+        private Dictionary<ActionType, ActionResponseConfig> actionInfoDict;
 
         private void Start ()
         {
-            _animator = GetComponent<SuperAnimator> ();
+            // _animator = GetComponent<SuperAnimator> ();
             InitActionConfigDict ();
         }
 
@@ -31,7 +31,7 @@ namespace DarcyStudio.GameComponent.TimeLine.ForAction
         {
             if (actionConfigs == null || actionConfigs.Length < 1)
                 return;
-            actionInfoDict = new Dictionary<ActionType, ActionConfig> ();
+            actionInfoDict = new Dictionary<ActionType, ActionResponseConfig> ();
             foreach (var actionInfo in actionConfigs)
             {
                 if (actionInfoDict.ContainsKey (actionInfo.ActionType))
@@ -40,7 +40,7 @@ namespace DarcyStudio.GameComponent.TimeLine.ForAction
             }
         }
 
-        private ActionConfig GetActionInfo (ActionType actionType)
+        private ActionResponseConfig GetActionInfo (ActionType actionType)
         {
             if (actionInfoDict == null)
                 return null;
@@ -52,30 +52,87 @@ namespace DarcyStudio.GameComponent.TimeLine.ForAction
 
         public void Do (ActionData actionData, Action finishCallback = null)
         {
-            var actionInfo = GetActionInfo (actionData.ActionType);
-            if (actionInfo == null)
+            var responseConfig = GetActionInfo (actionData.ActionType);
+            if (responseConfig == null)
             {
                 Log.Error ("No suitable action info for ->{0}<-  in  ->{1}<-", actionData.ActionType, gameObject.name);
                 finishCallback?.Invoke ();
                 return;
             }
 
-            if (actionInfo.TriggerType == TriggerType.Animation)
-                _animator.SetTrigger (actionInfo.AnimationKey, finishCallback);
+            DoActionByConfig (responseConfig, finishCallback);
+        }
+
+        private void DoActionByConfig (ActionResponseConfig responseConfig, Action finishCallback)
+        {
+            var responses = responseConfig.responses;
+            var waitDone  = false;
+            foreach (var response in responses)
+            {
+                DoActionByResponse (response, finishCallback, ref waitDone);
+            }
+
+            if (waitDone)
+                return;
+            finishCallback?.Invoke ();
+        }
+
+        private void DoActionByResponse (ResponseData data, Action finishCallback, ref bool waitDone)
+        {
+            if (data.WaitDone)
+                waitDone = true;
+
+            var performer = data.Performer;
+            if (performer == null)
+            {
+                performer      = GetResponsePerformer (data.ResponseType);
+                data.Performer = performer;
+            }
+
+            performer.Perform (data, finishCallback, gameObject);
+        }
+
+        private static IResponsePerformer GetResponsePerformer (ResponseType type)
+        {
+            switch (type)
+            {
+                case ResponseType.Default:
+                    return InvalidPerformer.Default;
+                case ResponseType.Animation:
+                    return new AnimationPerformer ();
+                case ResponseType.ShowGo:
+                    return new ShowGoPerformer ();
+                default:
+                    return InvalidPerformer.Default;
+            }
         }
     }
 
     [Serializable]
-    public class ActionConfig
+    public class ActionResponseConfig
     {
-        public ActionType  ActionType;
-        public TriggerType TriggerType;
-        public string      AnimationKey;
+        public ActionType ActionType;
+
+        public ResponseData[] responses;
+
     }
 
-    public enum TriggerType
+    [Serializable]
+    public class ResponseData
+    {
+        public ResponseType ResponseType;
+        public string       AnimationKey;
+        public GameObject   GO;
+        public float        showTime = 1;
+        public bool         WaitDone;
+
+        [NonSerialized] public IResponsePerformer Performer;
+    }
+
+    public enum ResponseType
     {
         Default,
-        Animation
+        Animation,
+        ShowGo,
     }
 }

@@ -31,8 +31,12 @@ namespace DarcyStudio.GameComponent.TimeLine.RequireObject
 
             if (_gameObject == null)
                 return InvalidObject.Default;
-
+            
+            _object = _gameObject.GetComponent<IObject> ();
+            if (_object == null)
+                _gameObject.AddComponent<DemandObject.DemandObject> ();
             return _object = _gameObject.GetComponent<IObject> ();
+
         }
 
     }

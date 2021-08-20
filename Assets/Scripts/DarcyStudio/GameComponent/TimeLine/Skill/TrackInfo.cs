@@ -7,9 +7,8 @@
  ***/
 
 using System;
-using DarcyStudio.GameComponent.Attribute.SortingLayerDrawerAttribute;
 
-namespace DarcyStudio.GameComponent.TimeLine
+namespace DarcyStudio.GameComponent.TimeLine.Skill
 {
     [Serializable]
     public class TrackInfo
