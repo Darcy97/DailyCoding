@@ -10,7 +10,6 @@ using DarcyStudio.GameComponent.TimeLine.RequireObject;
 using DarcyStudio.GameComponent.Tools;
 using UnityEngine;
 using UnityEngine.Playables;
-using YieldUtils = DarcyStudio.GameComponent.Tools.YieldUtils;
 
 namespace DarcyStudio.GameComponent.TimeLine.PlayableTrack
 {

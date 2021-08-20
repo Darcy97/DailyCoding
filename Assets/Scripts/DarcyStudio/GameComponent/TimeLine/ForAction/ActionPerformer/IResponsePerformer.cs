@@ -7,7 +7,7 @@
 using System;
 using UnityEngine;
 
-namespace DarcyStudio.GameComponent.TimeLine.ForAction
+namespace DarcyStudio.GameComponent.TimeLine.ForAction.ActionPerformer
 {
     public interface IResponsePerformer
     {

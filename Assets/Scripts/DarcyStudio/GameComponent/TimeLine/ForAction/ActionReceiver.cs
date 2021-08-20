@@ -123,7 +123,8 @@ namespace DarcyStudio.GameComponent.TimeLine.ForAction
         public ResponseType ResponseType;
         public string       AnimationKey;
         public GameObject   GO;
-        public float        showTime = 1;
+        public float        DelayTime = 0;
+        public float        ShowTime  = 1;
         public bool         WaitDone;
 
         [NonSerialized] public IResponsePerformer Performer;

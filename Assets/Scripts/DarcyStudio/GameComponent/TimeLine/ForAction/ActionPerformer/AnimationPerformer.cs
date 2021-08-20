@@ -5,6 +5,7 @@
  ***/
 
 using System;
+using DarcyStudio.GameComponent.Tools;
 using UnityEngine;
 
 namespace DarcyStudio.GameComponent.TimeLine.ForAction.ActionPerformer
@@ -20,7 +21,14 @@ namespace DarcyStudio.GameComponent.TimeLine.ForAction.ActionPerformer
             if (!superAnimator)
                 superAnimator = sender.AddComponent<SuperAnimator> ();
 
-            superAnimator.Play (data.AnimationKey, data.WaitDone ? finishCallback : null);
+            if (data.DelayTime > 0)
+            {
+                YieldUtils.DelayAction (sender.GetComponent<MonoBehaviour> (),
+                    () => { superAnimator.Play (data.AnimationKey, data.WaitDone ? finishCallback : null); },
+                    data.DelayTime);
+            }
+            else
+                superAnimator.Play (data.AnimationKey, data.WaitDone ? finishCallback : null);
         }
 
         public ResponseData GetResponseData () => _responseData;

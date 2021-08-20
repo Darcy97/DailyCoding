@@ -5,9 +5,9 @@
  ***/
 
 using System;
+using DarcyStudio.GameComponent.Tools;
 using UnityEngine;
 using Object = UnityEngine.Object;
-using YieldUtils = DarcyStudio.GameComponent.Tools.YieldUtils;
 
 namespace DarcyStudio.GameComponent.TimeLine.ForAction.ActionPerformer
 {
@@ -21,12 +21,20 @@ namespace DarcyStudio.GameComponent.TimeLine.ForAction.ActionPerformer
             _data = data;
             var go = Object.Instantiate (data.GO, sender.transform);
             go.transform.localPosition = Vector3.zero;
+
+            if (data.DelayTime > 0)
+            {
+                go.SetActive (false);
+                YieldUtils.DelayAction (sender.GetComponent<MonoBehaviour> (), () => { go.SetActive (true); },
+                    data.DelayTime);
+            }
+
             YieldUtils.DelayAction (sender.GetComponent<MonoBehaviour> (), () =>
             {
                 Object.Destroy (go);
                 if (data.WaitDone)
                     finishCallback?.Invoke ();
-            }, data.showTime);
+            }, data.ShowTime);
         }
 
         public ResponseData GetResponseData () => _data;
