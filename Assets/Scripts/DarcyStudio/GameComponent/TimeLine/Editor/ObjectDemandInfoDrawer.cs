@@ -19,6 +19,8 @@ namespace DarcyStudio.GameComponent.TimeLine.Editor
         public override void OnGUI (Rect position, SerializedProperty property, GUIContent label)
         {
             EditorGUI.BeginProperty (position, label, property);
+            EditorGUI.BeginChangeCheck ();
+            property.serializedObject.UpdateIfRequiredOrScript ();
 
             position = EditorGUI.PrefixLabel (position, GUIUtility.GetControlID (FocusType.Passive), label);
             var indent = EditorGUI.indentLevel;
@@ -55,17 +57,17 @@ namespace DarcyStudio.GameComponent.TimeLine.Editor
             }
 
             EditorGUI.PropertyField (demandTypeRect, demandTypeValue, GUIContent.none);
-            var alertRect = new Rect (position.x + 100, position.y, 40, position.height);
+            var alertRect = new Rect (position.x + 100, position.y, 35, position.height);
             EditorGUI.LabelField (alertRect, alert);
 
             //绘制 ObjectType 字段
             GUI.color = labelColor;
-            var trackTypeTitleRect = new Rect (position.x + 150, position.y, 40, position.height);
+            var trackTypeTitleRect = new Rect (position.x + 140, position.y, 40, position.height);
             EditorGUI.LabelField (trackTypeTitleRect, "从哪来:");
 
             GUI.color = color;
 
-            var objectTypeRect  = new Rect (position.x + 190, position.y, 60, position.height);
+            var objectTypeRect  = new Rect (position.x + 180, position.y, 75, position.height);
             var objectTypeValue = property.FindPropertyRelative ("ObjectType");
 
 
@@ -74,7 +76,7 @@ namespace DarcyStudio.GameComponent.TimeLine.Editor
             switch ((ObjectType) objectTypeValue.enumValueIndex)
             {
                 case ObjectType.Self:
-                    GUI.backgroundColor = Color.gray;
+                    GUI.backgroundColor = Color.green;
                     break;
                 case ObjectType.Enemy1:
                 case ObjectType.Enemy2:
@@ -103,88 +105,15 @@ namespace DarcyStudio.GameComponent.TimeLine.Editor
             {
                 var objectRect  = new Rect (position.x + 260, position.y, 140, position.height);
                 var objectValue = property.FindPropertyRelative ("_gameObject");
-                // EditorGUILayout.ObjectField (objectValue, GUIContent.none);
                 EditorGUI.ObjectField (objectRect, objectValue, GUIContent.none);
             }
 
             EditorGUI.indentLevel = indent;
             GUI.color             = color;
             GUI.backgroundColor   = backgroudColor;
+            property.serializedObject.ApplyModifiedProperties ();
+            EditorGUI.EndChangeCheck ();
             EditorGUI.EndProperty ();
         }
-
-        // public override void OnGUI (Rect position, SerializedProperty property, GUIContent label)
-        // {
-        //     // EditorGUI.BeginProperty (position, label, property);
-        //     EditorGUILayout.BeginVertical ();
-        //
-        //     var color = GUI.color;
-        //
-        //     var demandTypeValue = property.FindPropertyRelative ("DemandType");
-        //     switch ((DemandType) demandTypeValue.enumValueIndex)
-        //     {
-        //         case DemandType.Source:
-        //             GUI.backgroundColor = Color.green;
-        //             break;
-        //         case DemandType.Target:
-        //             GUI.backgroundColor = Color.red;
-        //             break;
-        //         case DemandType.Controlled:
-        //             GUI.backgroundColor = Color.cyan;
-        //             break;
-        //         default:
-        //             throw new ArgumentOutOfRangeException ();
-        //     }
-        //
-        //     EditorGUILayout.PropertyField (demandTypeValue, new GUIContent ("DemandType(用于什么)"));
-        //
-        //     //绘制 ObjectType 字段
-        //     // GUI.color = Color.cyan;
-        //     // var trackTypeTitleRect = new Rect (position.x + 150, position.y, 30, position.height);
-        //     // EditorGUI.LabelField (trackTypeTitleRect, "ObjectType:");
-        //
-        //     GUI.color = color;
-        //
-        //     // var objectTypeRect  = new Rect (position.x + 180, position.y, 60, position.height);
-        //     var objectTypeValue = property.FindPropertyRelative ("ObjectType");
-        //
-        //
-        //     var backgroudColor = GUI.backgroundColor;
-        //     var needSpeciy     = false;
-        //     switch ((ObjectType) objectTypeValue.enumValueIndex)
-        //     {
-        //         case ObjectType.Self:
-        //             GUI.backgroundColor = Color.green;
-        //             break;
-        //         case ObjectType.Enemy1:
-        //         case ObjectType.Enemy2:
-        //         case ObjectType.Enemy3:
-        //         case ObjectType.Enemy4:
-        //         case ObjectType.Enemy5:
-        //             GUI.backgroundColor = Color.red;
-        //             break;
-        //         case ObjectType.Specify:
-        //             GUI.backgroundColor = Color.cyan;
-        //             needSpeciy          = true;
-        //             break;
-        //         default:
-        //             throw new ArgumentOutOfRangeException ();
-        //     }
-        //
-        //     EditorGUILayout.PropertyField (objectTypeValue, new GUIContent ("ObjectType(从哪里来)"));
-        //
-        //     if (needSpeciy)
-        //     {
-        //         // var objectRect  = new Rect (position.x + 240, position.y, 60, position.height);
-        //         var objectValue = property.FindPropertyRelative ("_gameObject");
-        //         EditorGUILayout.PropertyField (objectValue);
-        //     }
-        //
-        //     // EditorGUI.indentLevel = indent;
-        //     GUI.color           = color;
-        //     GUI.backgroundColor = backgroudColor;
-        //     EditorGUILayout.EndVertical ();
-        //     // EditorGUI.EndProperty ();
-        // }
     }
 }

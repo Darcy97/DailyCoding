@@ -14,12 +14,13 @@ namespace DarcyStudio.GameComponent.TimeLine.PlayableTrack
 {
     public class TriggerActionPlayableAsset : ObjectDemandPlayableAsset, IRequireWaitDone
     {
-        [SerializeField] private ActionType actionType;
+        [SerializeField] private ActionData actionData;
+        // [SerializeField] private ActionType actionType;
         [SerializeField] private bool       needWaitDone;
 
         protected override ObjectDemandPlayableBehaviour CreateBehaviour ()
         {
-            var bhv = new TriggerActionPlayableBehaviour (actionType);
+            var bhv = new TriggerActionPlayableBehaviour (actionData);
             bhv.SetWaitDoneListener (_workStateListener);
             return bhv;
         }

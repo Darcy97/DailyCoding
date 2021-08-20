@@ -12,6 +12,6 @@ namespace DarcyStudio.GameComponent.TimeLine.ForAction
 {
     public interface IActionReceiver
     {
-        void Do (ActionType key, Action finishCallback = null);
+        void Do (ActionData actionData, Action finishCallback = null);
     }
 }

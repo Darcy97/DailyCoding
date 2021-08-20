@@ -13,7 +13,7 @@ namespace DarcyStudio.GameComponent.TimeLine.ForAction
     [Serializable]
     public class ActionData
     {
-        public ActionType Type;
+        public ActionType ActionType;
         public float      Para1;
         public float      Para2;
         public float      Para3;
@@ -23,6 +23,7 @@ namespace DarcyStudio.GameComponent.TimeLine.ForAction
     {
         Default,
         Shoot,
-        Hit
+        Hit,
+        KnockFly,
     }
 }

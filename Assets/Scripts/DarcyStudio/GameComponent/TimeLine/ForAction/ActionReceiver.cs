@@ -50,12 +50,12 @@ namespace DarcyStudio.GameComponent.TimeLine.ForAction
         }
 
 
-        public void Do (ActionType key, Action finishCallback = null)
+        public void Do (ActionData actionData, Action finishCallback = null)
         {
-            var actionInfo = GetActionInfo (key);
+            var actionInfo = GetActionInfo (actionData.ActionType);
             if (actionInfo == null)
             {
-                Log.Error ("No suitable action info for >>{0}<< in >>{1}<<", key, gameObject.name);
+                Log.Error ("No suitable action info for ->{0}<-  in  ->{1}<-", actionData.ActionType, gameObject.name);
                 finishCallback?.Invoke ();
                 return;
             }
