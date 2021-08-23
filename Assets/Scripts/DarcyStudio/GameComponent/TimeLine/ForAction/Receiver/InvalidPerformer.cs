@@ -8,22 +8,22 @@ using System;
 using DarcyStudio.GameComponent.Tools;
 using UnityEngine;
 
-namespace DarcyStudio.GameComponent.TimeLine.ForAction.ActionPerformer
+namespace DarcyStudio.GameComponent.TimeLine.ForAction.Receiver
 {
     public class InvalidPerformer : IResponsePerformer
     {
 
-        private ResponseData _data;
+        private PerformData _data;
 
-        public void Perform (ResponseData data, Action finishCallback, GameObject sender)
+        public void Perform (PerformData data, Action finishCallback, GameObject sender)
         {
             _data = data;
             Log.Error ("Please set action type");
-            if (_data.WaitDone)
+            if (_data.waitDone)
                 finishCallback?.Invoke ();
         }
 
-        public ResponseData GetResponseData () => _data;
+        public PerformData GetResponseData () => _data;
 
         public static InvalidPerformer Default = new InvalidPerformer ();
     }

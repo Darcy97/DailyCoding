@@ -24,11 +24,11 @@ namespace DarcyStudio.GameComponent.TimeLine.Editor
             position = EditorGUI.PrefixLabel (position, GUIUtility.GetControlID (FocusType.Passive), label);
             var indent = EditorGUI.indentLevel;
             EditorGUI.indentLevel = 0;
-            var color          = GUI.color;
-            var backgroudColor = GUI.backgroundColor;
+            var color           = GUI.color;
+            var backgroundColor = GUI.backgroundColor;
 
             var actionTypeRect  = new Rect (position.x, position.y, 70, position.height);
-            var actionTypeValue = property.FindPropertyRelative ("ActionType");
+            var actionTypeValue = property.FindPropertyRelative (nameof (ActionData.ActionType));
             EditorGUI.PropertyField (actionTypeRect, actionTypeValue, GUIContent.none);
 
             position.x += 75;
@@ -36,7 +36,7 @@ namespace DarcyStudio.GameComponent.TimeLine.Editor
 
             EditorGUI.indentLevel = indent;
             GUI.color             = color;
-            GUI.backgroundColor   = backgroudColor;
+            GUI.backgroundColor   = backgroundColor;
 
             // property.serializedObject.ApplyModifiedProperties ();
             // EditorGUI.EndChangeCheck ();
@@ -49,6 +49,9 @@ namespace DarcyStudio.GameComponent.TimeLine.Editor
             {
                 case ActionType.Default:
                     DrawAllProperty (position, property);
+                    break;
+                case ActionType.Custom:
+                    DrawCustom (position, property);
                     break;
                 case ActionType.Shoot:
                     break;
@@ -67,14 +70,19 @@ namespace DarcyStudio.GameComponent.TimeLine.Editor
 
         private void DrawAllProperty (Rect position, SerializedProperty property)
         {
-            DrawProperty ("Para1", "Para1", ref position, 35, 30, property);
-            DrawProperty ("Para2", "Para2", ref position, 35, 30, property);
-            DrawProperty ("Para3", "Para3", ref position, 35, 30, property);
+            DrawProperty (nameof (ActionData.Para1), "Para1", ref position, 35, 30, property);
+            DrawProperty (nameof (ActionData.Para2), "Para2", ref position, 35, 30, property);
+            DrawProperty (nameof (ActionData.Para3), "Para3", ref position, 35, 30, property);
         }
 
         private void DrawKnockFlyPara (Rect position, SerializedProperty property)
         {
-            DrawProperty ("Para1", "击飞力", ref position, 35, 30, property);
+            DrawProperty (nameof (ActionData.Para1), "击飞力", ref position, 35, 30, property);
+        }
+
+        private void DrawCustom (Rect position, SerializedProperty property)
+        {
+            DrawProperty (nameof (ActionData.ActionID), "ActionKey", ref position, 55, 55, property);
         }
 
         private static void DrawProperty (string key, string label, ref Rect startPosition, float labelWidth,

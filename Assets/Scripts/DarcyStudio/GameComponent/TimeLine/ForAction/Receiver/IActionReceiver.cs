@@ -8,7 +8,7 @@
 
 using System;
 
-namespace DarcyStudio.GameComponent.TimeLine.ForAction
+namespace DarcyStudio.GameComponent.TimeLine.ForAction.Receiver
 {
     public interface IActionReceiver
     {

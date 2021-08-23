@@ -17,11 +17,13 @@ namespace DarcyStudio.GameComponent.TimeLine.ForAction
         public float      Para1;
         public float      Para2;
         public float      Para3;
+        public string     ActionID;
     }
 
     public enum ActionType
     {
         Default,
+        Custom,
         Shoot,
         Hit,
         KnockFly,

@@ -30,11 +30,6 @@ namespace DarcyStudio.GameComponent.TimeLine
 
         [SerializeField] private string skillKey;
 
-        // [SerializeField] private TimelineAsset asset;
-
-        // [SerializeField] private bool playOnAwake = false;
-
-
         [SerializeField] private TrackInfo[] trackInfos;
 
         [SerializeField] private PlayableDirector playableDirector;
@@ -50,7 +45,7 @@ namespace DarcyStudio.GameComponent.TimeLine
             _timeline = new TimelineUnit ();
             _timeline.Init (timelineAsset.name, playableDirector, timelineAsset);
             _timeline.SetPlayOnAwake (false);
-            _timeline.SetExtrapolationMode (DirectorWrapMode.Hold);
+            _timeline.SetExtrapolationMode (DirectorWrapMode.None);
             _timeline.SetWorkDoneListener (this);
         }
 
@@ -68,19 +63,24 @@ namespace DarcyStudio.GameComponent.TimeLine
         //     _timeline.SetExtrapolationMode (DirectorWrapMode.Hold);
         // }
 
-        private void Update ()
+        private void FixedUpdate ()
         {
             if (!_isPlaying)
                 return;
 
-            if (_timeline.CurrentTime >= _timeline.Duration)
+            if (_timeline.CurrentTime >= _timeline.Duration - Time.fixedDeltaTime - Time.fixedDeltaTime)
             {
-                if (_workingWorkerCount < 1)
-                {
-                    _isPlaying = false;
-                    _finishAction?.Invoke (this);
-                }
+                _isTimelinePlaying = false;
             }
+
+            if (_isTimelinePlaying)
+                return;
+            
+            if (_workingWorkerCount >= 1)
+                return;
+            
+            _isPlaying = false;
+            _finishAction?.Invoke (this);
         }
 
         public void SetObjectProvider (IObjectProvider provider)
@@ -102,7 +102,8 @@ namespace DarcyStudio.GameComponent.TimeLine
             // _timeline.SetBinding (selfTrackName, o.GetGameObject ());
         }
 
-        private bool                  _isPlaying = false;
+        private bool                  _isPlaying         = false;
+        private bool                  _isTimelinePlaying = false;
         private Action<SkillTimeline> _finishAction;
 
         public void Play (Action<ISkillPlayer> action = null)
@@ -110,6 +111,7 @@ namespace DarcyStudio.GameComponent.TimeLine
             _finishAction = action;
             _timeline.Play ();
             _isPlaying          = true;
+            _isTimelinePlaying  = true;
             _workingWorkerCount = 0;
         }
 
@@ -120,6 +122,18 @@ namespace DarcyStudio.GameComponent.TimeLine
 
         public void IsFinished ()
         {
+        }
+
+        public void OnWorkDone ()
+        {
+            _workingWorkerCount--;
+        }
+
+        private int _workingWorkerCount = 0;
+
+        public void StartWorking ()
+        {
+            _workingWorkerCount++;
         }
 
 
@@ -242,17 +256,5 @@ namespace DarcyStudio.GameComponent.TimeLine
             }
         }
 #endif
-
-        public void OnWorkDone ()
-        {
-            _workingWorkerCount--;
-        }
-
-        private int _workingWorkerCount = 0;
-
-        public void StartWorking ()
-        {
-            _workingWorkerCount++;
-        }
     }
 }
