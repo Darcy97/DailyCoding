@@ -5,7 +5,6 @@
  * Time: 下午2:18:26
  ***/
 
-using System;
 using DarcyStudio.GameComponent.TimeLine.ForAction;
 using UnityEditor;
 using UnityEngine;
@@ -19,8 +18,8 @@ namespace DarcyStudio.GameComponent.TimeLine.Editor
         {
             EditorGUI.BeginProperty (position, label, property);
 
-            EditorGUI.BeginChangeCheck ();
-            property.serializedObject.UpdateIfRequiredOrScript ();
+            // EditorGUI.BeginChangeCheck ();
+            // property.serializedObject.UpdateIfRequiredOrScript ();
 
             position = EditorGUI.PrefixLabel (position, GUIUtility.GetControlID (FocusType.Passive), label);
             var indent = EditorGUI.indentLevel;
@@ -39,8 +38,8 @@ namespace DarcyStudio.GameComponent.TimeLine.Editor
             GUI.color             = color;
             GUI.backgroundColor   = backgroudColor;
 
-            property.serializedObject.ApplyModifiedProperties ();
-            EditorGUI.EndChangeCheck ();
+            // property.serializedObject.ApplyModifiedProperties ();
+            // EditorGUI.EndChangeCheck ();
             EditorGUI.EndProperty ();
         }
 
@@ -58,8 +57,11 @@ namespace DarcyStudio.GameComponent.TimeLine.Editor
                 case ActionType.KnockFly:
                     DrawKnockFlyPara (position, property);
                     break;
+                case ActionType.Idle:
+                    break;
                 default:
-                    throw new ArgumentOutOfRangeException ();
+                    DrawAllProperty (position, property);
+                    break;
             }
         }
 

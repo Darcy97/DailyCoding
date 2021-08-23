@@ -25,5 +25,6 @@ namespace DarcyStudio.GameComponent.TimeLine.ForAction
         Shoot,
         Hit,
         KnockFly,
+        Idle,
     }
 }
