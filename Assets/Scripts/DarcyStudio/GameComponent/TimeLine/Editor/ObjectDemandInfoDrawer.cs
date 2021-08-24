@@ -107,6 +107,6 @@ namespace DarcyStudio.GameComponent.TimeLine.Editor
             EditorGUI.EndChangeCheck ();
         }
 
-        protected override int GetHeight (SerializedProperty property) => 1;
+        protected override int GetLineCount (SerializedProperty property) => 1;
     }
 }

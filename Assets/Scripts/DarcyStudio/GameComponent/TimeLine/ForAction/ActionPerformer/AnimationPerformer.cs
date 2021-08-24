@@ -5,9 +5,10 @@
  ***/
 
 using System;
+using DarcyStudio.GameComponent.TimeLine.ForAction.Receiver;
 using UnityEngine;
 
-namespace DarcyStudio.GameComponent.TimeLine.ForAction.Receiver
+namespace DarcyStudio.GameComponent.TimeLine.ForAction.ActionPerformer
 {
     public class AnimationPerformer : IPerformer
     {

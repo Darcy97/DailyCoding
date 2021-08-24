@@ -19,6 +19,9 @@ namespace DarcyStudio.GameComponent.TimeLine.ForAction.Receiver
         public float       duration = 1;
         public bool        waitDone;
 
+        public Vector3 moveVelocity;
+        public Vector3 moveAcceleration = new Vector3 (0, 2, 0);
+
         [NonSerialized] public IPerformer Performer;
         [NonSerialized] public ActionInfo ActionInfo;
 
@@ -34,5 +37,6 @@ namespace DarcyStudio.GameComponent.TimeLine.ForAction.Receiver
         Default,
         Animation,
         ShowGo,
+        Move,
     }
 }

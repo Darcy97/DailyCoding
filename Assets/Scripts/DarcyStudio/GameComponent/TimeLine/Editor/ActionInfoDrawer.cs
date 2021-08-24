@@ -21,14 +21,12 @@ namespace DarcyStudio.GameComponent.TimeLine.Editor
 
         protected override void SuperOnGUI (Rect position, SerializedProperty property, GUIContent label)
         {
-            var startX = position.x;
             DrawProperty (nameof (ActionInfo.previousActionType), "Previous", ref position, 45, 70, property);
             position.x += 5;
             var afterAction = DrawProperty (nameof (ActionInfo.afterActionType), "After", ref position, 30, 70,
                 property);
 
-            position.y += position.height;
-            position.x =  startX;
+            NewLine (ref position);
 
             switch ((ActionType) afterAction.enumValueIndex)
             {
@@ -42,8 +40,7 @@ namespace DarcyStudio.GameComponent.TimeLine.Editor
                     break;
                 case ActionType.Back:
                     DrawProperty (nameof (ActionInfo.k0), "X初速度", ref position, 45, 30, property);
-                    position.x =  startX;
-                    position.y += position.height;
+                    NewLine (ref position);
                     DrawProperty (nameof (ActionInfo.k1), "X加速度", ref position, 45, 30, property);
                     break;
                 case ActionType.Fall:
@@ -62,7 +59,7 @@ namespace DarcyStudio.GameComponent.TimeLine.Editor
             }
         }
 
-        protected override int GetHeight (SerializedProperty property)
+        protected override int GetLineCount (SerializedProperty property)
         {
             switch ((ActionType) property.FindPropertyRelative (nameof (ActionInfo.afterActionType)).enumValueIndex)
             {

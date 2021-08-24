@@ -5,10 +5,11 @@
  ***/
 
 using System;
+using DarcyStudio.GameComponent.TimeLine.ForAction.Receiver;
 using DarcyStudio.GameComponent.Tools;
 using UnityEngine;
 
-namespace DarcyStudio.GameComponent.TimeLine.ForAction.Receiver
+namespace DarcyStudio.GameComponent.TimeLine.ForAction.ActionPerformer
 {
     public class InvalidPerformer : IPerformer
     {

@@ -2,14 +2,16 @@
  * Created by Darcy
  * Date: 2021年8月20日 星期五
  * Time: 下午5:41:07
+ * TODO：处理创建的物体是否跟随角色移动
  ***/
 
 using System;
+using DarcyStudio.GameComponent.TimeLine.ForAction.Receiver;
 using DarcyStudio.GameComponent.Tools;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
-namespace DarcyStudio.GameComponent.TimeLine.ForAction.Receiver
+namespace DarcyStudio.GameComponent.TimeLine.ForAction.ActionPerformer
 {
     public class ShowGoPerformer : IPerformer
     {
@@ -34,23 +36,11 @@ namespace DarcyStudio.GameComponent.TimeLine.ForAction.Receiver
 
             _go.transform.localPosition = Vector3.zero;
 
-            // if (data.delayTime > 0)
-            // {
-            //     _go.SetActive (false);
-            //     YieldUtils.DelayAction (sender.GetComponent<MonoBehaviour> (), OnShow,
-            //         data.delayTime);
-            // }
-            // else
-            // {
             OnShow ();
-            // }
         }
 
         private void OnShow ()
         {
-            // if (!_go.activeSelf)
-            //     _go.SetActive (true);
-
             if (_data.duration > 0)
                 YieldUtils.DelayActionWithOutContext (OnDisappear, _data.duration);
             else

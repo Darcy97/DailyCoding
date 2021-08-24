@@ -6,11 +6,11 @@
  ***/
 
 using System;
+using DarcyStudio.GameComponent.TimeLine.ForAction.Receiver;
 using DarcyStudio.GameComponent.TimeLine.RequireObject;
 using DarcyStudio.GameComponent.Tools;
-using UnityEngine;
 
-namespace DarcyStudio.GameComponent.TimeLine.ForAction.Receiver
+namespace DarcyStudio.GameComponent.TimeLine.ForAction.ActionPerformer
 {
     public class Executor : IExecutor
     {
@@ -97,6 +97,8 @@ namespace DarcyStudio.GameComponent.TimeLine.ForAction.Receiver
                     return new AnimationPerformer ();
                 case PerformType.ShowGo:
                     return new ShowGoPerformer ();
+                case PerformType.Move:
+                    return new MovePerformer ();
                 default:
                     return InvalidPerformer.Default;
             }

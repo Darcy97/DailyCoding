@@ -12,18 +12,25 @@ namespace DarcyStudio.CustomEditor.Attribute.Editor
 {
     public abstract class SuperPropertyDrawer : PropertyDrawer
     {
+        private float _startX;
+
+        private const float LineSpace = 2;
+
+        protected float StartX => _startX;
 
         public override void OnGUI (Rect position, SerializedProperty property, GUIContent label)
         {
             EditorGUI.BeginProperty (position, label, property);
             position = EditorGUI.PrefixLabel (position, GUIUtility.GetControlID (FocusType.Passive), label);
+            _startX  = position.x;
 
             var indent = EditorGUI.indentLevel;
             EditorGUI.indentLevel = 0;
             var color           = GUI.color;
             var backgroundColor = GUI.backgroundColor;
 
-            position.height /= GetHeight (property);
+            position.height =  (position.height - LineSpace * 2) / GetLineCount (property) - LineSpace;
+            position.y      += LineSpace;
 
             SuperOnGUI (position, property, label);
 
@@ -34,12 +41,16 @@ namespace DarcyStudio.CustomEditor.Attribute.Editor
             EditorGUI.EndProperty ();
         }
 
-        public override float GetPropertyHeight (SerializedProperty property, GUIContent label) =>
-            base.GetPropertyHeight (property, label) * GetHeight (property);
+        public override float GetPropertyHeight (SerializedProperty property, GUIContent label)
+        {
+            var lineCount = GetLineCount (property);
+
+            return base.GetPropertyHeight (property, label) * lineCount + (lineCount) * LineSpace + LineSpace * 2;
+        }
 
         protected abstract void SuperOnGUI (Rect position, SerializedProperty property, GUIContent label);
 
-        protected abstract int GetHeight (SerializedProperty property);
+        protected abstract int GetLineCount (SerializedProperty property);
 
         protected static SerializedProperty DrawProperty (string key, string label, ref Rect startPosition,
             float                                                labelWidth,
@@ -82,6 +93,12 @@ namespace DarcyStudio.CustomEditor.Attribute.Editor
                 startPosition.height);
             EditorGUI.PropertyField (propertyRect, property, GUIContent.none);
             startPosition.x += width;
+        }
+
+        protected void NewLine (ref Rect position)
+        {
+            position.x =  _startX;
+            position.y += position.height + LineSpace;
         }
 
     }
