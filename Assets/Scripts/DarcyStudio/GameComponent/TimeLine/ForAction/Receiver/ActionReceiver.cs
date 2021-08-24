@@ -7,23 +7,26 @@
 
 using System;
 using System.Collections.Generic;
+using DarcyStudio.GameComponent.TimeLine.RequireObject;
+using DarcyStudio.GameComponent.TimeLine.State;
 using DarcyStudio.GameComponent.Tools;
 using UnityEngine;
 
 namespace DarcyStudio.GameComponent.TimeLine.ForAction.Receiver
 {
-    public class ActionReceiver : MonoBehaviour, IActionReceiver
+    public class ActionReceiver : MonoBehaviour, IActionReceiver, IActionStatusOwner
     {
 
         [SerializeField] private ActionPerformConfig[] actionConfigs;
         private                  SuperAnimator         _animator;
 
         private Dictionary<ActionType, ActionPerformConfig> _actionInfoDict;
-        private Dictionary<string, ActionPerformConfig>     _customActionInfoDict;
+        // private Dictionary<string, ActionPerformConfig>     _customActionInfoDict;
 
         private void Start ()
         {
-            // _animator = GetComponent<SuperAnimator> ();
+            //TODO: 临时测试 这个IActionStatusOwner 应该有角色控制器实现
+            SetStatus (ActionType.Idle);
             InitActionConfigDict ();
         }
 
@@ -31,132 +34,215 @@ namespace DarcyStudio.GameComponent.TimeLine.ForAction.Receiver
         {
             if (actionConfigs == null || actionConfigs.Length < 1)
                 return;
-            _actionInfoDict = new Dictionary<ActionType, ActionPerformConfig> ();
+            _actionInfoDict = new Dictionary<ActionType, ActionPerformConfig> (actionConfigs.Length);
 
             foreach (var actionPerformConfig in actionConfigs)
             {
                 if (_actionInfoDict.ContainsKey (actionPerformConfig.GetActionType ()))
                 {
                     Log.Error ("Dont allow multi action with same type: {0} in \"{1}\"",
-                        actionPerformConfig.GetActionType (), name);
+                        actionPerformConfig.GetActionType (), transform.GetPath ());
                     continue;
                 }
 
-                if (actionPerformConfig.GetActionType () == ActionType.Custom)
-                {
-                    AddCustomActionInfo (actionPerformConfig);
-                    continue;
-                }
-
-                _actionInfoDict.Add (actionPerformConfig.actionTypeInfo.ActionType, actionPerformConfig);
+                _actionInfoDict.Add (actionPerformConfig.GetActionType (), actionPerformConfig);
             }
         }
 
-        private void AddCustomActionInfo (ActionPerformConfig config)
-        {
-            if (_customActionInfoDict == null)
-                _customActionInfoDict = new Dictionary<string, ActionPerformConfig> ();
-
-            var actionID = config.GetActionID ();
-            if (_customActionInfoDict.ContainsKey (actionID))
-            {
-                Log.Error ("Dont allow same Action ID --> {0} in \"{1}\"", actionID, name);
-                return;
-            }
-
-            _customActionInfoDict.Add (actionID, config);
-        }
+        private Action _finishCallback;
 
         public void Do (ActionData actionData, Action finishCallback = null)
         {
-            var responseConfig = GetActionInfo (actionData);
-            if (responseConfig == null)
+            _finishCallback = finishCallback;
+
+            var actionInfo = actionData.GetActionInfoByPreviousAction (this.GetStatus ());
+
+            var actionConfig = GetActionConfig (actionInfo.afterActionType);
+            if (actionConfig == null)
             {
-                Log.Error ("No suitable action info for ->{0}<-  in  ->{1}<-", actionData.ActionType, gameObject.name);
+                Log.Error ("No suitable action info for ->{0}<-  in  ->{1}<-", actionInfo.afterActionType,
+                    transform.GetPath ());
                 finishCallback?.Invoke ();
                 return;
             }
 
-            DoActionByConfig (responseConfig, finishCallback);
+            actionConfig.SetActionInfo (actionInfo);
+            Execute (actionConfig);
+
+            // DoActionByConfig (actionConfig, actionInfo);
         }
 
-        private ActionPerformConfig GetActionInfo (ActionData actionData)
+        private IExecutor GetExecutor ()
         {
-            var actionType = actionData.ActionType;
+            return new Executor ();
+        }
+
+        private ActionPerformConfig GetActionConfig (ActionType actionType)
+        {
             if (_actionInfoDict == null)
                 return null;
             if (_actionInfoDict.ContainsKey (actionType))
                 return _actionInfoDict[actionType];
 
-            if (actionType == ActionType.Custom && _customActionInfoDict.ContainsKey (actionData.ActionID))
-                return _customActionInfoDict[actionData.ActionID];
-
             return _actionInfoDict.ContainsKey (ActionType.Default) ? _actionInfoDict[ActionType.Default] : null;
         }
 
-        private void DoActionByConfig (ActionPerformConfig performConfig, Action finishCallback)
+        private void OnExecuteEnd (IExecutor executor)
         {
-            var responses = performConfig.performs;
-            var waitDone  = false;
-            foreach (var response in responses)
+            var config         = executor.GetConfig ();
+            var nextActionType = config.GetNextActionType ();
+            var next           = GetActionConfig (nextActionType);
+            if (next == null)
             {
-                DoActionByResponse (response, finishCallback, ref waitDone);
-            }
-
-            if (waitDone)
+                EndCallback ();
                 return;
-            finishCallback?.Invoke ();
-        }
-
-        private void DoActionByResponse (PerformData data, Action finishCallback, ref bool waitDone)
-        {
-            if (data.waitDone)
-                waitDone = true;
-
-            var performer = data.Performer;
-            if (performer == null)
-            {
-                performer      = GetResponsePerformer (data.performType);
-                data.Performer = performer;
             }
 
-            performer.Perform (data, finishCallback, gameObject);
+            next.SetActionInfo (null);
+            Execute (next);
         }
 
-        private static IResponsePerformer GetResponsePerformer (PerformType type)
+        private void Execute (ActionPerformConfig config)
         {
-            switch (type)
-            {
-                case PerformType.Default:
-                    return InvalidPerformer.Default;
-                case PerformType.Animation:
-                    return new AnimationPerformer ();
-                case PerformType.ShowGo:
-                    return new ShowGoPerformer ();
-                default:
-                    return InvalidPerformer.Default;
-            }
+            var executor = GetExecutor ();
+            executor.Execute (config, OnExecuteEnd, GetComponent<IObject> ());
+
+            SetStatus (config.actionType);
+
+            if (config.waitDone)
+                return;
+            EndCallback ();
+        }
+
+        private void EndCallback ()
+        {
+            _finishCallback?.Invoke ();
+            _finishCallback = null;
+        }
+
+        private ActionType curAction;
+        public  ActionType GetStatus () => curAction;
+
+        public void SetStatus (ActionType status)
+        {
+            curAction = status;
         }
     }
 
     [Serializable]
     public class ActionPerformConfig
     {
-        public ActionTypeInfo actionTypeInfo;
+
+        public bool waitDone;
+
+        public ActionType actionType;
 
         public PerformData[] performs;
 
+
+        [SerializeField] private bool       specifyNextAction;
+        [SerializeField] private ActionType nextAction = ActionType.None;
+
         public ActionType GetActionType ()
         {
-            return actionTypeInfo?.ActionType ?? ActionType.Default;
+            return actionType;
         }
 
-        public string GetActionID ()
+        public PerformData[] GetPerforms ()
         {
-            return actionTypeInfo?.ActionID ?? string.Empty;
+            return performs;
         }
 
+        public ActionPerformConfig GetNextAction ()
+        {
+            return GetDefaultNextAction (this);
+        }
+
+        public ActionType GetNextActionType ()
+        {
+            return specifyNextAction ? nextAction : GetNextActionType (this);
+        }
+
+        private ActionInfo _actionInfo; //从攻击方传来的
+
+        public void SetActionInfo (ActionInfo actionInfo)
+        {
+            _actionInfo = actionInfo;
+        }
+
+        public ActionInfo GetActionInfo () => _actionInfo;
+
+
+        public static ActionPerformConfig GetDefaultNextAction (ActionPerformConfig preConfig)
+        {
+            //TODO 这里写死一个默认的规则
+            switch (preConfig.actionType)
+            {
+                case ActionType.Default:
+                    break;
+                case ActionType.Custom:
+                    break;
+                case ActionType.Idle:
+                    break;
+                case ActionType.Back:
+                    return new ActionPerformConfig ()
+                           {
+                               waitDone   = false,
+                               actionType = ActionType.Idle,
+                               performs   = new[] {PerformData.Animation ("idle", false)}
+                           };
+
+                    break;
+                case ActionType.Fall:
+                    break;
+                case ActionType.KnockFly:
+                    break;
+                case ActionType.Floating:
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException ();
+            }
+
+            return null;
+        }
+
+        public static ActionType GetNextActionType (ActionPerformConfig preConfig)
+        {
+            var result = ActionType.None;
+            switch (preConfig.actionType)
+            {
+                case ActionType.None:
+                    break;
+                case ActionType.Custom:
+                    break;
+                case ActionType.Idle:
+                    break;
+                case ActionType.Back:
+                    result = ActionType.Idle;
+                    break;
+                case ActionType.Fall:
+                    result = ActionType.GetUp;
+                    break;
+                case ActionType.KnockFly:
+                    result = ActionType.Fall;
+                    break;
+                case ActionType.Floating:
+                    result = ActionType.Fall;
+                    break;
+                case ActionType.Default:
+                    break;
+                case ActionType.GetUp:
+                    result = ActionType.Idle;
+                    break;
+                default:
+                    result = ActionType.None;
+                    break;
+            }
+
+            return result;
+        }
     }
+
 
     [Serializable]
     public class ActionTypeInfo

@@ -6,17 +6,18 @@
  * Description: Description
  ***/
 
+using DarcyStudio.GameComponent.TimeLine.ForAction;
 using DarcyStudio.GameComponent.TimeLine.State;
 using UnityEngine;
 
 namespace DarcyStudio.GameComponent.TimeLine
 {
-    public class TTT:MonoBehaviour, IStatusOwner
+    public class TTT : MonoBehaviour, IActionStatusOwner
     {
 
-        public RoleStatus GetStatus () => throw new System.NotImplementedException ();
+        public ActionType GetStatus () => throw new System.NotImplementedException ();
 
-        public void       SetStatus (RoleStatus status)
+        public void SetStatus (ActionType status)
         {
             throw new System.NotImplementedException ();
         }

@@ -11,14 +11,14 @@ using Object = UnityEngine.Object;
 
 namespace DarcyStudio.GameComponent.TimeLine.ForAction.Receiver
 {
-    public class ShowGoPerformer : IResponsePerformer
+    public class ShowGoPerformer : IPerformer
     {
 
-        private PerformData _data;
-        private GameObject  _go;
-        private Action      _finishCallback;
+        private PerformData        _data;
+        private GameObject         _go;
+        private Action<IPerformer> _finishCallback;
 
-        public void Perform (PerformData data, Action finishCallback, GameObject sender)
+        public void Perform (PerformData data, Action<IPerformer> finishCallback, GameObject sender)
         {
             _data           = data;
             _finishCallback = finishCallback;
@@ -26,7 +26,7 @@ namespace DarcyStudio.GameComponent.TimeLine.ForAction.Receiver
             if (data.go == null)
             {
                 Log.Error ("No GO in Perform data");
-                finishCallback?.Invoke ();
+                finishCallback?.Invoke (this);
                 return;
             }
 
@@ -63,10 +63,9 @@ namespace DarcyStudio.GameComponent.TimeLine.ForAction.Receiver
         private void OnDisappear ()
         {
             Object.Destroy (_go);
-            if (_data.waitDone)
-                _finishCallback?.Invoke ();
+            _finishCallback?.Invoke (this);
         }
 
-        public PerformData GetResponseData () => _data;
+        public PerformData GetPerformData () => _data;
     }
 }

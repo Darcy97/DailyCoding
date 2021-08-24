@@ -6,6 +6,7 @@
  * Description: Description
  ***/
 
+using DarcyStudio.GameComponent.TimeLine.Actor;
 using DarcyStudio.GameComponent.TimeLine.RequireObject;
 using DarcyStudio.GameComponent.Tools;
 using UnityEngine;
@@ -49,8 +50,8 @@ namespace DarcyStudio.GameComponent.TimeLine.PlayableTrack
         public MoveObjectPlayableBehaviour (
             AnimationCurve curve, float delayDisappearTime)
         {
-            _isValid        = true;
-            _curve          = curve;
+            _isValid            = true;
+            _curve              = curve;
             _delayDisappearTime = delayDisappearTime;
         }
 
@@ -85,7 +86,8 @@ namespace DarcyStudio.GameComponent.TimeLine.PlayableTrack
         public override void OnPlayableDestroy (Playable playable)
         {
             base.OnPlayableDestroy (playable);
-            if (!_controlledGO)
+
+            if (_isWaitingKillControlled)
                 return;
             DestroyControlled ();
         }
@@ -138,8 +140,9 @@ namespace DarcyStudio.GameComponent.TimeLine.PlayableTrack
             var percent = _curTime / _duration;
             if (percent > 1)
             {
-                percent = 1;
+                // percent = 1;
                 KillControlled ();
+                return;
             }
 
             var curCurveTime = percent * _curveTotalTime;
@@ -154,8 +157,8 @@ namespace DarcyStudio.GameComponent.TimeLine.PlayableTrack
             if (_delayDisappearTime > 0)
             {
                 _isWaitingKillControlled = true;
-                YieldUtils.DelayAction (_controlledGO.GetComponent<MonoBehaviour> (),
-                    () => { Object.Destroy (_controlledGO); }, _delayDisappearTime);
+                YieldUtils.DelayAction (_controlledGO.GetComponent<MonoBehaviour> (), DestroyControlled,
+                    _delayDisappearTime);
             }
             else
             {
@@ -165,6 +168,9 @@ namespace DarcyStudio.GameComponent.TimeLine.PlayableTrack
 
         private void DestroyControlled ()
         {
+            if (!_controlledGO)
+                return;
+
             if (!IsPlaying ())
             {
                 Object.DestroyImmediate (_controlledGO);

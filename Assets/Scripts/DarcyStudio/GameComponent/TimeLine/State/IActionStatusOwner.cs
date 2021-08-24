@@ -5,12 +5,14 @@
  * Time: 下午8:41:48
  ***/
 
+using DarcyStudio.GameComponent.TimeLine.ForAction;
+
 namespace DarcyStudio.GameComponent.TimeLine.State
 {
-    public interface IStatusOwner
+    public interface IActionStatusOwner
     {
-        RoleStatus GetStatus ();
-        void       SetStatus (RoleStatus status);
+        ActionType GetStatus ();
+        void       SetStatus (ActionType status);
     }
 
     public enum RoleStatus

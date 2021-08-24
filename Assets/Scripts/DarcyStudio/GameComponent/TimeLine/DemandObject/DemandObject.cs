@@ -10,6 +10,7 @@ using UnityEngine;
 
 namespace DarcyStudio.GameComponent.TimeLine.DemandObject
 {
+    [DisallowMultipleComponent]
     public class DemandObject : MonoBehaviour, IObject
     {
 

@@ -6,6 +6,7 @@
  ***/
 
 using System;
+using DarcyStudio.CustomEditor.Attribute.Editor;
 using DarcyStudio.GameComponent.TimeLine.RequireObject;
 using UnityEditor;
 using UnityEngine;
@@ -14,28 +15,20 @@ namespace DarcyStudio.GameComponent.TimeLine.Editor
 {
 
     [CustomPropertyDrawer (typeof (ObjectDemandInfo))]
-    public class ObjectDemandInfoDrawer : PropertyDrawer
+    public class ObjectDemandInfoDrawer : SuperPropertyDrawer
     {
-        public override void OnGUI (Rect position, SerializedProperty property, GUIContent label)
+        protected override void SuperOnGUI (Rect position, SerializedProperty property, GUIContent label)
         {
-            EditorGUI.BeginProperty (position, label, property);
             EditorGUI.BeginChangeCheck ();
             property.serializedObject.UpdateIfRequiredOrScript ();
 
-            position = EditorGUI.PrefixLabel (position, GUIUtility.GetControlID (FocusType.Passive), label);
-            var indent = EditorGUI.indentLevel;
-            EditorGUI.indentLevel = 0;
-            var color = GUI.color;
+            var backgroudColor = GUI.backgroundColor;
 
-            var labelColor = color;
-            //绘制 DemandType 字段
-            GUI.color = labelColor;
             var trackNameTitleRect = new Rect (position.x, position.y, 30, position.height);
             EditorGUI.LabelField (trackNameTitleRect, "用于:");
-            GUI.color = color;
 
             var demandTypeRect  = new Rect (position.x + 30, position.y, 70, position.height);
-            var demandTypeValue = property.FindPropertyRelative ("DemandType");
+            var demandTypeValue = property.FindPropertyRelative (nameof (ObjectDemandInfo.DemandType));
 
             var alert = string.Empty;
             switch ((DemandType) demandTypeValue.enumValueIndex)
@@ -61,18 +54,13 @@ namespace DarcyStudio.GameComponent.TimeLine.Editor
             EditorGUI.LabelField (alertRect, alert);
 
             //绘制 ObjectType 字段
-            GUI.color = labelColor;
             var trackTypeTitleRect = new Rect (position.x + 140, position.y, 40, position.height);
             EditorGUI.LabelField (trackTypeTitleRect, "从哪来:");
 
-            GUI.color = color;
-
             var objectTypeRect  = new Rect (position.x + 180, position.y, 75, position.height);
-            var objectTypeValue = property.FindPropertyRelative ("ObjectType");
+            var objectTypeValue = property.FindPropertyRelative (nameof (ObjectDemandInfo.ObjectType));
 
-
-            var backgroudColor = GUI.backgroundColor;
-            var needSpeciy     = false;
+            var needSpeciy = false;
             switch ((ObjectType) objectTypeValue.enumValueIndex)
             {
                 case ObjectType.Self:
@@ -101,19 +89,24 @@ namespace DarcyStudio.GameComponent.TimeLine.Editor
 
             EditorGUI.PropertyField (objectTypeRect, objectTypeValue, GUIContent.none);
 
+            position.x += 260;
             if (needSpeciy)
             {
-                var objectRect  = new Rect (position.x + 260, position.y, 140, position.height);
-                var objectValue = property.FindPropertyRelative ("_gameObject");
+                var objectRect  = new Rect (position.x, position.y, 140, position.height);
+                var objectValue = property.FindPropertyRelative (ObjectDemandInfo.GameObjectParaName ());
                 EditorGUI.ObjectField (objectRect, objectValue, GUIContent.none);
+                position.x += 145;
+            }
+            else
+            {
+                GUI.backgroundColor = backgroudColor;
+                DrawProperty (nameof (ObjectDemandInfo.BoneKey), "BoneKey", ref position, 50, 70, property);
             }
 
-            EditorGUI.indentLevel = indent;
-            GUI.color             = color;
-            GUI.backgroundColor   = backgroudColor;
             property.serializedObject.ApplyModifiedProperties ();
             EditorGUI.EndChangeCheck ();
-            EditorGUI.EndProperty ();
         }
+
+        protected override int GetHeight (SerializedProperty property) => 1;
     }
 }

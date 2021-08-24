@@ -16,10 +16,16 @@ namespace DarcyStudio.GameComponent.TimeLine.ForAction.Receiver
         public PerformType performType;
         public string      animationKey;
         public GameObject  go;
-        public float       duration  = 1;
+        public float       duration = 1;
         public bool        waitDone;
 
-        [NonSerialized] public IResponsePerformer Performer;
+        [NonSerialized] public IPerformer Performer;
+        [NonSerialized] public ActionInfo ActionInfo;
+
+        public static PerformData Animation (string key, bool waitDone)
+        {
+            return new PerformData {animationKey = key, waitDone = waitDone};
+        }
     }
 
     [Serializable]

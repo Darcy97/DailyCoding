@@ -6,6 +6,8 @@
  * Description: 
  ***/
 
+using System;
+using System.Collections.Generic;
 using DarcyStudio.GameComponent.TimeLine.ForAction;
 using DarcyStudio.GameComponent.TimeLine.WorkState;
 using UnityEngine;
@@ -15,6 +17,8 @@ namespace DarcyStudio.GameComponent.TimeLine.PlayableTrack
 {
     public class TriggerActionPlayableAsset : ObjectDemandPlayableAsset, IRequireWaitDone
     {
+        // [SerializeField] private List<ActionInfo> actionPairs;
+        
         [SerializeField] private ActionData actionData;
         // [SerializeField] private ActionType actionType;
         [SerializeField] private bool       needWaitDone;

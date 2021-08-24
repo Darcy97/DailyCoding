@@ -7,26 +7,54 @@
  ***/
 
 using System;
+using System.Collections.Generic;
+using DarcyStudio.GameComponent.Tools;
 
 namespace DarcyStudio.GameComponent.TimeLine.ForAction
 {
     [Serializable]
     public class ActionData
     {
-        public ActionType ActionType;
-        public float      Para1;
-        public float      Para2;
-        public float      Para3;
-        public string     ActionID;
+
+        public List<ActionInfo> actionPairs;
+
+        public ActionInfo GetActionInfoByPreviousAction (ActionType actionType)
+        {
+            foreach (var actionInfo in actionPairs)
+            {
+                if (actionInfo.previousActionType == ActionType.Any)
+                    return actionInfo;
+                if (actionInfo.previousActionType == actionType)
+                    return actionInfo;
+            }
+
+            Log.Error ("No fit action info for ---> ", actionType.ToString ());
+            return null;
+        }
     }
 
+    [Serializable]
+    public class ActionInfo
+    {
+        public ActionType previousActionType;
+        public ActionType afterActionType;
+        public float      k0;
+        public float      k1;
+        public float      k2;
+        public float      k3;
+    }
+    
     public enum ActionType
     {
+        Any,
+        None,
         Default,
         Custom,
-        Shoot,
-        Hit,
-        KnockFly,
         Idle,
+        Back, //击退
+        Fall,
+        KnockFly, //击飞
+        Floating, //浮空
+        GetUp,
     }
 }

@@ -18,7 +18,10 @@ namespace DarcyStudio.GameComponent.TimeLine.RequireObject
 
         public ObjectType ObjectType;
 
-        [SerializeField] private GameObject _gameObject;
+        public string BoneKey;
+
+        [SerializeField] private GameObject gameObject;
+
 
         private IObject _object;
 
@@ -29,14 +32,18 @@ namespace DarcyStudio.GameComponent.TimeLine.RequireObject
                 return _object;
             }
 
-            if (_gameObject == null)
+            if (gameObject == null)
                 return InvalidObject.Default;
-            
-            _object = _gameObject.GetComponent<IObject> ();
-            if (_object == null)
-                _gameObject.AddComponent<DemandObject.DemandObject> ();
-            return _object = _gameObject.GetComponent<IObject> ();
 
+            _object = gameObject.GetComponent<IObject> ();
+            if (_object == null)
+                gameObject.AddComponent<DemandObject.DemandObject> ();
+            return _object = gameObject.GetComponent<IObject> ();
+        }
+
+        public static string GameObjectParaName ()
+        {
+            return nameof (gameObject);
         }
 
     }

@@ -10,20 +10,20 @@ using UnityEngine;
 
 namespace DarcyStudio.GameComponent.TimeLine.ForAction.Receiver
 {
-    public class InvalidPerformer : IResponsePerformer
+    public class InvalidPerformer : IPerformer
     {
 
         private PerformData _data;
 
-        public void Perform (PerformData data, Action finishCallback, GameObject sender)
+        public void Perform (PerformData data, Action<IPerformer> finishCallback, GameObject sender)
         {
             _data = data;
             Log.Error ("Please set action type");
             if (_data.waitDone)
-                finishCallback?.Invoke ();
+                finishCallback?.Invoke (this);
         }
 
-        public PerformData GetResponseData () => _data;
+        public PerformData GetPerformData () => _data;
 
         public static InvalidPerformer Default = new InvalidPerformer ();
     }

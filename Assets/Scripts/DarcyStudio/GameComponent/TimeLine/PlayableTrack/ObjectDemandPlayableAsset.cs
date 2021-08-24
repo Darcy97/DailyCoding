@@ -7,6 +7,7 @@
  ***/
 
 using System.Collections.Generic;
+using DarcyStudio.GameComponent.TimeLine.Actor;
 using DarcyStudio.GameComponent.TimeLine.DemandObject;
 using DarcyStudio.GameComponent.TimeLine.RequireObject;
 using UnityEngine;
@@ -34,14 +35,18 @@ namespace DarcyStudio.GameComponent.TimeLine.PlayableTrack
                 return InvalidObject.Default;
             }
 
-            // if (InEditor ())
-            //     return demandInfo.GetObject ();
             if (_provider == null)
                 return InvalidObject.Default;
 
-            return demandInfo.ObjectType == ObjectType.Specify
+            var demandObject = demandInfo.ObjectType == ObjectType.Specify
                 ? demandInfo.GetObject ()
                 : _provider.Get (demandInfo.ObjectType);
+
+            if (!(demandObject is IBoneOwner iBoneOwner) || string.IsNullOrEmpty (demandInfo.BoneKey))
+                return demandObject;
+
+            var bone = iBoneOwner.GetBoneObject (demandInfo.BoneKey);
+            return bone.IsValid () ? bone : demandObject;
         }
 
         private static bool InEditor ()

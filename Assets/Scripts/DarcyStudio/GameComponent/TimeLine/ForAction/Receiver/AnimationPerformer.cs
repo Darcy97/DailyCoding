@@ -5,21 +5,24 @@
  ***/
 
 using System;
-using DarcyStudio.GameComponent.Tools;
 using UnityEngine;
 
 namespace DarcyStudio.GameComponent.TimeLine.ForAction.Receiver
 {
-    public class AnimationPerformer : IResponsePerformer
+    public class AnimationPerformer : IPerformer
     {
-        private PerformData _performData;
+        private PerformData        _performData;
+        private Action<IPerformer> _callback;
 
-        public void Perform (PerformData data, Action finishCallback, GameObject sender)
+        public void Perform (PerformData data, Action<IPerformer> finishCallback, GameObject sender)
         {
             _performData = data;
+
             var superAnimator = sender.GetComponent<SuperAnimator> ();
             if (!superAnimator)
                 superAnimator = sender.AddComponent<SuperAnimator> ();
+
+            _callback = finishCallback;
 
             // if (data.delayTime > 0)
             // {
@@ -28,9 +31,14 @@ namespace DarcyStudio.GameComponent.TimeLine.ForAction.Receiver
             //         data.delayTime);
             // }
             // else
-            superAnimator.Play (data.animationKey, data.waitDone ? finishCallback : null);
+            superAnimator.Play (data.animationKey, OnPlayEnd);
         }
 
-        public PerformData GetResponseData () => _performData;
+        private void OnPlayEnd ()
+        {
+            _callback?.Invoke (this);
+        }
+
+        public PerformData GetPerformData () => _performData;
     }
 }
