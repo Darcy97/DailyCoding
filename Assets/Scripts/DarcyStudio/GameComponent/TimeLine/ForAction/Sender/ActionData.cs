@@ -8,6 +8,7 @@
 
 using System;
 using System.Collections.Generic;
+using DarcyStudio.CustomEditor.Attribute.CustomPropertyAttribute;
 
 namespace DarcyStudio.GameComponent.TimeLine.ForAction.Sender
 {
@@ -21,9 +22,10 @@ namespace DarcyStudio.GameComponent.TimeLine.ForAction.Sender
         {
             foreach (var actionInfo in actionPairs)
             {
-                if (actionInfo.previousActionType == ActionType.Any)
+                if ((actionInfo.previousActionType & ActionType.Any) == ActionType.Any)
                     return actionInfo;
-                if (actionInfo.previousActionType == actionType)
+
+                if ((actionInfo.previousActionType & actionType) == actionType)
                     return actionInfo;
             }
 
@@ -35,7 +37,8 @@ namespace DarcyStudio.GameComponent.TimeLine.ForAction.Sender
     [Serializable]
     public class ActionInfo
     {
-        public ActionType previousActionType;
+        [EnumList] public ActionType previousActionType;
+
         public ActionType afterActionType;
         public float      k0;
         public float      k1;

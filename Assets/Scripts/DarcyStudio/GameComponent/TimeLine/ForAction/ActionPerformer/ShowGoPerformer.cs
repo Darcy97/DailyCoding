@@ -20,7 +20,7 @@ namespace DarcyStudio.GameComponent.TimeLine.ForAction.ActionPerformer
         private GameObject         _go;
         private Action<IPerformer> _finishCallback;
 
-        public void Perform (PerformData data, Action<IPerformer> finishCallback, GameObject sender)
+        public void Perform (PerformData data, Action<IPerformer> finishCallback, GameObject sender, bool canBreak)
         {
             _data           = data;
             _finishCallback = finishCallback;

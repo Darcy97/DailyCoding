@@ -6,6 +6,7 @@
 
 using System;
 using DarcyStudio.GameComponent.TimeLine.ForAction.Receiver;
+using DarcyStudio.GameComponent.Tools;
 using UnityEngine;
 
 namespace DarcyStudio.GameComponent.TimeLine.ForAction.ActionPerformer
@@ -14,25 +15,28 @@ namespace DarcyStudio.GameComponent.TimeLine.ForAction.ActionPerformer
     {
         private PerformData        _performData;
         private Action<IPerformer> _callback;
+        private GameObject         _sender;
 
-        public void Perform (PerformData data, Action<IPerformer> finishCallback, GameObject sender)
+        public void Perform (PerformData data, Action<IPerformer> finishCallback, GameObject sender, bool canBreak)
         {
             _performData = data;
+            _sender      = sender;
 
             var superAnimator = sender.GetComponent<SuperAnimator> ();
             if (!superAnimator)
                 superAnimator = sender.AddComponent<SuperAnimator> ();
 
             _callback = finishCallback;
-
-            // if (data.delayTime > 0)
-            // {
-            //     YieldUtils.DelayAction (sender.GetComponent<MonoBehaviour> (),
-            //         () => { superAnimator.Play (data.animationKey, data.waitDone ? finishCallback : null); },
-            //         data.delayTime);
-            // }
-            // else
-            superAnimator.Play (data.animationKey, OnPlayEnd);
+            
+            if (!superAnimator.IsPlaying || canBreak)
+            {
+                superAnimator.Stop ();
+                superAnimator.Play (data.animationKey, OnPlayEnd);
+            }
+            else
+            {
+                OnPlayEnd ();
+            }
         }
 
         private void OnPlayEnd ()

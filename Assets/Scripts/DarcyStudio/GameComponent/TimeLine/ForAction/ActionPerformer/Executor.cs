@@ -9,6 +9,7 @@ using System;
 using DarcyStudio.GameComponent.TimeLine.ForAction.Receiver;
 using DarcyStudio.GameComponent.TimeLine.RequireObject;
 using DarcyStudio.GameComponent.Tools;
+using UnityEngine;
 
 namespace DarcyStudio.GameComponent.TimeLine.ForAction.ActionPerformer
 {
@@ -19,7 +20,17 @@ namespace DarcyStudio.GameComponent.TimeLine.ForAction.ActionPerformer
         private IObject             _sender;
         private int                 _waitDoneCount;
 
-        public void Execute (ActionPerformConfig config, Action<IExecutor> finishCallback, IObject sender)
+        private int _tag;
+
+        public void SetTag (int tag)
+        {
+            _tag = tag;
+        }
+
+        public int Tag () => _tag;
+
+        public void Execute (ActionPerformConfig config, Action<IExecutor> finishCallback, IObject sender,
+            bool                                 canBreak)
         {
             if (_waitDoneCount > 0)
             {
@@ -44,7 +55,7 @@ namespace DarcyStudio.GameComponent.TimeLine.ForAction.ActionPerformer
             foreach (var performData in performDatas)
             {
                 performData.ActionInfo = config.GetActionInfo ();
-                ExecuteByPerformData (performData);
+                ExecuteByPerformData (performData, canBreak);
             }
 
             if (_waitDoneCount > 0)
@@ -55,16 +66,10 @@ namespace DarcyStudio.GameComponent.TimeLine.ForAction.ActionPerformer
 
         public ActionPerformConfig GetConfig () => _config;
 
-        private void ExecuteByPerformData (PerformData data)
+        private void ExecuteByPerformData (PerformData data, bool canBreak)
         {
-            var performer = data.Performer;
-            if (performer == null)
-            {
-                performer      = GetPerformer (data.performType);
-                data.Performer = performer;
-            }
-
-            performer.Perform (data, OnPerformEnd, _sender.GetGameObject ());
+            var performer = GetPerformer (data.performType);
+            performer.Perform (data, OnPerformEnd, _sender.GetGameObject (), canBreak);
         }
 
         private void OnPerformEnd (IPerformer performer)
@@ -83,8 +88,11 @@ namespace DarcyStudio.GameComponent.TimeLine.ForAction.ActionPerformer
 
         private void EndCallback ()
         {
-            _finishCallback?.Invoke (this);
-            _finishCallback = null;
+            YieldUtils.DoEndOfFrame (_sender.GetComponent<MonoBehaviour> (), () =>
+            {
+                _finishCallback?.Invoke (this);
+                _finishCallback = null;
+            });
         }
 
         private static IPerformer GetPerformer (PerformType type)

@@ -16,7 +16,7 @@ namespace DarcyStudio.GameComponent.TimeLine.ForAction.ActionPerformer
 
         private PerformData _data;
 
-        public void Perform (PerformData data, Action<IPerformer> finishCallback, GameObject sender)
+        public void Perform (PerformData data, Action<IPerformer> finishCallback, GameObject sender, bool canBreak)
         {
             _data = data;
             Log.Error ("Please set action type");

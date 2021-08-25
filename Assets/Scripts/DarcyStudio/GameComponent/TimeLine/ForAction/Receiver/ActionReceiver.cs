@@ -52,11 +52,17 @@ namespace DarcyStudio.GameComponent.TimeLine.ForAction.Receiver
             }
         }
 
-        private Action _finishCallback;
+        // private Action _finishCallback;
+
+        private Dictionary<int, Action> _finishCallbacks = new Dictionary<int, Action> ();
+
+        private int _executeTag = 0;
 
         public void Do (ActionData actionData, Action finishCallback = null)
         {
-            _finishCallback = finishCallback;
+            _executeTag++;
+            // EndCallback ();
+            _finishCallbacks.Add (_executeTag, finishCallback);
 
             var actionInfo = actionData.GetActionInfoByPreviousAction (_statusOwner.GetStatus ());
             if (actionInfo == null)
@@ -64,6 +70,8 @@ namespace DarcyStudio.GameComponent.TimeLine.ForAction.Receiver
                 Log.Error ("No suitable action info for previous action ->{0}<-  in  ->{1}<-",
                     _statusOwner.GetStatus (),
                     transform.GetPath ());
+                finishCallback?.Invoke ();
+                return;
             }
 
             var actionConfig = GetActionConfig (actionInfo.afterActionType);
@@ -76,7 +84,7 @@ namespace DarcyStudio.GameComponent.TimeLine.ForAction.Receiver
             }
 
             actionConfig.SetActionInfo (actionInfo);
-            Execute (actionConfig);
+            Execute (actionConfig, true, _executeTag);
 
             // DoActionByConfig (actionConfig, actionInfo);
         }
@@ -101,32 +109,36 @@ namespace DarcyStudio.GameComponent.TimeLine.ForAction.Receiver
             var config         = executor.GetConfig ();
             var nextActionType = config.GetNextActionType ();
             var next           = GetActionConfig (nextActionType);
-            if (next == null)
+            if (next == null || executor.Tag () != _executeTag)
             {
-                EndCallback ();
+                EndCallback (executor.Tag ());
                 return;
             }
 
             next.SetActionInfo (ActionInfo.Default);
-            Execute (next);
+            Execute (next, executor.Tag () == _executeTag, executor.Tag ());
         }
 
-        private void Execute (ActionPerformConfig config)
+        private void Execute (ActionPerformConfig config, bool canBreak, int executeTag)
         {
             var executor = GetExecutor ();
-            executor.Execute (config, OnExecuteEnd, GetComponent<IObject> ());
+            executor.SetTag (executeTag);
+            executor.Execute (config, OnExecuteEnd, GetComponent<IObject> (), canBreak);
 
             _statusOwner.SetStatus (config.actionType);
 
             if (config.waitDone)
                 return;
-            EndCallback ();
+            EndCallback (executeTag);
         }
 
-        private void EndCallback ()
+        private void EndCallback (int tag)
         {
-            _finishCallback?.Invoke ();
-            _finishCallback = null;
+            if (_finishCallbacks.ContainsKey (tag))
+            {
+                _finishCallbacks[tag]?.Invoke ();
+                _finishCallbacks.Remove (tag);
+            }
         }
     }
 

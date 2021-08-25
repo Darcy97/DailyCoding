@@ -11,7 +11,7 @@ using UnityEngine;
 
 namespace DarcyStudio.GameComponent.TimeLine.ForAction.Receiver
 {
-     [Serializable]
+    [Serializable]
     public class ActionPerformConfig
     {
 

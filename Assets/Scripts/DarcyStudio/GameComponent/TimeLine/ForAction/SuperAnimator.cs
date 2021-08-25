@@ -6,6 +6,7 @@
  ***/
 
 using System;
+using DarcyStudio.GameComponent.Tools;
 using UnityEngine;
 
 namespace DarcyStudio.GameComponent.TimeLine.ForAction
@@ -37,8 +38,13 @@ namespace DarcyStudio.GameComponent.TimeLine.ForAction
             _animator.Rebind ();
         }
 
+        private bool _isPlaying;
+
+        public bool IsPlaying => _isPlaying;
+
         public void Play (string trigger, Action endCallback = null)
         {
+            _isPlaying       = true;
             _playEndCallback = endCallback;
             _animator.SetTrigger (trigger);
         }
@@ -47,8 +53,17 @@ namespace DarcyStudio.GameComponent.TimeLine.ForAction
 
         public void OnSuperAnimatorPlayEnd ()
         {
+            if (!_isPlaying)
+                return;
+
+            _isPlaying = false;
             _playEndCallback?.Invoke ();
             _playEndCallback = null;
+        }
+
+        public void Stop ()
+        {
+            OnSuperAnimatorPlayEnd ();
         }
 
     }

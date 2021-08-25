@@ -16,11 +16,13 @@ namespace DarcyStudio.GameComponent.TimeLine.ForAction.ActionPerformer
     {
         private PerformData        _data;
         private Action<IPerformer> _finishCallback;
+        private GameObject         _sender;
 
-        public void Perform (PerformData data, Action<IPerformer> finishCallback, GameObject sender)
+        public void Perform (PerformData data, Action<IPerformer> finishCallback, GameObject sender, bool canBreak)
         {
             _data           = data;
             _finishCallback = finishCallback;
+            _sender         = sender;
 
             var moveControl = sender.GetComponent<MoveControl> ();
 
@@ -29,13 +31,21 @@ namespace DarcyStudio.GameComponent.TimeLine.ForAction.ActionPerformer
                 moveControl = sender.AddComponent<MoveControl> ();
             }
 
-            moveControl.Stop ();
-            var v = data.moveVelocity * data.ActionInfo.k0;
-            moveControl.Move (v, data.moveAcceleration, OnMoveEnd);
+            if (!moveControl.IsMoving || canBreak)
+            {
+                moveControl.Stop ();
+                var v = data.moveVelocity * data.ActionInfo.k0;
+                moveControl.Move (v, data.moveAcceleration, OnMoveEnd);
+            }
+            else
+            {
+                OnMoveEnd ();
+            }
         }
 
         private void OnMoveEnd ()
         {
+            //延迟一帧执行
             _finishCallback?.Invoke (this);
         }
 

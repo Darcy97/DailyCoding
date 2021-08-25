@@ -29,6 +29,8 @@ namespace DarcyStudio.GameComponent.TimeLine.ForAction
 
         private IDirectionOwner _directionOwner;
 
+        public bool IsMoving => _isMoving;
+
         private void Awake ()
         {
             _directionOwner = GetComponent<IDirectionOwner> ();
@@ -89,6 +91,9 @@ namespace DarcyStudio.GameComponent.TimeLine.ForAction
 
         public void Stop ()
         {
+            if (_isMoving)
+                OnMoveEnd ();
+
             _isMoving        = false;
             _isMoveToOrigin  = false;
             _moveEndCallback = null;
@@ -115,13 +120,10 @@ namespace DarcyStudio.GameComponent.TimeLine.ForAction
 
             _isMoving = move;
 
-            if (!_isMoving)
-            {
-                OnMoveEnd ();
-            }
-
             if (move)
                 _transform.localPosition += MoveVelocity * vRate;
+            else
+                OnMoveEnd ();
         }
 
         private bool CheckIsMovingToOrigin ()
@@ -184,6 +186,7 @@ namespace DarcyStudio.GameComponent.TimeLine.ForAction
         private void OnMoveEnd ()
         {
             _moveEndCallback?.Invoke ();
+            _moveEndCallback = null;
         }
 
         private bool AlmostZero (float value, float precision)
@@ -194,6 +197,5 @@ namespace DarcyStudio.GameComponent.TimeLine.ForAction
                 precision = -precision;
             return value <= precision;
         }
-
     }
 }
