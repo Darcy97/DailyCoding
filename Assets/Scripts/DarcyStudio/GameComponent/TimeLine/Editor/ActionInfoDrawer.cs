@@ -8,6 +8,7 @@
 using System;
 using DarcyStudio.CustomEditor.Attribute.Editor;
 using DarcyStudio.GameComponent.TimeLine.ForAction;
+using DarcyStudio.GameComponent.TimeLine.ForAction.Sender;
 using DarcyStudio.GameComponent.Tools;
 using UnityEditor;
 using UnityEngine;
@@ -39,9 +40,9 @@ namespace DarcyStudio.GameComponent.TimeLine.Editor
                 case ActionType.Idle:
                     break;
                 case ActionType.Back:
-                    DrawProperty (nameof (ActionInfo.k0), "X初速度", ref position, 45, 30, property);
-                    NewLine (ref position);
-                    DrawProperty (nameof (ActionInfo.k1), "X加速度", ref position, 45, 30, property);
+                    DrawProperty (nameof (ActionInfo.k0), "初速度", ref position, 45, 30, property);
+                    // NewLine (ref position);
+                    // DrawProperty (nameof (ActionInfo.k1), "X加速度", ref position, 45, 30, property);
                     break;
                 case ActionType.Fall:
                     break;
@@ -69,7 +70,7 @@ namespace DarcyStudio.GameComponent.TimeLine.Editor
                 case ActionType.Idle:
                     return 1;
                 case ActionType.Back:
-                    return 3;
+                    return 2;
                 case ActionType.Fall:
                     break;
                 case ActionType.KnockFly:

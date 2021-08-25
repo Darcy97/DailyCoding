@@ -7,6 +7,7 @@
 
 using DarcyStudio.GameComponent.TimeLine.ForAction;
 using DarcyStudio.GameComponent.TimeLine.ForAction.Receiver;
+using DarcyStudio.GameComponent.TimeLine.ForAction.Sender;
 using DarcyStudio.GameComponent.TimeLine.RequireObject;
 using DarcyStudio.GameComponent.TimeLine.WorkState;
 using UnityEngine;

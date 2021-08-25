@@ -6,13 +6,14 @@
  ***/
 
 using DarcyStudio.GameComponent.TimeLine.ForAction;
+using DarcyStudio.GameComponent.TimeLine.ForAction.Sender;
 
 namespace DarcyStudio.GameComponent.TimeLine.State
 {
     public interface IActionStatusOwner
     {
-        ActionType GetStatus ();
         void       SetStatus (ActionType status);
+        ActionType GetStatus ();
     }
 
     public enum RoleStatus

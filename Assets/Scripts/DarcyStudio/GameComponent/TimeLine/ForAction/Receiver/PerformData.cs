@@ -6,6 +6,7 @@
  ***/
 
 using System;
+using DarcyStudio.GameComponent.TimeLine.ForAction.Sender;
 using UnityEngine;
 
 namespace DarcyStudio.GameComponent.TimeLine.ForAction.Receiver
@@ -25,18 +26,42 @@ namespace DarcyStudio.GameComponent.TimeLine.ForAction.Receiver
         [NonSerialized] public IPerformer Performer;
         [NonSerialized] public ActionInfo ActionInfo;
 
-        public static PerformData Animation (string key, bool waitDone)
+        // public static PerformData Animation (string key, bool waitDone)
+        // {
+        //     return new PerformData {animationKey = key, waitDone = waitDone};
+        // }
+
+        public PerformData GetDefaultPerformData (PerformType type)
         {
-            return new PerformData {animationKey = key, waitDone = waitDone};
+            switch (type)
+            {
+                case PerformType.Default:
+                    break;
+                case PerformType.Animation:
+                    break;
+                case PerformType.ShowGo:
+                    break;
+                case PerformType.Move:
+                    break;
+                case PerformType.ResetPosition:
+                    return new PerformData {performType = PerformType.ResetPosition};
+                default:
+                    throw new ArgumentOutOfRangeException (nameof (type), type, null);
+            }
+
+            return null;
         }
+
     }
 
     [Serializable]
     public enum PerformType
     {
+        None,
         Default,
         Animation,
         ShowGo,
         Move,
+        ResetPosition,
     }
 }

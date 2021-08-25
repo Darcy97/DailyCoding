@@ -1,18 +1,17 @@
 /***
  * Created by Darcy 
  * Github: https://github.com/Darcy97
- * Date: 2021年8月24日 星期二
- * Time: 下午7:02:24
+ * Date: 2021年8月25日 星期三
+ * Time: 上午11:02:36
  ***/
 
 using System;
 using DarcyStudio.GameComponent.TimeLine.ForAction.Receiver;
-using DarcyStudio.GameComponent.Tools;
 using UnityEngine;
 
 namespace DarcyStudio.GameComponent.TimeLine.ForAction.ActionPerformer
 {
-    public class MovePerformer : IPerformer
+    public class ResetPositionPerformer : IPerformer
     {
         private PerformData        _data;
         private Action<IPerformer> _finishCallback;
@@ -30,8 +29,7 @@ namespace DarcyStudio.GameComponent.TimeLine.ForAction.ActionPerformer
             }
 
             moveControl.Stop ();
-            var v = data.moveVelocity * data.ActionInfo.k0;
-            moveControl.Move (v, data.moveAcceleration, OnMoveEnd);
+            moveControl.MoveToOriginPosition (data.duration, OnMoveEnd);
         }
 
         private void OnMoveEnd ()

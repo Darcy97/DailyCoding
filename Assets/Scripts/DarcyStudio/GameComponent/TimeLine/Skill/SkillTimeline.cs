@@ -75,10 +75,10 @@ namespace DarcyStudio.GameComponent.TimeLine
 
             if (_isTimelinePlaying)
                 return;
-            
+
             if (_workingWorkerCount >= 1)
                 return;
-            
+
             _isPlaying = false;
             _finishAction?.Invoke (this);
         }
@@ -92,6 +92,11 @@ namespace DarcyStudio.GameComponent.TimeLine
                 {
                     _timeline.SetBinding (info.Name, provider.Get (ObjectType.Self).GetGameObject ());
                 }
+                //
+                // if (info.Type == TrackType.Enemy1)
+                // {
+                //     _timeline.SetBinding (info.Name, provider.Get (ObjectType.Enemy1).GetGameObject ());
+                // }
             }
 
             // SetSourceObject (provider.Get (ObjectType.Self));

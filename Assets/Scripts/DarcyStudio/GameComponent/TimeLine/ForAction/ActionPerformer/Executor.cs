@@ -99,6 +99,8 @@ namespace DarcyStudio.GameComponent.TimeLine.ForAction.ActionPerformer
                     return new ShowGoPerformer ();
                 case PerformType.Move:
                     return new MovePerformer ();
+                case PerformType.ResetPosition:
+                    return new ResetPositionPerformer ();
                 default:
                     return InvalidPerformer.Default;
             }

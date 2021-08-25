@@ -8,9 +8,8 @@
 
 using System;
 using System.Collections.Generic;
-using DarcyStudio.GameComponent.Tools;
 
-namespace DarcyStudio.GameComponent.TimeLine.ForAction
+namespace DarcyStudio.GameComponent.TimeLine.ForAction.Sender
 {
     [Serializable]
     public class ActionData
@@ -28,7 +27,7 @@ namespace DarcyStudio.GameComponent.TimeLine.ForAction
                     return actionInfo;
             }
 
-            Log.Error ("No fit action info for ---> ", actionType.ToString ());
+            // Log.Error ("No fit action info for ---> {0}", actionType.ToString ());
             return null;
         }
     }
@@ -42,8 +41,10 @@ namespace DarcyStudio.GameComponent.TimeLine.ForAction
         public float      k1;
         public float      k2;
         public float      k3;
+
+        public static ActionInfo Default = new ActionInfo ();
     }
-    
+
     public enum ActionType
     {
         Any,
@@ -56,5 +57,6 @@ namespace DarcyStudio.GameComponent.TimeLine.ForAction
         KnockFly, //击飞
         Floating, //浮空
         GetUp,
+        ResetToOrigin, //归位
     }
 }

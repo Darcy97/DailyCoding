@@ -5,9 +5,7 @@
  * Time: 下午3:14:51
  ***/
 
-using System;
 using DarcyStudio.CustomEditor.Attribute.Editor;
-using DarcyStudio.GameComponent.TimeLine.ForAction;
 using DarcyStudio.GameComponent.TimeLine.ForAction.Receiver;
 using UnityEditor;
 using UnityEngine;
@@ -19,7 +17,7 @@ namespace DarcyStudio.GameComponent.TimeLine.Editor
     {
         protected override void SuperOnGUI (Rect position, SerializedProperty property, GUIContent label)
         {
-            var performType = DrawProperty (nameof (PerformData.performType), string.Empty, ref position, 0, 80,
+            var performType = DrawProperty (nameof (PerformData.performType), string.Empty, ref position, 0, 90,
                 property);
 
             DrawPara (ref position, property, (PerformType) performType.enumValueIndex);
@@ -65,10 +63,14 @@ namespace DarcyStudio.GameComponent.TimeLine.Editor
                 case PerformType.Move:
 
                     NewLine (ref position);
-                    DrawProperty (nameof (PerformData.moveVelocity), "速度", ref position, 40, 200, property);
+                    DrawProperty (nameof (PerformData.moveVelocity), "速度系数", ref position, 45, 200, property);
 
                     NewLine (ref position);
-                    DrawProperty (nameof (PerformData.moveAcceleration), "加速度", ref position, 40, 200, property);
+                    DrawProperty (nameof (PerformData.moveAcceleration), "加速度", ref position, 45, 200, property);
+                    break;
+
+                case PerformType.ResetPosition:
+                    DrawProperty (nameof (PerformData.duration), "Duration", ref position, 50, 30, property);
                     break;
                 default:
                     break;

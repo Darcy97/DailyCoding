@@ -8,6 +8,7 @@
 using System;
 using System.Collections.Generic;
 using DarcyStudio.GameComponent.TimeLine.ForAction.ActionPerformer;
+using DarcyStudio.GameComponent.TimeLine.ForAction.Sender;
 using DarcyStudio.GameComponent.TimeLine.RequireObject;
 using DarcyStudio.GameComponent.TimeLine.State;
 using DarcyStudio.GameComponent.Tools;
@@ -15,19 +16,20 @@ using UnityEngine;
 
 namespace DarcyStudio.GameComponent.TimeLine.ForAction.Receiver
 {
-    public class ActionReceiver : MonoBehaviour, IActionReceiver, IActionStatusOwner
+    public class ActionReceiver : MonoBehaviour, IActionReceiver
     {
 
         [SerializeField] private ActionPerformConfig[] actionConfigs;
         private                  SuperAnimator         _animator;
 
         private Dictionary<ActionType, ActionPerformConfig> _actionInfoDict;
+
+        private IActionStatusOwner _statusOwner;
         // private Dictionary<string, ActionPerformConfig>     _customActionInfoDict;
 
         private void Start ()
         {
-            //TODO: 临时测试 这个IActionStatusOwner 应该有角色控制器实现
-            SetStatus (ActionType.Idle);
+            _statusOwner = GetComponent<IActionStatusOwner> ();
             InitActionConfigDict ();
         }
 
@@ -56,7 +58,13 @@ namespace DarcyStudio.GameComponent.TimeLine.ForAction.Receiver
         {
             _finishCallback = finishCallback;
 
-            var actionInfo = actionData.GetActionInfoByPreviousAction (this.GetStatus ());
+            var actionInfo = actionData.GetActionInfoByPreviousAction (_statusOwner.GetStatus ());
+            if (actionInfo == null)
+            {
+                Log.Error ("No suitable action info for previous action ->{0}<-  in  ->{1}<-",
+                    _statusOwner.GetStatus (),
+                    transform.GetPath ());
+            }
 
             var actionConfig = GetActionConfig (actionInfo.afterActionType);
             if (actionConfig == null)
@@ -99,7 +107,7 @@ namespace DarcyStudio.GameComponent.TimeLine.ForAction.Receiver
                 return;
             }
 
-            next.SetActionInfo (null);
+            next.SetActionInfo (ActionInfo.Default);
             Execute (next);
         }
 
@@ -108,7 +116,7 @@ namespace DarcyStudio.GameComponent.TimeLine.ForAction.Receiver
             var executor = GetExecutor ();
             executor.Execute (config, OnExecuteEnd, GetComponent<IObject> ());
 
-            SetStatus (config.actionType);
+            _statusOwner.SetStatus (config.actionType);
 
             if (config.waitDone)
                 return;
@@ -119,128 +127,6 @@ namespace DarcyStudio.GameComponent.TimeLine.ForAction.Receiver
         {
             _finishCallback?.Invoke ();
             _finishCallback = null;
-        }
-
-        private ActionType curAction;
-        public  ActionType GetStatus () => curAction;
-
-        public void SetStatus (ActionType status)
-        {
-            curAction = status;
-        }
-    }
-
-    [Serializable]
-    public class ActionPerformConfig
-    {
-
-        public bool waitDone;
-
-        public ActionType actionType;
-
-        public PerformData[] performs;
-
-
-        [SerializeField] private bool       specifyNextAction;
-        [SerializeField] private ActionType nextAction = ActionType.None;
-
-        public ActionType GetActionType ()
-        {
-            return actionType;
-        }
-
-        public PerformData[] GetPerforms ()
-        {
-            return performs;
-        }
-
-        public ActionPerformConfig GetNextAction ()
-        {
-            return GetDefaultNextAction (this);
-        }
-
-        public ActionType GetNextActionType ()
-        {
-            return specifyNextAction ? nextAction : GetNextActionType (this);
-        }
-
-        private ActionInfo _actionInfo; //从攻击方传来的
-
-        public void SetActionInfo (ActionInfo actionInfo)
-        {
-            _actionInfo = actionInfo;
-        }
-
-        public ActionInfo GetActionInfo () => _actionInfo;
-
-
-        public static ActionPerformConfig GetDefaultNextAction (ActionPerformConfig preConfig)
-        {
-            //TODO 这里写死一个默认的规则
-            switch (preConfig.actionType)
-            {
-                case ActionType.Default:
-                    break;
-                case ActionType.Custom:
-                    break;
-                case ActionType.Idle:
-                    break;
-                case ActionType.Back:
-                    return new ActionPerformConfig ()
-                           {
-                               waitDone   = false,
-                               actionType = ActionType.Idle,
-                               performs   = new[] {PerformData.Animation ("idle", false)}
-                           };
-
-                    break;
-                case ActionType.Fall:
-                    break;
-                case ActionType.KnockFly:
-                    break;
-                case ActionType.Floating:
-                    break;
-                default:
-                    throw new ArgumentOutOfRangeException ();
-            }
-
-            return null;
-        }
-
-        public static ActionType GetNextActionType (ActionPerformConfig preConfig)
-        {
-            var result = ActionType.None;
-            switch (preConfig.actionType)
-            {
-                case ActionType.None:
-                    break;
-                case ActionType.Custom:
-                    break;
-                case ActionType.Idle:
-                    break;
-                case ActionType.Back:
-                    result = ActionType.Idle;
-                    break;
-                case ActionType.Fall:
-                    result = ActionType.GetUp;
-                    break;
-                case ActionType.KnockFly:
-                    result = ActionType.Fall;
-                    break;
-                case ActionType.Floating:
-                    result = ActionType.Fall;
-                    break;
-                case ActionType.Default:
-                    break;
-                case ActionType.GetUp:
-                    result = ActionType.Idle;
-                    break;
-                default:
-                    result = ActionType.None;
-                    break;
-            }
-
-            return result;
         }
     }
 

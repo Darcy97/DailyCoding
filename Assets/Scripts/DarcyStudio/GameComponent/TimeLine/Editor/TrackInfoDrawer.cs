@@ -53,7 +53,11 @@ namespace DarcyStudio.GameComponent.TimeLine.Editor
                 case TrackType.Default:
                     GUI.backgroundColor = backgroudColor;
                     break;
-                case TrackType.Enemy:
+                case TrackType.Enemy1:
+                case TrackType.Enemy2:
+                case TrackType.Enemy3:
+                case TrackType.Enemy4:
+                case TrackType.Enemy5:
                     GUI.backgroundColor = Color.red;
                     break;
                 case TrackType.Self:

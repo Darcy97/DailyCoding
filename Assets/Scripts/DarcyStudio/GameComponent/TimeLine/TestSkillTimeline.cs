@@ -8,7 +8,10 @@
 
 using System;
 using System.Collections.Generic;
+using DarcyStudio.GameComponent.TimeLine.Actor;
 using DarcyStudio.GameComponent.TimeLine.DemandObject;
+using DarcyStudio.GameComponent.TimeLine.ForAction;
+using DarcyStudio.GameComponent.TimeLine.ForAction.Sender;
 using DarcyStudio.GameComponent.TimeLine.RequireObject;
 using DarcyStudio.GameComponent.TimeLine.Skill;
 using DarcyStudio.GameComponent.Tools;
@@ -20,14 +23,33 @@ namespace DarcyStudio.GameComponent.TimeLine
     public class TestSkillTimeline : MonoBehaviour, IObjectProvider
     {
 
-        [SerializeField] private GameObject self;
-        [SerializeField] private GameObject enemy1;
-        [SerializeField] private GameObject enemy2;
-        [SerializeField] private GameObject enemy3;
-        [SerializeField] private GameObject enemy4;
-        [SerializeField] private GameObject enemy5;
+        [SerializeField] private ActorObject self;
+        [SerializeField] private ActorObject enemy1;
+        [SerializeField] private ActorObject enemy2;
+        [SerializeField] private ActorObject enemy3;
+        [SerializeField] private ActorObject enemy4;
+        [SerializeField] private ActorObject enemy5;
 
         [SerializeField] private SkillTimeline skillTimeline;
+
+        private void Awake ()
+        {
+            InitObject (self, Direction.FaceToRight);
+
+            InitObject (enemy1, Direction.FaceToLeft);
+            InitObject (enemy2, Direction.FaceToLeft);
+            InitObject (enemy3, Direction.FaceToLeft);
+            InitObject (enemy4, Direction.FaceToLeft);
+            InitObject (enemy5, Direction.FaceToLeft);
+        }
+
+        private void InitObject (ActorObject obj, Direction direction)
+        {
+            if (!obj)
+                return;
+            obj.SetDirection (direction);
+            obj.SetStatus (ActionType.Idle);
+        }
 
         public void Play ()
         {
@@ -50,17 +72,29 @@ namespace DarcyStudio.GameComponent.TimeLine
                 case ObjectType.Specify:
                     return InvalidObject.Default;
                 case ObjectType.Self:
-                    return self ? self.GetComponent<IObject> () : InvalidObject.Default;
+                {
+                    return self is IObject iObject ? iObject : InvalidObject.Default;
+                }
                 case ObjectType.Enemy1:
-                    return enemy1 ? enemy1.GetComponent<IObject> () : InvalidObject.Default;
+                {
+                    return enemy1 is IObject iObject ? iObject : InvalidObject.Default;
+                }
                 case ObjectType.Enemy2:
-                    return enemy2 ? enemy2.GetComponent<IObject> () : InvalidObject.Default;
+                {
+                    return enemy2 is IObject iObject ? iObject : InvalidObject.Default;
+                }
                 case ObjectType.Enemy3:
-                    return enemy3 ? enemy3.GetComponent<IObject> () : InvalidObject.Default;
+                {
+                    return enemy3 is IObject iObject ? iObject : InvalidObject.Default;
+                }
                 case ObjectType.Enemy4:
-                    return enemy4 ? enemy4.GetComponent<IObject> () : InvalidObject.Default;
+                {
+                    return enemy4 is IObject iObject ? iObject : InvalidObject.Default;
+                }
                 case ObjectType.Enemy5:
-                    return enemy5 ? enemy5.GetComponent<IObject> () : InvalidObject.Default;
+                {
+                    return enemy5 is IObject iObject ? iObject : InvalidObject.Default;
+                }
                 default:
                     return InvalidObject.Default;
             }

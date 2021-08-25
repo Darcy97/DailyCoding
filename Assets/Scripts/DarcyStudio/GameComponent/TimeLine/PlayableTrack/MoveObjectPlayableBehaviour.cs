@@ -6,7 +6,6 @@
  * Description: Description
  ***/
 
-using DarcyStudio.GameComponent.TimeLine.Actor;
 using DarcyStudio.GameComponent.TimeLine.RequireObject;
 using DarcyStudio.GameComponent.Tools;
 using UnityEngine;
@@ -21,6 +20,7 @@ namespace DarcyStudio.GameComponent.TimeLine.PlayableTrack
         private Transform  _controlled;
         private Vector3    _startPos;
         private Vector3    _targetPos;
+        private Transform  _targetTransform;
 
         private readonly AnimationCurve _curve;
         private readonly float          _delayDisappearTime;
@@ -59,6 +59,9 @@ namespace DarcyStudio.GameComponent.TimeLine.PlayableTrack
         {
             base.OnGraphStart (playable);
 
+            if (!IsPlaying ())
+                return;
+
             if (!IsValid ())
                 return;
 
@@ -72,10 +75,11 @@ namespace DarcyStudio.GameComponent.TimeLine.PlayableTrack
             }
 
             var start = GetObject (DemandType.Source);
-            _controlledGO = Object.Instantiate (prefab, start.GetTransform ());
-            _controlled   = _controlledGO.transform;
-            _startPos     = start.GetPos ();
-            _targetPos    = GetObject (DemandType.Target).GetPos ();
+            _controlledGO    = Object.Instantiate (prefab, start.GetTransform ());
+            _controlled      = _controlledGO.transform;
+            _startPos        = start.GetPos ();
+            _targetTransform = GetObject (DemandType.Target).GetTransform ();
+            _targetPos       = GetObject (DemandType.Target).GetPos ();
 
             _curTime        = 0;
             _duration       = (float) playable.GetDuration ();
@@ -147,7 +151,7 @@ namespace DarcyStudio.GameComponent.TimeLine.PlayableTrack
 
             var curCurveTime = percent * _curveTotalTime;
             var value        = _curve.Evaluate (curCurveTime);
-            _controlled.position = Vector3.Lerp (_startPos, _targetPos, value);
+            _controlled.position = Vector3.Lerp (_startPos, _targetTransform.position, value);
         }
 
         private bool _isWaitingKillControlled;

@@ -27,7 +27,11 @@ namespace DarcyStudio.GameComponent.TimeLine.Skill
     public enum TrackType
     {
         Default,
-        Enemy,
         Self,
+        Enemy1,
+        Enemy2,
+        Enemy3,
+        Enemy4,
+        Enemy5
     }
 }

@@ -7,13 +7,16 @@
 
 using System.Collections.Generic;
 using DarcyStudio.GameComponent.TimeLine.DemandObject;
+using DarcyStudio.GameComponent.TimeLine.ForAction;
+using DarcyStudio.GameComponent.TimeLine.ForAction.Sender;
 using DarcyStudio.GameComponent.TimeLine.RequireObject;
+using DarcyStudio.GameComponent.TimeLine.State;
 using DarcyStudio.GameComponent.Tools;
 using UnityEngine;
 
 namespace DarcyStudio.GameComponent.TimeLine.Actor
 {
-    public class ActorObject : DemandObject.DemandObject, IBoneOwner
+    public class ActorObject : DemandObject.DemandObject, IBoneOwner, IDirectionOwner, IActionStatusOwner
     {
         [SerializeField] private BoneInfo[] boneConfigs;
 
@@ -48,5 +51,25 @@ namespace DarcyStudio.GameComponent.TimeLine.Actor
             var boneInfo = GetBoneInfo (key);
             return boneInfo == null ? InvalidObject.Default : boneInfo.GetBoneObject ();
         }
+
+        private Direction _direction;
+
+        public void SetDirection (Direction direction)
+        {
+            _direction = direction;
+        }
+
+        public Direction GetDirection () => _direction;
+
+
+        private ActionType _status;
+
+        public void SetStatus (ActionType status)
+        {
+            _status = status;
+        }
+
+        public ActionType GetStatus () => _status;
+
     }
 }
