@@ -1,7 +1,8 @@
 /***
- * Created by Darcy
- * Date: 2021年8月20日 星期五
- * Time: 下午5:43:33
+ * Created by Darcy 
+ * Github: https://github.com/Darcy97
+ * Date: 2021年8月26日 星期四
+ * Time: 下午4:43:57
  ***/
 
 using System;
@@ -12,22 +13,21 @@ using UnityEngine;
 
 namespace DarcyStudio.GameComponent.TimeLine.ForAction.ActionPerformer
 {
-    public class InvalidPerformer : IPerformer
+    public class WaitPerformer : IPerformer
     {
 
         private PerformConfig _config;
 
         public void Perform (PerformConfig config,         AttackActionConfig attackActionConfig,
-            Action<IPerformer>             finishCallback, GameObject         sender, bool canBreak)
+            Action<IPerformer>             finishCallback, GameObject         sender,
+            bool                           canBreak)
         {
             _config = config;
-            Log.Error ("Please set action type");
-            if (_config.waitDone)
-                finishCallback?.Invoke (this);
+
+            YieldUtils.DelayAction (sender.GetComponent<MonoBehaviour> (), () => { finishCallback?.Invoke (this); },
+                attackActionConfig.waitTime * config.k0);
         }
 
         public PerformConfig GetPerformData () => _config;
-
-        public static InvalidPerformer Default = new InvalidPerformer ();
     }
 }

@@ -5,6 +5,7 @@
  ***/
 
 using System;
+using DarcyStudio.GameComponent.TimeLine.ForAction.Sender;
 using UnityEngine;
 
 namespace DarcyStudio.GameComponent.TimeLine.ForAction.Receiver
@@ -12,14 +13,10 @@ namespace DarcyStudio.GameComponent.TimeLine.ForAction.Receiver
     public interface IPerformer
     {
 
-        /// <summary>
         /// FinishCallback 必须要调用
-        /// </summary>
-        /// <param name="data"></param>
-        /// <param name="finishCallback"></param>
-        /// <param name="sender"></param>
-        void Perform (PerformData data, Action<IPerformer> finishCallback, GameObject sender, bool canBreak);
+        void Perform (PerformConfig config, AttackActionConfig attackActionConfig, Action<IPerformer> finishCallback,
+            GameObject              sender, bool               canBreak);
 
-        PerformData GetPerformData ();
+        PerformConfig GetPerformData ();
     }
 }

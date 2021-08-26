@@ -12,12 +12,12 @@ using UnityEngine;
 
 namespace DarcyStudio.GameComponent.TimeLine.Editor
 {
-    [CustomPropertyDrawer (typeof (PerformData))]
-    public class PerformDataDrawer : SuperPropertyDrawer
+    [CustomPropertyDrawer (typeof (PerformConfig))]
+    public class PerformConfigDrawer : SuperPropertyDrawer
     {
         protected override void SuperOnGUI (Rect position, SerializedProperty property, GUIContent label)
         {
-            var performType = DrawProperty (nameof (PerformData.performType), string.Empty, ref position, 0, 90,
+            var performType = DrawProperty (nameof (PerformConfig.performType), string.Empty, ref position, 0, 90,
                 property);
 
             DrawPara (ref position, property, (PerformType) performType.enumValueIndex);
@@ -25,13 +25,13 @@ namespace DarcyStudio.GameComponent.TimeLine.Editor
             //绘制第二行
             NewLine (ref position);
 
-            DrawProperty (nameof (PerformData.waitDone), "WaitDone(是否等待结束)", ref position, 130, 20, property,
+            DrawProperty (nameof (PerformConfig.waitDone), "WaitDone(是否等待结束)", ref position, 130, 20, property,
                 true);
         }
 
         protected override int GetLineCount (SerializedProperty property)
         {
-            var p = property.FindPropertyRelative (nameof (PerformData.performType));
+            var p = property.FindPropertyRelative (nameof (PerformConfig.performType));
             switch ((PerformType) p.enumValueIndex)
             {
                 case PerformType.Default:
@@ -54,23 +54,26 @@ namespace DarcyStudio.GameComponent.TimeLine.Editor
                 case PerformType.Default:
                     break;
                 case PerformType.Animation:
-                    DrawProperty (nameof (PerformData.animationKey), "Key", ref position, 25, 100, property);
+                    DrawProperty (nameof (PerformConfig.animationKey), "Key", ref position, 25, 100, property);
                     break;
                 case PerformType.ShowGo:
-                    DrawProperty (nameof (PerformData.go),       string.Empty, ref position, 0,  130, property);
-                    DrawProperty (nameof (PerformData.duration), "Duration",   ref position, 50, 30,  property);
+                    DrawProperty (nameof (PerformConfig.go),       string.Empty, ref position, 0,  130, property);
+                    DrawProperty (nameof (PerformConfig.duration), "Duration",   ref position, 50, 30,  property);
                     break;
                 case PerformType.Move:
 
                     NewLine (ref position);
-                    DrawProperty (nameof (PerformData.moveVelocity), "速度系数", ref position, 45, 200, property);
+                    DrawProperty (nameof (PerformConfig.moveVelocity), "速度系数", ref position, 45, 200, property);
 
                     NewLine (ref position);
-                    DrawProperty (nameof (PerformData.moveAcceleration), "加速度", ref position, 45, 200, property);
+                    DrawProperty (nameof (PerformConfig.moveAcceleration), "加速度", ref position, 45, 200, property);
                     break;
 
                 case PerformType.ResetPosition:
-                    DrawProperty (nameof (PerformData.duration), "Duration", ref position, 50, 30, property);
+                    DrawProperty (nameof (PerformConfig.duration), "Duration", ref position, 50, 30, property);
+                    break;
+                case PerformType.Wait:
+                    DrawProperty (nameof (PerformConfig.k0), "停滞时间系数", ref position, 70, 100, property);
                     break;
                 default:
                     break;

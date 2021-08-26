@@ -7,6 +7,7 @@
 
 using System;
 using DarcyStudio.GameComponent.TimeLine.ForAction.Receiver;
+using DarcyStudio.GameComponent.TimeLine.ForAction.Sender;
 using DarcyStudio.GameComponent.Tools;
 using UnityEngine;
 
@@ -14,13 +15,14 @@ namespace DarcyStudio.GameComponent.TimeLine.ForAction.ActionPerformer
 {
     public class MovePerformer : IPerformer
     {
-        private PerformData        _data;
+        private PerformConfig      _config;
         private Action<IPerformer> _finishCallback;
         private GameObject         _sender;
 
-        public void Perform (PerformData data, Action<IPerformer> finishCallback, GameObject sender, bool canBreak)
+        public void Perform (PerformConfig config,         AttackActionConfig attackActionConfig,
+            Action<IPerformer>             finishCallback, GameObject         sender, bool canBreak)
         {
-            _data           = data;
+            _config         = config;
             _finishCallback = finishCallback;
             _sender         = sender;
 
@@ -34,8 +36,8 @@ namespace DarcyStudio.GameComponent.TimeLine.ForAction.ActionPerformer
             if (!moveControl.IsMoving || canBreak)
             {
                 moveControl.Stop ();
-                var v = data.moveVelocity * data.ActionInfo.k0;
-                moveControl.Move (v, data.moveAcceleration, OnMoveEnd);
+                var v = config.moveVelocity * attackActionConfig.k0;
+                moveControl.Move (v, config.moveAcceleration, OnMoveEnd);
             }
             else
             {
@@ -49,6 +51,6 @@ namespace DarcyStudio.GameComponent.TimeLine.ForAction.ActionPerformer
             _finishCallback?.Invoke (this);
         }
 
-        public PerformData GetPerformData () => _data;
+        public PerformConfig GetPerformData () => _config;
     }
 }

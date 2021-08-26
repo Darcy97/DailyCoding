@@ -13,6 +13,17 @@ namespace DarcyStudio.CustomEditor.Attribute.CustomPropertyAttribute
     [AttributeUsage (AttributeTargets.Enum | AttributeTargets.Field)]
     public class ColorEnumAttribute : PropertyAttribute
     {
+        public ColorType ColorType;
 
+        public ColorEnumAttribute (ColorType type)
+        {
+            ColorType = type;
+        }
+    }
+
+    public enum ColorType
+    {
+        Content,
+        BackGround,
     }
 }

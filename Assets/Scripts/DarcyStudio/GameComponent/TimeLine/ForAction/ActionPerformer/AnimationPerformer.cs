@@ -6,6 +6,7 @@
 
 using System;
 using DarcyStudio.GameComponent.TimeLine.ForAction.Receiver;
+using DarcyStudio.GameComponent.TimeLine.ForAction.Sender;
 using DarcyStudio.GameComponent.Tools;
 using UnityEngine;
 
@@ -13,25 +14,26 @@ namespace DarcyStudio.GameComponent.TimeLine.ForAction.ActionPerformer
 {
     public class AnimationPerformer : IPerformer
     {
-        private PerformData        _performData;
+        private PerformConfig      _performConfig;
         private Action<IPerformer> _callback;
         private GameObject         _sender;
 
-        public void Perform (PerformData data, Action<IPerformer> finishCallback, GameObject sender, bool canBreak)
+        public void Perform (PerformConfig config,         AttackActionConfig attackActionConfig,
+            Action<IPerformer>             finishCallback, GameObject         sender, bool canBreak)
         {
-            _performData = data;
-            _sender      = sender;
+            _performConfig = config;
+            _sender        = sender;
 
             var superAnimator = sender.GetComponent<SuperAnimator> ();
             if (!superAnimator)
                 superAnimator = sender.AddComponent<SuperAnimator> ();
 
             _callback = finishCallback;
-            
+
             if (!superAnimator.IsPlaying || canBreak)
             {
                 superAnimator.Stop ();
-                superAnimator.Play (data.animationKey, OnPlayEnd);
+                superAnimator.Play (config.animationKey, OnPlayEnd);
             }
             else
             {
@@ -44,6 +46,6 @@ namespace DarcyStudio.GameComponent.TimeLine.ForAction.ActionPerformer
             _callback?.Invoke (this);
         }
 
-        public PerformData GetPerformData () => _performData;
+        public PerformConfig GetPerformData () => _performConfig;
     }
 }

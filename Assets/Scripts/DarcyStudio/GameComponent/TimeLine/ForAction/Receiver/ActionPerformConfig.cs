@@ -6,83 +6,80 @@
  ***/
 
 using System;
+using DarcyStudio.CustomEditor.Attribute.CustomPropertyAttribute;
 using DarcyStudio.GameComponent.TimeLine.ForAction.Sender;
-using UnityEngine;
+using DarcyStudio.GameComponent.Tools;
 
 namespace DarcyStudio.GameComponent.TimeLine.ForAction.Receiver
 {
     [Serializable]
-    public class ActionPerformConfig
+    public struct ActionPerformConfig
     {
+        [ColorEnum (ColorType.BackGround)] public ActionType actionType;
 
-        public bool waitDone;
+        public PerformConfig[] performs;
 
-        public ActionType actionType;
+        public ActionBaseConfig config;
 
-        public PerformData[] performs;
+        public ActionType ActionType () => actionType;
 
-
-        [SerializeField] private bool       specifyNextAction;
-        [SerializeField] private ActionType nextAction = ActionType.None;
-
-        public ActionType GetActionType ()
+        public bool WaitDone ()
         {
-            return actionType;
+            return config.WaitDone;
         }
 
-        public PerformData[] GetPerforms ()
+        public PerformConfig[] GetPerforms ()
         {
             return performs;
         }
 
         public ActionType GetNextActionType ()
         {
-            return specifyNextAction ? nextAction : GetNextActionType (this);
+            return config.SpecifyNextAction ? config.NextAction : Sender.ActionType.None;
         }
-
-        private ActionInfo _actionInfo; //从攻击方传来的
-
-        public void SetActionInfo (ActionInfo actionInfo)
-        {
-            _actionInfo = actionInfo;
-        }
-
-        public ActionInfo GetActionInfo () => _actionInfo;
 
         public static ActionType GetNextActionType (ActionPerformConfig preConfig)
         {
-            var result = ActionType.None;
-            switch (preConfig.actionType)
+            var result = Sender.ActionType.None;
+            switch (preConfig.ActionType ())
             {
-                case ActionType.None:
+                case Sender.ActionType.None:
                     break;
-                case ActionType.Custom:
+                case Sender.ActionType.Custom:
                     break;
-                case ActionType.Idle:
+                case Sender.ActionType.Idle:
                     break;
-                case ActionType.Back:
-                    result = ActionType.Idle;
+                case Sender.ActionType.Back:
+                    result = Sender.ActionType.Idle;
                     break;
-                case ActionType.Fall:
-                    result = ActionType.GetUp;
+                case Sender.ActionType.Fall:
+                    result = Sender.ActionType.GetUp;
                     break;
-                case ActionType.KnockFly:
-                    result = ActionType.Fall;
+                case Sender.ActionType.KnockFly:
+                    result = Sender.ActionType.Fall;
                     break;
-                case ActionType.Floating:
-                    result = ActionType.Fall;
+                case Sender.ActionType.Floating:
+                    result = Sender.ActionType.Fall;
                     break;
-                case ActionType.Default:
+                case Sender.ActionType.Default:
                     break;
-                case ActionType.GetUp:
-                    result = ActionType.Idle;
+                case Sender.ActionType.GetUp:
+                    result = Sender.ActionType.Idle;
                     break;
                 default:
-                    result = ActionType.None;
+                    result = Sender.ActionType.None;
                     break;
             }
 
             return result;
         }
+    }
+
+    [Serializable]
+    public struct ActionBaseConfig
+    {
+        public                                    bool       WaitDone;
+        public                                    bool       SpecifyNextAction;
+        [ColorEnum (ColorType.BackGround)] public ActionType NextAction;
     }
 }

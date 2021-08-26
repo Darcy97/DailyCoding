@@ -7,6 +7,7 @@
 
 using System;
 using DarcyStudio.GameComponent.TimeLine.ForAction.Receiver;
+using DarcyStudio.GameComponent.TimeLine.ForAction.Sender;
 using DarcyStudio.GameComponent.Tools;
 using UnityEngine;
 using Object = UnityEngine.Object;
@@ -16,23 +17,24 @@ namespace DarcyStudio.GameComponent.TimeLine.ForAction.ActionPerformer
     public class ShowGoPerformer : IPerformer
     {
 
-        private PerformData        _data;
+        private PerformConfig      _config;
         private GameObject         _go;
         private Action<IPerformer> _finishCallback;
 
-        public void Perform (PerformData data, Action<IPerformer> finishCallback, GameObject sender, bool canBreak)
+        public void Perform (PerformConfig config,         AttackActionConfig attackActionConfig,
+            Action<IPerformer>             finishCallback, GameObject         sender, bool canBreak)
         {
-            _data           = data;
+            _config         = config;
             _finishCallback = finishCallback;
 
-            if (data.go == null)
+            if (config.go == null)
             {
                 Log.Error ("No GO in Perform data");
                 finishCallback?.Invoke (this);
                 return;
             }
 
-            _go = Object.Instantiate (data.go, sender.transform);
+            _go = Object.Instantiate (config.go, sender.transform);
 
             _go.transform.localPosition = Vector3.zero;
 
@@ -41,8 +43,8 @@ namespace DarcyStudio.GameComponent.TimeLine.ForAction.ActionPerformer
 
         private void OnShow ()
         {
-            if (_data.duration > 0)
-                YieldUtils.DelayActionWithOutContext (OnDisappear, _data.duration);
+            if (_config.duration > 0)
+                YieldUtils.DelayActionWithOutContext (OnDisappear, _config.duration);
             else
             {
                 Log.Error ("Make sure you set the duration in perform data");
@@ -56,6 +58,6 @@ namespace DarcyStudio.GameComponent.TimeLine.ForAction.ActionPerformer
             _finishCallback?.Invoke (this);
         }
 
-        public PerformData GetPerformData () => _data;
+        public PerformConfig GetPerformData () => _config;
     }
 }

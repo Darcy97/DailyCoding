@@ -7,6 +7,7 @@
 
 using System;
 using DarcyStudio.GameComponent.TimeLine.ForAction.Receiver;
+using DarcyStudio.GameComponent.TimeLine.ForAction.Sender;
 using DarcyStudio.GameComponent.TimeLine.RequireObject;
 using DarcyStudio.GameComponent.Tools;
 using UnityEngine;
@@ -22,6 +23,15 @@ namespace DarcyStudio.GameComponent.TimeLine.ForAction.ActionPerformer
 
         private int _tag;
 
+        private AttackActionConfig _attackActionConfig;
+
+        private bool _isPlaying;
+
+        public Executor (AttackActionConfig attackConfig)
+        {
+            _attackActionConfig = attackConfig;
+        }
+
         public void SetTag (int tag)
         {
             _tag = tag;
@@ -32,11 +42,7 @@ namespace DarcyStudio.GameComponent.TimeLine.ForAction.ActionPerformer
         public void Execute (ActionPerformConfig config, Action<IExecutor> finishCallback, IObject sender,
             bool                                 canBreak)
         {
-            if (_waitDoneCount > 0)
-            {
-                Log.Error ("Logic error");
-                return;
-            }
+            _isPlaying = true;
 
             _config         = config;
             _finishCallback = finishCallback;
@@ -54,7 +60,6 @@ namespace DarcyStudio.GameComponent.TimeLine.ForAction.ActionPerformer
 
             foreach (var performData in performDatas)
             {
-                performData.ActionInfo = config.GetActionInfo ();
                 ExecuteByPerformData (performData, canBreak);
             }
 
@@ -64,12 +69,17 @@ namespace DarcyStudio.GameComponent.TimeLine.ForAction.ActionPerformer
             EndCallback ();
         }
 
+        public void Stop ()
+        {
+            _isPlaying = false;
+        }
+
         public ActionPerformConfig GetConfig () => _config;
 
-        private void ExecuteByPerformData (PerformData data, bool canBreak)
+        private void ExecuteByPerformData (PerformConfig config, bool canBreak)
         {
-            var performer = GetPerformer (data.performType);
-            performer.Perform (data, OnPerformEnd, _sender.GetGameObject (), canBreak);
+            var performer = GetPerformer (config.performType);
+            performer.Perform (config, _attackActionConfig, OnPerformEnd, _sender.GetGameObject (), canBreak);
         }
 
         private void OnPerformEnd (IPerformer performer)
@@ -109,6 +119,8 @@ namespace DarcyStudio.GameComponent.TimeLine.ForAction.ActionPerformer
                     return new MovePerformer ();
                 case PerformType.ResetPosition:
                     return new ResetPositionPerformer ();
+                case PerformType.Wait:
+                    return new WaitPerformer ();
                 default:
                     return InvalidPerformer.Default;
             }

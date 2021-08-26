@@ -20,13 +20,13 @@ namespace DarcyStudio.GameComponent.TimeLine.PlayableTrack
     {
         // [SerializeField] private List<ActionInfo> actionPairs;
         
-        [SerializeField] private ActionData actionData;
+        [SerializeField] private AttackActionConfigData attackActionConfigData;
         // [SerializeField] private ActionType actionType;
         [SerializeField] private bool       needWaitDone;
 
         protected override ObjectDemandPlayableBehaviour CreateBehaviour ()
         {
-            var bhv = new TriggerActionPlayableBehaviour (actionData);
+            var bhv = new TriggerActionPlayableBehaviour (attackActionConfigData);
             bhv.SetWaitDoneListener (_workStateListener);
             return bhv;
         }

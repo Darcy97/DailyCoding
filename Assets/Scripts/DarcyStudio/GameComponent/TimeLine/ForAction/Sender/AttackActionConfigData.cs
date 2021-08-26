@@ -13,13 +13,16 @@ using DarcyStudio.CustomEditor.Attribute.CustomPropertyAttribute;
 namespace DarcyStudio.GameComponent.TimeLine.ForAction.Sender
 {
     [Serializable]
-    public class ActionData
+    public class AttackActionConfigData
     {
 
-        public List<ActionInfo> actionPairs;
+        public List<AttackActionConfig> actionPairs;
 
-        public ActionInfo GetActionInfoByPreviousAction (ActionType actionType)
+        public AttackActionConfig GetActionInfoByPreviousAction (ActionType actionType)
         {
+            if (actionPairs == null || actionPairs.Count < 1)
+                return default;
+
             foreach (var actionInfo in actionPairs)
             {
                 if ((actionInfo.previousActionType & ActionType.Any) == ActionType.Any)
@@ -30,12 +33,12 @@ namespace DarcyStudio.GameComponent.TimeLine.ForAction.Sender
             }
 
             // Log.Error ("No fit action info for ---> {0}", actionType.ToString ());
-            return null;
+            return default;
         }
     }
 
     [Serializable]
-    public class ActionInfo
+    public struct AttackActionConfig
     {
         [EnumList] public ActionType previousActionType;
 
@@ -45,7 +48,8 @@ namespace DarcyStudio.GameComponent.TimeLine.ForAction.Sender
         public float      k2;
         public float      k3;
 
-        public static ActionInfo Default = new ActionInfo ();
+        public float waitTime;
+
     }
 
     public enum ActionType
@@ -61,5 +65,11 @@ namespace DarcyStudio.GameComponent.TimeLine.ForAction.Sender
         Floating, //浮空
         GetUp,
         ResetToOrigin, //归位
+        Next1,
+        Next2,
+        Next3,
+        Next4,
+        Next5,
+        Next6
     }
 }

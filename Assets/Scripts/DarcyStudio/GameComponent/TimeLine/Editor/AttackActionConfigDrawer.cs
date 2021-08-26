@@ -16,21 +16,23 @@ using UnityEngine;
 namespace DarcyStudio.GameComponent.TimeLine.Editor
 {
 
-    [CustomPropertyDrawer (typeof (ActionInfo))]
-    public class ActionInfoDrawer : SuperPropertyDrawer
+    [CustomPropertyDrawer (typeof (AttackActionConfig))]
+    public class AttackActionConfigDrawer : SuperPropertyDrawer
     {
 
         protected override void SuperOnGUI (Rect position, SerializedProperty property, GUIContent label)
         {
-            DrawProperty (nameof (ActionInfo.previousActionType), "Previous", ref position, 45, 70, property);
+            DrawProperty (nameof (AttackActionConfig.previousActionType), "Previous", ref position, 45, 70, property);
             position.x += 5;
-            var afterAction = DrawProperty (nameof (ActionInfo.afterActionType), "After", ref position, 30, 70,
+            var afterAction = DrawProperty (nameof (AttackActionConfig.afterActionType), "After", ref position, 30, 70,
                 property);
 
             NewLine (ref position);
 
             switch ((ActionType) afterAction.enumValueIndex)
             {
+                case ActionType.Any:
+                    break;
                 case ActionType.None:
                     break;
                 case ActionType.Default:
@@ -40,9 +42,9 @@ namespace DarcyStudio.GameComponent.TimeLine.Editor
                 case ActionType.Idle:
                     break;
                 case ActionType.Back:
-                    DrawProperty (nameof (ActionInfo.k0), "初速度", ref position, 45, 30, property);
-                    // NewLine (ref position);
-                    // DrawProperty (nameof (ActionInfo.k1), "X加速度", ref position, 45, 30, property);
+                    DrawProperty (nameof (AttackActionConfig.k0), "初速度", ref position, 50, 30, property);
+                    NewLine (ref position);
+                    DrawProperty (nameof (AttackActionConfig.waitTime), "停滞时间", ref position, 50, 30, property);
                     break;
                 case ActionType.Fall:
                     break;
@@ -50,7 +52,7 @@ namespace DarcyStudio.GameComponent.TimeLine.Editor
                     //TODO
                     break;
                 case ActionType.Floating:
-                    //TODO
+                    DrawProperty (nameof (AttackActionConfig.k0), "初速度", ref position, 45, 30, property);
                     break;
                 case ActionType.GetUp:
                     break;
@@ -62,7 +64,8 @@ namespace DarcyStudio.GameComponent.TimeLine.Editor
 
         protected override int GetLineCount (SerializedProperty property)
         {
-            switch ((ActionType) property.FindPropertyRelative (nameof (ActionInfo.afterActionType)).enumValueIndex)
+            switch ((ActionType) property.FindPropertyRelative (nameof (AttackActionConfig.afterActionType))
+                .enumValueIndex)
             {
                 case ActionType.None:
                 case ActionType.Default:
@@ -70,7 +73,7 @@ namespace DarcyStudio.GameComponent.TimeLine.Editor
                 case ActionType.Idle:
                     return 1;
                 case ActionType.Back:
-                    return 2;
+                    return 3;
                 case ActionType.Fall:
                     break;
                 case ActionType.KnockFly:

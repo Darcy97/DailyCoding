@@ -13,10 +13,11 @@ namespace DarcyStudio.GameComponent.TimeLine.ForAction.Receiver
 {
     public interface IExecutor
     {
-        void                Execute (ActionPerformConfig config, Action<IExecutor> finishCallback, IObject sender, bool canBreak);
+        void Execute (ActionPerformConfig config, Action<IExecutor> finishCallback, IObject sender, bool canBreak);
+        void Stop ();
         ActionPerformConfig GetConfig ();
 
         void SetTag (int tag);
-        int Tag ();
+        int  Tag ();
     }
 }

@@ -6,8 +6,6 @@
  * Description: 用于测试
  ***/
 
-using System;
-using System.Collections.Generic;
 using DarcyStudio.GameComponent.TimeLine.Actor;
 using DarcyStudio.GameComponent.TimeLine.DemandObject;
 using DarcyStudio.GameComponent.TimeLine.ForAction;
@@ -23,12 +21,15 @@ namespace DarcyStudio.GameComponent.TimeLine
     public class TestSkillTimeline : MonoBehaviour, IObjectProvider
     {
 
+        // [Color("#BF2323")]
+        
         [SerializeField] private ActorObject self;
         [SerializeField] private ActorObject enemy1;
         [SerializeField] private ActorObject enemy2;
         [SerializeField] private ActorObject enemy3;
         [SerializeField] private ActorObject enemy4;
         [SerializeField] private ActorObject enemy5;
+        
 
         [SerializeField] private SkillTimeline skillTimeline;
 
@@ -110,18 +111,4 @@ namespace DarcyStudio.GameComponent.TimeLine
             GUI.backgroundColor = color;
         }
     }
-
-    // [Serializable]
-    // public class TargetObjectInfo
-    // {
-    //     public                   ObjectType ObjectType;
-    //     [SerializeField] private GameObject go;
-    //
-    //     public IObject GetObject ()
-    //     {
-    //         return go ? go.GetComponent<IObject> () : InvalidObject.Default;
-    //     }
-    //
-    //
-    // }
 }

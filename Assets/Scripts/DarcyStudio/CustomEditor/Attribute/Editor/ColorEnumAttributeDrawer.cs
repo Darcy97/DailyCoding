@@ -16,21 +16,40 @@ namespace DarcyStudio.CustomEditor.Attribute.Editor
     {
         public override void OnGUI (Rect position, SerializedProperty property, GUIContent label)
         {
-            if (property.propertyType == SerializedPropertyType.Enum)
+            var attr = (ColorEnumAttribute) attribute;
+            if (attr.ColorType == ColorType.BackGround)
             {
-                var bgColor = GUI.backgroundColor;
-                var color   = GetColor (property.enumValueIndex);
-                GUI.backgroundColor = color;
-                EditorGUI.PropertyField (position, property, label);
-                GUI.backgroundColor = bgColor;
+                if (property.propertyType == SerializedPropertyType.Enum)
+                {
+                    var bgColor = GUI.backgroundColor;
+                    var color   = GetBgColor (property.enumValueIndex);
+                    GUI.backgroundColor = color;
+                    EditorGUI.PropertyField (position, property, label);
+                    GUI.backgroundColor = bgColor;
+                }
+                else
+                {
+                    EditorGUI.PropertyField (position, property, label);
+                }
             }
-            else
+            else if (attr.ColorType == ColorType.Content)
             {
-                EditorGUI.PropertyField (position, property, label);
+                if (property.propertyType == SerializedPropertyType.Enum)
+                {
+                    var bgColor = GUI.contentColor;
+                    var color   = GetContentColor (property.enumValueIndex);
+                    GUI.contentColor = color;
+                    EditorGUI.PropertyField (position, property, label);
+                    GUI.contentColor = bgColor;
+                }
+                else
+                {
+                    EditorGUI.PropertyField (position, property, label);
+                }
             }
         }
 
-        private Color GetColor (int index)
+        private Color GetBgColor (int index)
         {
             switch (index)
             {
@@ -109,6 +128,93 @@ namespace DarcyStudio.CustomEditor.Attribute.Editor
             }
 
             return Color.gray;
+        }
+
+        private Color GetContentColor (int index)
+        {
+            switch (index)
+            {
+                case 0:
+                    return GetColor ("#48D1CC");
+                case 1:
+                    return Color.white;
+                case 2:
+                    return Color.yellow;
+                case 3:
+                    return GetColor ("#FF6347");
+                case 4:
+                    return GetColor ("#000000");
+                case 5:
+                    return Color.green;
+                case 6:
+                    return Color.cyan;
+                case 7:
+                {
+                    ColorUtility.TryParseHtmlString ("#48D1CC", out var color);
+                    return color;
+                }
+                case 8:
+                {
+                    ColorUtility.TryParseHtmlString ("#32CD32", out var color);
+                    return color;
+                }
+                case 9:
+                {
+                    ColorUtility.TryParseHtmlString ("#DAA520", out var color);
+                    return color;
+                }
+                case 10:
+                {
+                    ColorUtility.TryParseHtmlString ("#FF8C00", out var color);
+                    return color;
+                }
+                case 11:
+                {
+                    ColorUtility.TryParseHtmlString ("#FF6347", out var color);
+                    return color;
+                }
+                case 12:
+                {
+                    ColorUtility.TryParseHtmlString ("#B22222", out var color);
+                    return color;
+                }
+                case 13:
+                {
+                    ColorUtility.TryParseHtmlString ("#696969", out var color);
+                    return color;
+                }
+                case 14:
+                {
+                    ColorUtility.TryParseHtmlString ("#1E90FF", out var color);
+                    return color;
+                }
+                case 15:
+                {
+                    ColorUtility.TryParseHtmlString ("#FF1493", out var color);
+                    return color;
+                }
+
+                case 16:
+                {
+                    ColorUtility.TryParseHtmlString ("#FF00FF", out var color);
+                    return color;
+                }
+
+                case 17:
+                {
+                    ColorUtility.TryParseHtmlString ("#00FFFF", out var color);
+                    return color;
+                }
+                default: return Color.gray;
+            }
+
+            return Color.gray;
+        }
+
+        private Color GetColor (string colorStr)
+        {
+            ColorUtility.TryParseHtmlString (colorStr, out var color);
+            return color;
         }
     }
 }

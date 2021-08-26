@@ -23,11 +23,11 @@ namespace DarcyStudio.GameComponent.TimeLine.PlayableTrack
 
         private          GameObject      _go;
         private          IActionReceiver _receiver;
-        private readonly ActionData      _actionData;
+        private readonly AttackActionConfigData      _attackActionConfigData;
 
-        public TriggerActionPlayableBehaviour (ActionData actionData)
+        public TriggerActionPlayableBehaviour (AttackActionConfigData attackActionConfigData)
         {
-            _actionData = actionData;
+            _attackActionConfigData = attackActionConfigData;
         }
 
         public override void OnGraphStart (Playable playable)
@@ -50,7 +50,7 @@ namespace DarcyStudio.GameComponent.TimeLine.PlayableTrack
         private void Play ()
         {
             _workStateListener?.StartWorking ();
-            _receiver.Do (_actionData, OnWorkDone);
+            _receiver.Do (_attackActionConfigData, OnWorkDone);
         }
 
         private void OnWorkDone ()

@@ -6,32 +6,33 @@
  ***/
 
 using System;
+using DarcyStudio.CustomEditor.Attribute.CustomPropertyAttribute;
 using DarcyStudio.GameComponent.TimeLine.ForAction.Sender;
 using UnityEngine;
 
 namespace DarcyStudio.GameComponent.TimeLine.ForAction.Receiver
 {
     [Serializable]
-    public class PerformData
+    public struct PerformConfig
     {
         public PerformType performType;
-        public string      animationKey;
-        public GameObject  go;
-        public float       duration = 1;
-        public bool        waitDone;
+
+        public string     animationKey;
+        public GameObject go;
+        public float      duration;
+        public bool       waitDone;
 
         public Vector3 moveVelocity;
-        public Vector3 moveAcceleration = new Vector3 (0, 2, 0);
+        public Vector3 moveAcceleration;
 
-        [NonSerialized] public IPerformer Performer;
-        [NonSerialized] public ActionInfo ActionInfo;
+        public float k0;
 
         // public static PerformData Animation (string key, bool waitDone)
         // {
         //     return new PerformData {animationKey = key, waitDone = waitDone};
         // }
 
-        public PerformData GetDefaultPerformData (PerformType type)
+        public PerformConfig GetDefaultPerformData (PerformType type)
         {
             switch (type)
             {
@@ -44,12 +45,12 @@ namespace DarcyStudio.GameComponent.TimeLine.ForAction.Receiver
                 case PerformType.Move:
                     break;
                 case PerformType.ResetPosition:
-                    return new PerformData {performType = PerformType.ResetPosition};
+                    return new PerformConfig {performType = PerformType.ResetPosition};
                 default:
                     throw new ArgumentOutOfRangeException (nameof (type), type, null);
             }
 
-            return null;
+            return default;
         }
 
     }
@@ -63,5 +64,6 @@ namespace DarcyStudio.GameComponent.TimeLine.ForAction.Receiver
         ShowGo,
         Move,
         ResetPosition,
+        Wait,
     }
 }

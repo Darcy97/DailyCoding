@@ -13,6 +13,6 @@ namespace DarcyStudio.GameComponent.TimeLine.ForAction.Receiver
 {
     public interface IActionReceiver
     {
-        void Do (ActionData actionData, Action finishCallback = null);
+        void Do (AttackActionConfigData attackActionConfigData, Action finishCallback = null);
     }
 }
