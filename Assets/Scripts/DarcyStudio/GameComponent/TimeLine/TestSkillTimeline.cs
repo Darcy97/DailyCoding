@@ -14,6 +14,7 @@ using DarcyStudio.GameComponent.TimeLine.RequireObject;
 using DarcyStudio.GameComponent.TimeLine.Skill;
 using DarcyStudio.GameComponent.Tools;
 using UnityEngine;
+using SkillTimeline = DarcyStudio.GameComponent.TimeLine.Skill.SkillTimeline;
 
 namespace DarcyStudio.GameComponent.TimeLine
 {
@@ -22,14 +23,14 @@ namespace DarcyStudio.GameComponent.TimeLine
     {
 
         // [Color("#BF2323")]
-        
+
         [SerializeField] private ActorObject self;
         [SerializeField] private ActorObject enemy1;
         [SerializeField] private ActorObject enemy2;
         [SerializeField] private ActorObject enemy3;
         [SerializeField] private ActorObject enemy4;
         [SerializeField] private ActorObject enemy5;
-        
+
 
         [SerializeField] private SkillTimeline skillTimeline;
 
@@ -111,4 +112,5 @@ namespace DarcyStudio.GameComponent.TimeLine
             GUI.backgroundColor = color;
         }
     }
+
 }

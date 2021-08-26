@@ -11,8 +11,10 @@
  * 
  ***/
 
+using DarcyStudio.GameComponent.TimeLine.Skill;
 using UnityEditor;
 using UnityEngine;
+using SkillTimeline = DarcyStudio.GameComponent.TimeLine.Skill.SkillTimeline;
 
 namespace DarcyStudio.GameComponent.TimeLine.Editor
 {
@@ -29,10 +31,14 @@ namespace DarcyStudio.GameComponent.TimeLine.Editor
             if (!myTarget.IsValid (out var info))
                 EditorGUILayout.HelpBox (info, MessageType.Error);
 
+            EditorGUILayout.PropertyField (serializedObject.FindProperty ("skillKey"), new GUIContent ("技能名字"));
+
             // base.OnInspectorGUI ();
 
             EditorGUILayout.PropertyField (serializedObject.FindProperty ("playableDirector"), true);
             EditorGUILayout.PropertyField (serializedObject.FindProperty ("timelineAsset"),    true);
+
+            myTarget.DrawCreateTimelineButton ();
 
             EditorGUILayout.BeginHorizontal ();
             EditorGUILayout.PropertyField (serializedObject.FindProperty ("trackInfos"), true);
@@ -41,11 +47,13 @@ namespace DarcyStudio.GameComponent.TimeLine.Editor
 
             EditorGUILayout.Space ();
 
-            EditorGUILayout.BeginHorizontal ();
-            EditorGUILayout.PropertyField (serializedObject.FindProperty ("skillKey"));
             myTarget.DrawSaveButton ();
-            EditorGUILayout.EndHorizontal ();
             EditorGUILayout.Space ();
+
+            var color = GUI.color;
+            GUI.color = Color.green;
+            EditorGUILayout.LabelField ($"相关文件都保存在 --- \"{SkillEditor.Folder}\" ");
+            GUI.color = color;
 
             serializedObject.ApplyModifiedProperties ();
             EditorGUI.EndChangeCheck ();
