@@ -21,9 +21,9 @@ namespace DarcyStudio.GameComponent.TimeLine.PlayableTrack
         {
         }
 
-        private          GameObject      _go;
-        private          IActionReceiver _receiver;
-        private readonly AttackActionConfigData      _attackActionConfigData;
+        private          GameObject             _go;
+        private          IActionReceiver        _receiver;
+        private readonly AttackActionConfigData _attackActionConfigData;
 
         public TriggerActionPlayableBehaviour (AttackActionConfigData attackActionConfigData)
         {
@@ -44,6 +44,9 @@ namespace DarcyStudio.GameComponent.TimeLine.PlayableTrack
         public override void OnBehaviourPlay (Playable playable, FrameData info)
         {
             base.OnBehaviourPlay (playable, info);
+
+            if (!IsPlaying ())
+                return;
             Play ();
         }
 

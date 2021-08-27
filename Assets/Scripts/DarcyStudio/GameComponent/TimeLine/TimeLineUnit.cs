@@ -7,6 +7,7 @@
  ***/
 
 using System;
+using System.Linq;
 using DarcyStudio.GameComponent.TimeLine.ForAction;
 using DarcyStudio.GameComponent.TimeLine.RequireObject;
 using DarcyStudio.GameComponent.TimeLine.WorkState;
@@ -29,6 +30,7 @@ namespace DarcyStudio.GameComponent.TimeLine
         // private Dictionary<string, Dictionary<string, PlayableAsset>> _clips;
 
         private List<PlayableAsset> _playableAssets;
+        // private List<TimelineClip>  _timelineClips;
 
         private Action<TimelineUnit> _playFinished;
 
@@ -52,12 +54,13 @@ namespace DarcyStudio.GameComponent.TimeLine
         // _playFinished = action;
         // }
 
-        public void Init (string name, PlayableDirector director, PlayableAsset asset)
+        public void Init (string name, PlayableDirector director, TimelineAsset asset)
         {
-            director.playableAsset = asset;
-            _name                  = name;
-            _director              = director;
-            _asset                 = asset;
+            _director               = director;
+            _asset                  = asset;
+            _director.playableAsset = asset;
+            _name                   = name;
+
 
             InitBindingsAndPlayableAssets ();
             // InitEvent ();
@@ -99,9 +102,11 @@ namespace DarcyStudio.GameComponent.TimeLine
 
         private void InitBindingsAndPlayableAssets ()
         {
+            var outPuts = _asset.outputs;
             _bindings       = new Dictionary<string, PlayableBinding> ();
             _playableAssets = new List<PlayableAsset> ();
-            foreach (var o in _asset.outputs)
+            // _timelineClips  = new List<TimelineClip> (_asset.outputs.Count ());
+            foreach (var o in outPuts)
             {
                 var trackName = o.streamName;
                 _bindings.Add (trackName, o);
@@ -112,6 +117,8 @@ namespace DarcyStudio.GameComponent.TimeLine
                     continue;
 
                 var clipList = track.GetClips ();
+                // var timeLineClips = clipList as TimelineClip[] ?? clipList.ToArray ();
+                // _timelineClips.AddRange (timeLineClips);
                 foreach (var timeLineClip in clipList)
                 {
                     //     if (!_clips.ContainsKey (trackName))
@@ -138,6 +145,17 @@ namespace DarcyStudio.GameComponent.TimeLine
                     demander.SetProvider (provider);
                 }
             });
+        }
+
+        public void SetAnimationExtrapolation ()
+        {
+            // ForeachTimelineClips ((t) =>
+            // {
+            //     if (t.animationClip != null)
+            //     {
+            //         
+            //     }
+            // });
         }
 
         public void SetBinding (string trackName, Object o)
@@ -255,6 +273,15 @@ namespace DarcyStudio.GameComponent.TimeLine
             //         var playableAsset = timeLineClip.asset as PlayableAsset;
             //         action (playableAsset);
             //     }
+            // }
+        }
+
+        private void ForeachTimelineClips (Action<TimelineClip> action)
+        {
+            // foreach (var timelineClip in _timelineClips)
+            // {
+            // if (timelineClip != null)
+            // action (timelineClip);
             // }
         }
 

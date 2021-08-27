@@ -22,6 +22,8 @@ namespace DarcyStudio.GameComponent.TimeLine.Skill
     {
         public void OnBeforeSerialize ()
         {
+            if (string.IsNullOrEmpty (skillKey))
+                return;
             gameObject.name = skillKey;
         }
 
@@ -84,12 +86,13 @@ namespace DarcyStudio.GameComponent.TimeLine.Skill
             {
                 EditorUtility.DisplayDialog ("失败", $"创建 Timeline 文件失败 ⚠️ \n{message}", "知道了～");
                 playableDirector.playableAsset = null;
-                timelineAsset                  = null;
                 return;
             }
 
             playableDirector.playableAsset = asset;
             timelineAsset                  = asset;
+            if (PrefabUtility.IsAnyPrefabInstanceRoot (gameObject))
+                PrefabUtility.ApplyPrefabInstance (gameObject, InteractionMode.AutomatedAction);
             EditorUtility.DisplayDialog ("成功", "生成 Timeline 文件 成功", "知道了～");
         }
 
@@ -182,8 +185,9 @@ namespace DarcyStudio.GameComponent.TimeLine.Skill
         {
             try
             {
-                PrefabUtility.UnpackPrefabInstance (gameObject, PrefabUnpackMode.Completely,
-                    InteractionMode.AutomatedAction);
+                if (PrefabUtility.IsAnyPrefabInstanceRoot (gameObject))
+                    PrefabUtility.UnpackPrefabInstance (gameObject, PrefabUnpackMode.Completely,
+                        InteractionMode.AutomatedAction);
                 PrefabUtility.SaveAsPrefabAssetAndConnect (gameObject, path, InteractionMode.AutomatedAction,
                     out var success);
                 if (success)
@@ -258,7 +262,8 @@ namespace DarcyStudio.GameComponent.TimeLine.Skill
             var obj           = AddObject ("SkillTimeLine", false, true);
             var skillTimeline = obj.AddComponent<SkillTimeline> ();
             var playable      = AddObject ("Timeline", false, true, obj);
-            playable.AddComponent<PlayableDirector> ();
+            var director      = playable.AddComponent<PlayableDirector> ();
+            director.playOnAwake = false;
             skillTimeline.InitBinding ();
             Selection.activeGameObject = obj;
         }
@@ -272,11 +277,11 @@ namespace DarcyStudio.GameComponent.TimeLine.Skill
                 return null;
             }
 
-            asset.CreateTrack<AnimationTrack> (null, "Self");
             try
             {
                 AssetDatabase.CreateAsset (asset, path);
                 AssetDatabase.SaveAssets ();
+                AssetDatabase.Refresh ();
                 message = string.Empty;
             }
             catch (Exception e)

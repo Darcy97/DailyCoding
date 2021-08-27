@@ -30,7 +30,7 @@ namespace DarcyStudio.GameComponent.TimeLine
         {
             _timeline?.Dispose ();
             _timeline = new TimelineUnit ();
-            _timeline.Init (timelineAsset.name, playableDirector, timelineAsset);
+            // _timeline.Init (timelineAsset.name, playableDirector, timelineAsset);
             _timeline.SetPlayOnAwake (false);
             _timeline.SetExtrapolationMode (DirectorWrapMode.Hold);
         }

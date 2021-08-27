@@ -63,10 +63,10 @@ namespace DarcyStudio.GameComponent.TimeLine.Editor
                 case PerformType.Move:
 
                     NewLine (ref position);
-                    DrawProperty (nameof (PerformConfig.moveVelocity), "速度系数", ref position, 45, 200, property);
+                    DrawProperty (nameof (PerformConfig.moveVelocityRate), "速度系数", ref position, 50, 200, property);
 
                     NewLine (ref position);
-                    DrawProperty (nameof (PerformConfig.moveAcceleration), "加速度", ref position, 45, 200, property);
+                    DrawProperty (nameof (PerformConfig.moveAcceleration), "加速度", ref position, 50, 200, property);
                     break;
 
                 case PerformType.ResetPosition:

@@ -22,7 +22,7 @@ namespace DarcyStudio.GameComponent.TimeLine.ForAction.Receiver
         public float      duration;
         public bool       waitDone;
 
-        public Vector3 moveVelocity;
+        public Vector3 moveVelocityRate;
         public Vector3 moveAcceleration;
 
         public float k0;

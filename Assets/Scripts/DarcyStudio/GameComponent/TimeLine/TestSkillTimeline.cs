@@ -55,6 +55,8 @@ namespace DarcyStudio.GameComponent.TimeLine
 
         public void Play ()
         {
+            if (!IsPlaying ())
+                return;
             skillTimeline.Init ();
             skillTimeline.SetObjectProvider (this);
             skillTimeline.Play (OnPlayFinish);
@@ -100,6 +102,14 @@ namespace DarcyStudio.GameComponent.TimeLine
                 default:
                     return InvalidObject.Default;
             }
+        }
+        
+        protected bool IsPlaying ()
+        {
+#if UNITY_EDITOR
+            return Application.isPlaying;
+#endif
+            return true;
         }
 
         public void DrawButtons ()

@@ -113,6 +113,9 @@ namespace DarcyStudio.GameComponent.TimeLine.PlayableTrack
             if (!IsValid ())
                 return;
 
+            if (!IsPlaying ())
+                return;
+
             ShowControlled ();
 
             _curTime += info.deltaTime;

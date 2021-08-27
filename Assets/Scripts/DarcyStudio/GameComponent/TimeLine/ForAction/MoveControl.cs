@@ -157,15 +157,29 @@ namespace DarcyStudio.GameComponent.TimeLine.ForAction
                 }
             }
 
-            if (!AlmostZero (MoveVelocity.y, float.Epsilon))
-            {
-                moving = true;
+            // if (!AlmostZero (MoveVelocity.y, float.Epsilon))
+            // {
+            //     moving = true;
+            //
+            //     MoveVelocity.y -= MoveAcceleration.y * aRate;
+            //     if (AlmostZero (MoveVelocity.y, MoveAcceleration.y * aRate))
+            //     {
+            //         MoveVelocity.y = 0;
+            //     }
+            // }
 
+
+            //竖直方向比较特殊，因为纵向有重力
+            if (_transform.localPosition.y >= _originPosition.y)
+            {
+                moving         =  true;
                 MoveVelocity.y -= MoveAcceleration.y * aRate;
-                if (AlmostZero (MoveVelocity.y, MoveAcceleration.y * aRate))
-                {
-                    MoveVelocity.y = 0;
-                }
+            }
+            else
+            {
+                _transform.localPosition =
+                    new Vector3 (_transform.localPosition.x, _originPosition.y, _transform.localPosition.z);
+                MoveVelocity.y = 0;
             }
 
             if (!AlmostZero (MoveVelocity.z, float.Epsilon))

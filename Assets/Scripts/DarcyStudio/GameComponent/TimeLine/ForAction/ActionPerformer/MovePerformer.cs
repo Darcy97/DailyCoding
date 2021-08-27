@@ -36,7 +36,9 @@ namespace DarcyStudio.GameComponent.TimeLine.ForAction.ActionPerformer
             if (!moveControl.IsMoving || canBreak)
             {
                 moveControl.Stop ();
-                var v = config.moveVelocity * attackActionConfig.k0;
+                var v = new Vector3 (config.moveVelocityRate.x * attackActionConfig.k2,
+                    config.moveVelocityRate.y                  * attackActionConfig.k1,
+                    config.moveVelocityRate.z                  * attackActionConfig.k0);
                 moveControl.Move (v, config.moveAcceleration, OnMoveEnd);
             }
             else

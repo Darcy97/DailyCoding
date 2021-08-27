@@ -42,7 +42,7 @@ namespace DarcyStudio.GameComponent.TimeLine.Editor
                 case ActionType.Idle:
                     break;
                 case ActionType.Back:
-                    DrawProperty (nameof (AttackActionConfig.k0), "初速度", ref position, 50, 30, property);
+                    DrawProperty (nameof (AttackActionConfig.k0), "z 初速度", ref position, 50, 30, property);
                     NewLine (ref position);
                     DrawProperty (nameof (AttackActionConfig.waitTime), "停滞时间", ref position, 50, 30, property);
                     break;
@@ -52,7 +52,9 @@ namespace DarcyStudio.GameComponent.TimeLine.Editor
                     //TODO
                     break;
                 case ActionType.Floating:
-                    DrawProperty (nameof (AttackActionConfig.k0), "初速度", ref position, 45, 30, property);
+                    DrawProperty (nameof (AttackActionConfig.k0), "z 初速度", ref position, 45, 30, property);
+                    NewLine (ref position);
+                    DrawProperty (nameof (AttackActionConfig.k1), "y 初速度", ref position, 45, 30, property);
                     break;
                 case ActionType.GetUp:
                     break;
@@ -79,7 +81,7 @@ namespace DarcyStudio.GameComponent.TimeLine.Editor
                 case ActionType.KnockFly:
                     return 2;
                 case ActionType.Floating:
-                    return 2;
+                    return 3;
                 case ActionType.GetUp:
                     return 1;
                 default:

@@ -9,6 +9,7 @@
 using System;
 using DarcyStudio.GameComponent.TimeLine.RequireObject;
 using DarcyStudio.GameComponent.TimeLine.WorkState;
+using DarcyStudio.GameComponent.Tools;
 using UnityEngine;
 using UnityEngine.Playables;
 using UnityEngine.Timeline;
@@ -23,7 +24,7 @@ namespace DarcyStudio.GameComponent.TimeLine.Skill
         [SerializeField] private TrackInfo[] trackInfos;
 
         [SerializeField] private PlayableDirector playableDirector;
-        [SerializeField] private TimelineAsset    timelineAsset;
+        [SerializeField] private TimelineAsset    timelineAsset; //TODO 处理这个问题
 
         private IObjectProvider _provider;
         private TimelineUnit    _timeline;
@@ -31,9 +32,15 @@ namespace DarcyStudio.GameComponent.TimeLine.Skill
 
         public void Init ()
         {
+            if (playableDirector.playableAsset == null)
+            {
+                Log.Error ("Playable asset null");
+                return;
+            }
+
             _timeline?.Dispose ();
             _timeline = new TimelineUnit ();
-            _timeline.Init (timelineAsset.name, playableDirector, timelineAsset);
+            _timeline.Init (skillKey, playableDirector, timelineAsset);
             _timeline.SetPlayOnAwake (false);
             _timeline.SetExtrapolationMode (DirectorWrapMode.None);
             _timeline.SetWorkDoneListener (this);
