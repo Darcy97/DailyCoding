@@ -21,7 +21,7 @@ namespace DarcyStudio.CustomEditor.Attribute.Editor
         public override void OnGUI (Rect position, SerializedProperty property, GUIContent label)
         {
             EditorGUI.BeginProperty (position, label, property);
-            position = EditorGUI.PrefixLabel (position, GUIUtility.GetControlID (FocusType.Passive), label);
+            position = EditorGUI.PrefixLabel (position, GUIUtility.GetControlID (FocusType.Passive), GetLabel (label));
             _startX  = position.x;
 
             var indent = EditorGUI.indentLevel;
@@ -39,6 +39,12 @@ namespace DarcyStudio.CustomEditor.Attribute.Editor
             GUI.backgroundColor   = backgroundColor;
 
             EditorGUI.EndProperty ();
+        }
+
+
+        protected virtual GUIContent GetLabel (GUIContent label)
+        {
+            return label;
         }
 
         public override float GetPropertyHeight (SerializedProperty property, GUIContent label)
