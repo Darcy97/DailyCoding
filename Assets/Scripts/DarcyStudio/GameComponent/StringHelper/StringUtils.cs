@@ -48,5 +48,12 @@ namespace DarcyStudio.GameComponent.StringHelper
 
             return result;
         }
+
+        public static string UpperFirst (this string str)
+        {
+            var charArray = str.ToCharArray ();
+            charArray[0] = char.ToUpper (charArray[0]);
+            return new string (charArray);
+        }
     }
 }

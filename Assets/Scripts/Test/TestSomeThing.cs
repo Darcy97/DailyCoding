@@ -8,12 +8,15 @@
 
 using System;
 using System.Collections.Generic;
+using DarcyStudio.CustomEditor.Attribute.CustomPropertyAttribute;
 using UnityEngine;
 
 namespace Test
 {
     public class TestSomeThing : MonoBehaviour
     {
+        [AssetLabel] public string labels;
+
         private void Start ()
         {
             // const int low  = 0;
