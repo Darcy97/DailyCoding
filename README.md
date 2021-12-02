@@ -10,7 +10,7 @@
     Daily essays about Unity and C#
     
     1. 看书学习记录
-    2. 日常工作中 Idea 的尝试
+    2. 日常工作中 `idea` 的尝试
     3. 一些提高效率的小工具
     4. UGUI 的一些拓展
     5. C# 特性与语法糖的探索
