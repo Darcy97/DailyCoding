@@ -17,6 +17,8 @@
 
 > - [DarcyStudio] - 一些小工具及小想法
 > - [ExcellentPackages] - 记录一些优质插件
+> - [HugePit] - 记录一些踩过的坑～
 
 [DarcyStudio]: /Assets/Scripts/DarcyStudio
 [ExcellentPackages]: /Assets/ExcellentPackages
+[HugePit]: /Assets/HugePit
