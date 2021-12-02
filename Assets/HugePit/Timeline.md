@@ -26,7 +26,7 @@
 >   - 我们一样用 Update 来刷新 `Timeline`，手动修改 `Timeline` 的时间就好，每次将 `Timeline` 的时间 都加上一个 `Time.deltaTime`
 >   - 上面的逻辑其实实现了默认用 GameTime 刷新的效果，然后我们在将刷新频率提高就好
 >   - 如下，我们在每帧刷新时，将`Time.deltaTime` 分成多份（根据 TimeScale 决定具体数值），
-      这样我们在一帧刷新多次，就不会出现丢帧问题，且这只是改变了逻辑的刷新频率，渲染刷新还是跟帧率相关，所以并不会带来什么太高的额外性能消耗
+      这样我们在一帧刷新多次，就不会出现丢帧问题，且这只是改变了逻辑的刷新频率，渲染刷新频率不会改变，所以并不会带来什么太高的额外性能消耗
 ```
             var timeScale    = Time.timeScale;
             var time         = Time.deltaTime;
