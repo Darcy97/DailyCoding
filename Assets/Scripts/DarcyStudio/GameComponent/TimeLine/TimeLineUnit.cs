@@ -162,7 +162,7 @@ namespace DarcyStudio.GameComponent.TimeLine
         {
             if (!_bindings.ContainsKey (trackName))
             {
-                Log.Error ("No track: {0}", trackName);
+                Log.Error ($"No track: {trackName}");
                 return;
             }
 

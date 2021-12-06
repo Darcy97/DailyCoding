@@ -538,7 +538,8 @@ PlayerSettings:
   webGLCompressionFormat: 1
   webGLLinkerTarget: 1
   webGLThreadsSupport: 0
-  scriptingDefineSymbols: {}
+  scriptingDefineSymbols:
+    1: DEBUG_INFO;DEBUG_WARNING;DEBUG_ERROR
   platformArchitecture: {}
   scriptingBackend:
     Android: 1

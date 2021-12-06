@@ -37,7 +37,7 @@ namespace DarcyStudio.GameComponent.TimeLine.PlayableTrack
             if (_curve != null && _curve.length >= 1)
                 return _isValid;
 
-            Log.Error ("Animation curve null ---> {0}", nameof (MoveObjectPlayableBehaviour));
+            Log.Error ($"Animation curve null ---> {nameof (MoveObjectPlayableBehaviour)}");
 
             return false;
         }

@@ -43,8 +43,7 @@ namespace DarcyStudio.GameComponent.TimeLine.ForAction.Receiver
             {
                 if (_performConfigsDict.ContainsKey (actionPerformConfig.ActionType ()))
                 {
-                    Log.Error ("Dont allow multi action with same type: {0} in \"{1}\"",
-                        actionPerformConfig.ActionType (), transform.GetPath ());
+                    Log.Error ($"Dont allow multi action with same type: {actionPerformConfig.ActionType ()} in \"{transform.GetPath ()}\"");
                     continue;
                 }
 

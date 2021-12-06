@@ -162,21 +162,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51de36b3ad82460b8c84c8a1c9e8226d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Location: 0
-  m_Width: 0.25
-  m_Softness: 1
-  m_Brightness: 1
-  m_Rotation: 130
-  m_Highlight: 1
-  m_EffectMaterial: {fileID: 2100000, guid: 2d37c4afca8784ce9ab899810e29aa9c, type: 2}
-  animationCurve:
-    m_Curve: []
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  runInEditorMode: 0
-  loopTime: 1
-  _time: 0
 --- !u!114 &30821977
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -262,21 +247,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51de36b3ad82460b8c84c8a1c9e8226d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Location: 0
-  m_Width: 0.25
-  m_Softness: 1
-  m_Brightness: 1
-  m_Rotation: 130
-  m_Highlight: 1
-  m_EffectMaterial: {fileID: 2100000, guid: 2d37c4afca8784ce9ab899810e29aa9c, type: 2}
-  animationCurve:
-    m_Curve: []
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  runInEditorMode: 0
-  loopTime: 1
-  _time: 0
 --- !u!114 &36769692
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -362,21 +332,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51de36b3ad82460b8c84c8a1c9e8226d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Location: 0
-  m_Width: 0.25
-  m_Softness: 1
-  m_Brightness: 1
-  m_Rotation: 130
-  m_Highlight: 1
-  m_EffectMaterial: {fileID: 2100000, guid: 2d37c4afca8784ce9ab899810e29aa9c, type: 2}
-  animationCurve:
-    m_Curve: []
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  runInEditorMode: 0
-  loopTime: 1
-  _time: 0
 --- !u!114 &52092681
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -468,21 +423,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51de36b3ad82460b8c84c8a1c9e8226d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Location: 0
-  m_Width: 0.25
-  m_Softness: 1
-  m_Brightness: 1
-  m_Rotation: 130
-  m_Highlight: 1
-  m_EffectMaterial: {fileID: 2100000, guid: 2d37c4afca8784ce9ab899810e29aa9c, type: 2}
-  animationCurve:
-    m_Curve: []
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  runInEditorMode: 0
-  loopTime: 1
-  _time: 0
 --- !u!114 &177781097
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -568,21 +508,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51de36b3ad82460b8c84c8a1c9e8226d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Location: 0
-  m_Width: 0.25
-  m_Softness: 1
-  m_Brightness: 1
-  m_Rotation: 130
-  m_Highlight: 1
-  m_EffectMaterial: {fileID: 2100000, guid: 2d37c4afca8784ce9ab899810e29aa9c, type: 2}
-  animationCurve:
-    m_Curve: []
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  runInEditorMode: 0
-  loopTime: 1
-  _time: 0
 --- !u!114 &213724303
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -668,21 +593,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51de36b3ad82460b8c84c8a1c9e8226d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Location: 0
-  m_Width: 0.25
-  m_Softness: 1
-  m_Brightness: 1
-  m_Rotation: 130
-  m_Highlight: 1
-  m_EffectMaterial: {fileID: 2100000, guid: 2d37c4afca8784ce9ab899810e29aa9c, type: 2}
-  animationCurve:
-    m_Curve: []
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  runInEditorMode: 0
-  loopTime: 1
-  _time: 0
 --- !u!114 &228292033
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -768,21 +678,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51de36b3ad82460b8c84c8a1c9e8226d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Location: 0
-  m_Width: 0.25
-  m_Softness: 1
-  m_Brightness: 1
-  m_Rotation: 130
-  m_Highlight: 1
-  m_EffectMaterial: {fileID: 2100000, guid: 2d37c4afca8784ce9ab899810e29aa9c, type: 2}
-  animationCurve:
-    m_Curve: []
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  runInEditorMode: 0
-  loopTime: 1
-  _time: 0
 --- !u!114 &246702869
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -868,21 +763,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51de36b3ad82460b8c84c8a1c9e8226d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Location: 0
-  m_Width: 0.25
-  m_Softness: 1
-  m_Brightness: 1
-  m_Rotation: 130
-  m_Highlight: 1
-  m_EffectMaterial: {fileID: 2100000, guid: 2d37c4afca8784ce9ab899810e29aa9c, type: 2}
-  animationCurve:
-    m_Curve: []
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  runInEditorMode: 0
-  loopTime: 1
-  _time: 0
 --- !u!114 &273557731
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -968,21 +848,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51de36b3ad82460b8c84c8a1c9e8226d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Location: 0
-  m_Width: 0.25
-  m_Softness: 1
-  m_Brightness: 1
-  m_Rotation: 130
-  m_Highlight: 1
-  m_EffectMaterial: {fileID: 2100000, guid: 2d37c4afca8784ce9ab899810e29aa9c, type: 2}
-  animationCurve:
-    m_Curve: []
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  runInEditorMode: 0
-  loopTime: 1
-  _time: 0
 --- !u!114 &278162478
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1150,21 +1015,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51de36b3ad82460b8c84c8a1c9e8226d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Location: 0
-  m_Width: 0.25
-  m_Softness: 1
-  m_Brightness: 1
-  m_Rotation: 130
-  m_Highlight: 1
-  m_EffectMaterial: {fileID: 2100000, guid: 2d37c4afca8784ce9ab899810e29aa9c, type: 2}
-  animationCurve:
-    m_Curve: []
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  runInEditorMode: 0
-  loopTime: 1
-  _time: 0
 --- !u!114 &285283799
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1250,21 +1100,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51de36b3ad82460b8c84c8a1c9e8226d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Location: 0
-  m_Width: 0.25
-  m_Softness: 1
-  m_Brightness: 1
-  m_Rotation: 130
-  m_Highlight: 1
-  m_EffectMaterial: {fileID: 2100000, guid: 2d37c4afca8784ce9ab899810e29aa9c, type: 2}
-  animationCurve:
-    m_Curve: []
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  runInEditorMode: 0
-  loopTime: 1
-  _time: 0
 --- !u!114 &289498418
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1350,21 +1185,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51de36b3ad82460b8c84c8a1c9e8226d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Location: 0
-  m_Width: 0.25
-  m_Softness: 1
-  m_Brightness: 1
-  m_Rotation: 130
-  m_Highlight: 1
-  m_EffectMaterial: {fileID: 2100000, guid: 2d37c4afca8784ce9ab899810e29aa9c, type: 2}
-  animationCurve:
-    m_Curve: []
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  runInEditorMode: 0
-  loopTime: 1
-  _time: 0
 --- !u!114 &323167130
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1419,7 +1239,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &333347523
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1633,21 +1453,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51de36b3ad82460b8c84c8a1c9e8226d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Location: 0
-  m_Width: 0.25
-  m_Softness: 1
-  m_Brightness: 1
-  m_Rotation: 130
-  m_Highlight: 1
-  m_EffectMaterial: {fileID: 2100000, guid: 2d37c4afca8784ce9ab899810e29aa9c, type: 2}
-  animationCurve:
-    m_Curve: []
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  runInEditorMode: 0
-  loopTime: 1
-  _time: 0
 --- !u!114 &359688969
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1733,21 +1538,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51de36b3ad82460b8c84c8a1c9e8226d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Location: 0
-  m_Width: 0.25
-  m_Softness: 1
-  m_Brightness: 1
-  m_Rotation: 130
-  m_Highlight: 1
-  m_EffectMaterial: {fileID: 2100000, guid: 2d37c4afca8784ce9ab899810e29aa9c, type: 2}
-  animationCurve:
-    m_Curve: []
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  runInEditorMode: 0
-  loopTime: 1
-  _time: 0
 --- !u!114 &384591453
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1833,21 +1623,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51de36b3ad82460b8c84c8a1c9e8226d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Location: 0
-  m_Width: 0.25
-  m_Softness: 1
-  m_Brightness: 1
-  m_Rotation: 130
-  m_Highlight: 1
-  m_EffectMaterial: {fileID: 2100000, guid: 2d37c4afca8784ce9ab899810e29aa9c, type: 2}
-  animationCurve:
-    m_Curve: []
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  runInEditorMode: 0
-  loopTime: 1
-  _time: 0
 --- !u!114 &397024851
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1883,6 +1658,36 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 397024848}
   m_CullTransparentMesh: 0
+--- !u!1 &397522011
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 397522013}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &397522013
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 397522011}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.3760748, y: -0.2794795, z: -1.052506}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &417612132
 GameObject:
   m_ObjectHideFlags: 0
@@ -1933,21 +1738,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51de36b3ad82460b8c84c8a1c9e8226d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Location: 0
-  m_Width: 0.25
-  m_Softness: 1
-  m_Brightness: 1
-  m_Rotation: 130
-  m_Highlight: 1
-  m_EffectMaterial: {fileID: 2100000, guid: 2d37c4afca8784ce9ab899810e29aa9c, type: 2}
-  animationCurve:
-    m_Curve: []
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  runInEditorMode: 0
-  loopTime: 1
-  _time: 0
 --- !u!114 &417612135
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2033,21 +1823,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51de36b3ad82460b8c84c8a1c9e8226d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Location: 0
-  m_Width: 0.25
-  m_Softness: 1
-  m_Brightness: 1
-  m_Rotation: 130
-  m_Highlight: 1
-  m_EffectMaterial: {fileID: 2100000, guid: 2d37c4afca8784ce9ab899810e29aa9c, type: 2}
-  animationCurve:
-    m_Curve: []
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  runInEditorMode: 0
-  loopTime: 1
-  _time: 0
 --- !u!114 &427632953
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2133,21 +1908,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51de36b3ad82460b8c84c8a1c9e8226d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Location: 0
-  m_Width: 0.25
-  m_Softness: 1
-  m_Brightness: 1
-  m_Rotation: 130
-  m_Highlight: 1
-  m_EffectMaterial: {fileID: 2100000, guid: 2d37c4afca8784ce9ab899810e29aa9c, type: 2}
-  animationCurve:
-    m_Curve: []
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  runInEditorMode: 0
-  loopTime: 1
-  _time: 0
 --- !u!114 &428159163
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2233,21 +1993,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51de36b3ad82460b8c84c8a1c9e8226d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Location: 0
-  m_Width: 0.25
-  m_Softness: 1
-  m_Brightness: 1
-  m_Rotation: 130
-  m_Highlight: 1
-  m_EffectMaterial: {fileID: 2100000, guid: 2d37c4afca8784ce9ab899810e29aa9c, type: 2}
-  animationCurve:
-    m_Curve: []
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  runInEditorMode: 0
-  loopTime: 1
-  _time: 0
 --- !u!114 &428967492
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2333,21 +2078,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51de36b3ad82460b8c84c8a1c9e8226d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Location: 0
-  m_Width: 0.25
-  m_Softness: 1
-  m_Brightness: 1
-  m_Rotation: 130
-  m_Highlight: 1
-  m_EffectMaterial: {fileID: 2100000, guid: 2d37c4afca8784ce9ab899810e29aa9c, type: 2}
-  animationCurve:
-    m_Curve: []
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  runInEditorMode: 0
-  loopTime: 1
-  _time: 0
 --- !u!114 &456295973
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2433,21 +2163,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51de36b3ad82460b8c84c8a1c9e8226d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Location: 0
-  m_Width: 0.25
-  m_Softness: 1
-  m_Brightness: 1
-  m_Rotation: 130
-  m_Highlight: 1
-  m_EffectMaterial: {fileID: 2100000, guid: 2d37c4afca8784ce9ab899810e29aa9c, type: 2}
-  animationCurve:
-    m_Curve: []
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  runInEditorMode: 0
-  loopTime: 1
-  _time: 0
 --- !u!114 &478450836
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2533,21 +2248,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51de36b3ad82460b8c84c8a1c9e8226d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Location: 0
-  m_Width: 0.25
-  m_Softness: 1
-  m_Brightness: 1
-  m_Rotation: 130
-  m_Highlight: 1
-  m_EffectMaterial: {fileID: 2100000, guid: 2d37c4afca8784ce9ab899810e29aa9c, type: 2}
-  animationCurve:
-    m_Curve: []
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  runInEditorMode: 0
-  loopTime: 1
-  _time: 0
 --- !u!114 &497576136
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2633,21 +2333,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51de36b3ad82460b8c84c8a1c9e8226d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Location: 0
-  m_Width: 0.25
-  m_Softness: 1
-  m_Brightness: 1
-  m_Rotation: 130
-  m_Highlight: 1
-  m_EffectMaterial: {fileID: 2100000, guid: 2d37c4afca8784ce9ab899810e29aa9c, type: 2}
-  animationCurve:
-    m_Curve: []
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  runInEditorMode: 0
-  loopTime: 1
-  _time: 0
 --- !u!114 &509672368
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2733,21 +2418,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51de36b3ad82460b8c84c8a1c9e8226d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Location: 0
-  m_Width: 0.25
-  m_Softness: 1
-  m_Brightness: 1
-  m_Rotation: 130
-  m_Highlight: 1
-  m_EffectMaterial: {fileID: 2100000, guid: 2d37c4afca8784ce9ab899810e29aa9c, type: 2}
-  animationCurve:
-    m_Curve: []
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  runInEditorMode: 0
-  loopTime: 1
-  _time: 0
 --- !u!114 &565561612
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2833,21 +2503,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51de36b3ad82460b8c84c8a1c9e8226d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Location: 0
-  m_Width: 0.25
-  m_Softness: 1
-  m_Brightness: 1
-  m_Rotation: 130
-  m_Highlight: 1
-  m_EffectMaterial: {fileID: 2100000, guid: 2d37c4afca8784ce9ab899810e29aa9c, type: 2}
-  animationCurve:
-    m_Curve: []
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  runInEditorMode: 0
-  loopTime: 1
-  _time: 0
 --- !u!114 &586191269
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2933,21 +2588,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51de36b3ad82460b8c84c8a1c9e8226d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Location: 0
-  m_Width: 0.25
-  m_Softness: 1
-  m_Brightness: 1
-  m_Rotation: 130
-  m_Highlight: 1
-  m_EffectMaterial: {fileID: 2100000, guid: 2d37c4afca8784ce9ab899810e29aa9c, type: 2}
-  animationCurve:
-    m_Curve: []
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  runInEditorMode: 0
-  loopTime: 1
-  _time: 0
 --- !u!114 &613271973
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3033,21 +2673,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51de36b3ad82460b8c84c8a1c9e8226d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Location: 0
-  m_Width: 0.25
-  m_Softness: 1
-  m_Brightness: 1
-  m_Rotation: 130
-  m_Highlight: 1
-  m_EffectMaterial: {fileID: 2100000, guid: 2d37c4afca8784ce9ab899810e29aa9c, type: 2}
-  animationCurve:
-    m_Curve: []
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  runInEditorMode: 0
-  loopTime: 1
-  _time: 0
 --- !u!114 &666829461
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3133,21 +2758,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51de36b3ad82460b8c84c8a1c9e8226d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Location: 0
-  m_Width: 0.25
-  m_Softness: 1
-  m_Brightness: 1
-  m_Rotation: 130
-  m_Highlight: 1
-  m_EffectMaterial: {fileID: 2100000, guid: 2d37c4afca8784ce9ab899810e29aa9c, type: 2}
-  animationCurve:
-    m_Curve: []
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  runInEditorMode: 0
-  loopTime: 1
-  _time: 0
 --- !u!114 &693281551
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3233,21 +2843,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51de36b3ad82460b8c84c8a1c9e8226d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Location: 0
-  m_Width: 0.25
-  m_Softness: 1
-  m_Brightness: 1
-  m_Rotation: 130
-  m_Highlight: 1
-  m_EffectMaterial: {fileID: 2100000, guid: 2d37c4afca8784ce9ab899810e29aa9c, type: 2}
-  animationCurve:
-    m_Curve: []
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  runInEditorMode: 0
-  loopTime: 1
-  _time: 0
 --- !u!114 &749024137
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3333,21 +2928,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51de36b3ad82460b8c84c8a1c9e8226d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Location: 0
-  m_Width: 0.25
-  m_Softness: 1
-  m_Brightness: 1
-  m_Rotation: 130
-  m_Highlight: 1
-  m_EffectMaterial: {fileID: 2100000, guid: 2d37c4afca8784ce9ab899810e29aa9c, type: 2}
-  animationCurve:
-    m_Curve: []
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  runInEditorMode: 0
-  loopTime: 1
-  _time: 0
 --- !u!114 &772446508
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3499,21 +3079,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51de36b3ad82460b8c84c8a1c9e8226d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Location: 0
-  m_Width: 0.25
-  m_Softness: 1
-  m_Brightness: 1
-  m_Rotation: 130
-  m_Highlight: 1
-  m_EffectMaterial: {fileID: 2100000, guid: 2d37c4afca8784ce9ab899810e29aa9c, type: 2}
-  animationCurve:
-    m_Curve: []
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  runInEditorMode: 0
-  loopTime: 1
-  _time: 0
 --- !u!114 &869232812
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3764,7 +3329,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62e4947d070cf41eb87bc6a9968c32a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Location: 1
+  m_Location: 0.44927263
   m_Width: 0.46
   m_Softness: 1
   m_Brightness: 0.579
@@ -3880,21 +3445,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51de36b3ad82460b8c84c8a1c9e8226d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Location: 0
-  m_Width: 0.25
-  m_Softness: 1
-  m_Brightness: 1
-  m_Rotation: 130
-  m_Highlight: 1
-  m_EffectMaterial: {fileID: 2100000, guid: 2d37c4afca8784ce9ab899810e29aa9c, type: 2}
-  animationCurve:
-    m_Curve: []
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  runInEditorMode: 0
-  loopTime: 1
-  _time: 0
 --- !u!114 &943993761
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3980,21 +3530,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51de36b3ad82460b8c84c8a1c9e8226d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Location: 0
-  m_Width: 0.25
-  m_Softness: 1
-  m_Brightness: 1
-  m_Rotation: 130
-  m_Highlight: 1
-  m_EffectMaterial: {fileID: 2100000, guid: 2d37c4afca8784ce9ab899810e29aa9c, type: 2}
-  animationCurve:
-    m_Curve: []
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  runInEditorMode: 0
-  loopTime: 1
-  _time: 0
 --- !u!114 &979763953
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4080,21 +3615,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51de36b3ad82460b8c84c8a1c9e8226d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Location: 0
-  m_Width: 0.25
-  m_Softness: 1
-  m_Brightness: 1
-  m_Rotation: 130
-  m_Highlight: 1
-  m_EffectMaterial: {fileID: 2100000, guid: 2d37c4afca8784ce9ab899810e29aa9c, type: 2}
-  animationCurve:
-    m_Curve: []
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  runInEditorMode: 0
-  loopTime: 1
-  _time: 0
 --- !u!114 &1072924262
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4371,21 +3891,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51de36b3ad82460b8c84c8a1c9e8226d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Location: 0
-  m_Width: 0.25
-  m_Softness: 1
-  m_Brightness: 1
-  m_Rotation: 130
-  m_Highlight: 1
-  m_EffectMaterial: {fileID: 2100000, guid: 2d37c4afca8784ce9ab899810e29aa9c, type: 2}
-  animationCurve:
-    m_Curve: []
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  runInEditorMode: 0
-  loopTime: 1
-  _time: 0
 --- !u!114 &1122523595
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4471,21 +3976,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51de36b3ad82460b8c84c8a1c9e8226d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Location: 0
-  m_Width: 0.25
-  m_Softness: 1
-  m_Brightness: 1
-  m_Rotation: 130
-  m_Highlight: 1
-  m_EffectMaterial: {fileID: 2100000, guid: 2d37c4afca8784ce9ab899810e29aa9c, type: 2}
-  animationCurve:
-    m_Curve: []
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  runInEditorMode: 0
-  loopTime: 1
-  _time: 0
 --- !u!114 &1141364323
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4571,21 +4061,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51de36b3ad82460b8c84c8a1c9e8226d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Location: 0
-  m_Width: 0.25
-  m_Softness: 1
-  m_Brightness: 1
-  m_Rotation: 130
-  m_Highlight: 1
-  m_EffectMaterial: {fileID: 2100000, guid: 2d37c4afca8784ce9ab899810e29aa9c, type: 2}
-  animationCurve:
-    m_Curve: []
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  runInEditorMode: 0
-  loopTime: 1
-  _time: 0
 --- !u!114 &1180699506
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4671,21 +4146,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51de36b3ad82460b8c84c8a1c9e8226d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Location: 0
-  m_Width: 0.25
-  m_Softness: 1
-  m_Brightness: 1
-  m_Rotation: 130
-  m_Highlight: 1
-  m_EffectMaterial: {fileID: 2100000, guid: 2d37c4afca8784ce9ab899810e29aa9c, type: 2}
-  animationCurve:
-    m_Curve: []
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  runInEditorMode: 0
-  loopTime: 1
-  _time: 0
 --- !u!114 &1197827481
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4771,21 +4231,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51de36b3ad82460b8c84c8a1c9e8226d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Location: 0
-  m_Width: 0.25
-  m_Softness: 1
-  m_Brightness: 1
-  m_Rotation: 130
-  m_Highlight: 1
-  m_EffectMaterial: {fileID: 2100000, guid: 2d37c4afca8784ce9ab899810e29aa9c, type: 2}
-  animationCurve:
-    m_Curve: []
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  runInEditorMode: 0
-  loopTime: 1
-  _time: 0
 --- !u!114 &1245190398
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4871,21 +4316,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51de36b3ad82460b8c84c8a1c9e8226d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Location: 0
-  m_Width: 0.25
-  m_Softness: 1
-  m_Brightness: 1
-  m_Rotation: 130
-  m_Highlight: 1
-  m_EffectMaterial: {fileID: 2100000, guid: 2d37c4afca8784ce9ab899810e29aa9c, type: 2}
-  animationCurve:
-    m_Curve: []
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  runInEditorMode: 0
-  loopTime: 1
-  _time: 0
 --- !u!114 &1334261975
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4971,21 +4401,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51de36b3ad82460b8c84c8a1c9e8226d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Location: 0
-  m_Width: 0.25
-  m_Softness: 1
-  m_Brightness: 1
-  m_Rotation: 130
-  m_Highlight: 1
-  m_EffectMaterial: {fileID: 2100000, guid: 2d37c4afca8784ce9ab899810e29aa9c, type: 2}
-  animationCurve:
-    m_Curve: []
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  runInEditorMode: 0
-  loopTime: 1
-  _time: 0
 --- !u!114 &1382983945
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5071,21 +4486,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51de36b3ad82460b8c84c8a1c9e8226d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Location: 0
-  m_Width: 0.25
-  m_Softness: 1
-  m_Brightness: 1
-  m_Rotation: 130
-  m_Highlight: 1
-  m_EffectMaterial: {fileID: 2100000, guid: 2d37c4afca8784ce9ab899810e29aa9c, type: 2}
-  animationCurve:
-    m_Curve: []
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  runInEditorMode: 0
-  loopTime: 1
-  _time: 0
 --- !u!114 &1398981576
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5171,21 +4571,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51de36b3ad82460b8c84c8a1c9e8226d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Location: 0.545
-  m_Width: 0.301
-  m_Softness: 1
-  m_Brightness: 1
-  m_Rotation: 71
-  m_Highlight: 1
-  m_EffectMaterial: {fileID: 2100000, guid: 2d37c4afca8784ce9ab899810e29aa9c, type: 2}
-  animationCurve:
-    m_Curve: []
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  runInEditorMode: 0
-  loopTime: 1
-  _time: 0
 --- !u!114 &1406467828
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5276,21 +4661,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51de36b3ad82460b8c84c8a1c9e8226d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Location: 0
-  m_Width: 0.25
-  m_Softness: 1
-  m_Brightness: 1
-  m_Rotation: 130
-  m_Highlight: 1
-  m_EffectMaterial: {fileID: 2100000, guid: 2d37c4afca8784ce9ab899810e29aa9c, type: 2}
-  animationCurve:
-    m_Curve: []
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  runInEditorMode: 0
-  loopTime: 1
-  _time: 0
 --- !u!114 &1426055921
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5376,21 +4746,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51de36b3ad82460b8c84c8a1c9e8226d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Location: 0
-  m_Width: 0.25
-  m_Softness: 1
-  m_Brightness: 1
-  m_Rotation: 130
-  m_Highlight: 1
-  m_EffectMaterial: {fileID: 2100000, guid: 2d37c4afca8784ce9ab899810e29aa9c, type: 2}
-  animationCurve:
-    m_Curve: []
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  runInEditorMode: 0
-  loopTime: 1
-  _time: 0
 --- !u!114 &1459793277
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5476,21 +4831,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51de36b3ad82460b8c84c8a1c9e8226d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Location: 0
-  m_Width: 0.25
-  m_Softness: 1
-  m_Brightness: 1
-  m_Rotation: 130
-  m_Highlight: 1
-  m_EffectMaterial: {fileID: 2100000, guid: 2d37c4afca8784ce9ab899810e29aa9c, type: 2}
-  animationCurve:
-    m_Curve: []
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  runInEditorMode: 0
-  loopTime: 1
-  _time: 0
 --- !u!114 &1479024463
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5576,21 +4916,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51de36b3ad82460b8c84c8a1c9e8226d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Location: 0
-  m_Width: 0.25
-  m_Softness: 1
-  m_Brightness: 1
-  m_Rotation: 130
-  m_Highlight: 1
-  m_EffectMaterial: {fileID: 2100000, guid: 2d37c4afca8784ce9ab899810e29aa9c, type: 2}
-  animationCurve:
-    m_Curve: []
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  runInEditorMode: 0
-  loopTime: 1
-  _time: 0
 --- !u!114 &1489444662
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5775,21 +5100,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51de36b3ad82460b8c84c8a1c9e8226d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Location: 0
-  m_Width: 0.25
-  m_Softness: 1
-  m_Brightness: 1
-  m_Rotation: 130
-  m_Highlight: 1
-  m_EffectMaterial: {fileID: 2100000, guid: 2d37c4afca8784ce9ab899810e29aa9c, type: 2}
-  animationCurve:
-    m_Curve: []
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  runInEditorMode: 0
-  loopTime: 1
-  _time: 0
 --- !u!114 &1625548439
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5875,21 +5185,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51de36b3ad82460b8c84c8a1c9e8226d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Location: 0
-  m_Width: 0.25
-  m_Softness: 1
-  m_Brightness: 1
-  m_Rotation: 130
-  m_Highlight: 1
-  m_EffectMaterial: {fileID: 2100000, guid: 2d37c4afca8784ce9ab899810e29aa9c, type: 2}
-  animationCurve:
-    m_Curve: []
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  runInEditorMode: 0
-  loopTime: 1
-  _time: 0
 --- !u!114 &1682397460
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5975,21 +5270,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51de36b3ad82460b8c84c8a1c9e8226d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Location: 0
-  m_Width: 0.25
-  m_Softness: 1
-  m_Brightness: 1
-  m_Rotation: 130
-  m_Highlight: 1
-  m_EffectMaterial: {fileID: 2100000, guid: 2d37c4afca8784ce9ab899810e29aa9c, type: 2}
-  animationCurve:
-    m_Curve: []
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  runInEditorMode: 0
-  loopTime: 1
-  _time: 0
 --- !u!114 &1794237627
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6075,21 +5355,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51de36b3ad82460b8c84c8a1c9e8226d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Location: 0
-  m_Width: 0.25
-  m_Softness: 1
-  m_Brightness: 1
-  m_Rotation: 130
-  m_Highlight: 1
-  m_EffectMaterial: {fileID: 2100000, guid: 2d37c4afca8784ce9ab899810e29aa9c, type: 2}
-  animationCurve:
-    m_Curve: []
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  runInEditorMode: 0
-  loopTime: 1
-  _time: 0
 --- !u!114 &1855994163
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6175,21 +5440,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51de36b3ad82460b8c84c8a1c9e8226d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Location: 0
-  m_Width: 0.25
-  m_Softness: 1
-  m_Brightness: 1
-  m_Rotation: 130
-  m_Highlight: 1
-  m_EffectMaterial: {fileID: 2100000, guid: 2d37c4afca8784ce9ab899810e29aa9c, type: 2}
-  animationCurve:
-    m_Curve: []
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  runInEditorMode: 0
-  loopTime: 1
-  _time: 0
 --- !u!114 &1873750397
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6275,21 +5525,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51de36b3ad82460b8c84c8a1c9e8226d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Location: 0
-  m_Width: 0.25
-  m_Softness: 1
-  m_Brightness: 1
-  m_Rotation: 130
-  m_Highlight: 1
-  m_EffectMaterial: {fileID: 2100000, guid: 2d37c4afca8784ce9ab899810e29aa9c, type: 2}
-  animationCurve:
-    m_Curve: []
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  runInEditorMode: 0
-  loopTime: 1
-  _time: 0
 --- !u!114 &1874570944
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6375,21 +5610,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51de36b3ad82460b8c84c8a1c9e8226d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Location: 0
-  m_Width: 0.25
-  m_Softness: 1
-  m_Brightness: 1
-  m_Rotation: 130
-  m_Highlight: 1
-  m_EffectMaterial: {fileID: 2100000, guid: 2d37c4afca8784ce9ab899810e29aa9c, type: 2}
-  animationCurve:
-    m_Curve: []
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  runInEditorMode: 0
-  loopTime: 1
-  _time: 0
 --- !u!114 &1934893531
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6544,21 +5764,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51de36b3ad82460b8c84c8a1c9e8226d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Location: 0
-  m_Width: 0.25
-  m_Softness: 1
-  m_Brightness: 1
-  m_Rotation: 130
-  m_Highlight: 1
-  m_EffectMaterial: {fileID: 2100000, guid: 2d37c4afca8784ce9ab899810e29aa9c, type: 2}
-  animationCurve:
-    m_Curve: []
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  runInEditorMode: 0
-  loopTime: 1
-  _time: 0
 --- !u!114 &2125032455
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6644,21 +5849,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51de36b3ad82460b8c84c8a1c9e8226d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Location: 0
-  m_Width: 0.25
-  m_Softness: 1
-  m_Brightness: 1
-  m_Rotation: 130
-  m_Highlight: 1
-  m_EffectMaterial: {fileID: 2100000, guid: 2d37c4afca8784ce9ab899810e29aa9c, type: 2}
-  animationCurve:
-    m_Curve: []
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  runInEditorMode: 0
-  loopTime: 1
-  _time: 0
 --- !u!114 &2127244389
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6744,21 +5934,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51de36b3ad82460b8c84c8a1c9e8226d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Location: 0
-  m_Width: 0.25
-  m_Softness: 1
-  m_Brightness: 1
-  m_Rotation: 130
-  m_Highlight: 1
-  m_EffectMaterial: {fileID: 2100000, guid: 2d37c4afca8784ce9ab899810e29aa9c, type: 2}
-  animationCurve:
-    m_Curve: []
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  runInEditorMode: 0
-  loopTime: 1
-  _time: 0
 --- !u!114 &2142671164
 MonoBehaviour:
   m_ObjectHideFlags: 0

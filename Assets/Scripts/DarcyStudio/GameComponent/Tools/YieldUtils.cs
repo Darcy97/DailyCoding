@@ -25,7 +25,7 @@ namespace DarcyStudio.GameComponent.Tools
             {
                 if (seconds > 5.0f)
                 {
-                    Log.Info ("wait for too long ??? time : {0}", seconds);
+                    Log.Info ($"wait for too long ??? time : {seconds}");
                 }
 
                 _waitSecondsCache.Add (seconds, wfs = new WaitForSeconds (seconds));
@@ -40,7 +40,7 @@ namespace DarcyStudio.GameComponent.Tools
             {
                 if (seconds > 5.0f)
                 {
-                    Log.Info ("wait for real time too long ??? time : {0}", seconds);
+                    Log.Info ($"wait for real time too long ??? time : {seconds}");
                 }
 
                 _waitSecondsRealTimeCache.Add (seconds, wfs = new WaitForSecondsRealtime (seconds));

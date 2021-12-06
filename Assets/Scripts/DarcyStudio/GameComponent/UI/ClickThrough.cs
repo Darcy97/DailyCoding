@@ -25,7 +25,7 @@ namespace DarcyStudio.GameComponent.UI
         private void PassEvent<T> (PointerEventData data, ExecuteEvents.EventFunction<T> function)
             where T : IEventSystemHandler
         {
-            Log.Info ("Depend Obj: {0}", gameObject.name);
+            Log.Info ($"Depend Obj: {gameObject.name}");
             var results = new List<RaycastResult> ();
 
             //查了一下源码和api 获取到的这个 List -> results
@@ -41,7 +41,7 @@ namespace DarcyStudio.GameComponent.UI
 
             foreach (var result in results)
             {
-                Log.Info ("ResultGO: {0}", result.gameObject.name);
+                Log.Info ($"ResultGO: {result.gameObject.name}");
 
                 #region 层级检测
 

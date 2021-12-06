@@ -46,45 +46,13 @@ namespace DarcyStudio.GameComponent.Tools
                 return;
             Debug.Log (info);
         }
-
-        [Conditional ("DEBUG_INFO")]
-        public static void Info (string format, object arg0)
-        {
-            if (!CanLog (LogLevel.Info))
-                return;
-            Debug.Log (string.Format (format, arg0));
-        }
-
-        [Conditional ("DEBUG_INFO")]
-        public static void Info (string format, object arg0, object arg1)
-        {
-            if (!CanLog (LogLevel.Info))
-                return;
-            Debug.Log (string.Format (format, arg0, arg1));
-        }
-
-        [Conditional ("DEBUG_INFO")]
-        public static void Info (string format, object arg0, object arg1, object arg2)
-        {
-            if (!CanLog (LogLevel.Info))
-                return;
-            Debug.Log (string.Format (format, arg0, arg1, arg2));
-        }
-
-        [Conditional ("DEBUG_INFO")]
-        public static void Info (string format, params object[] args)
-        {
-            if (!CanLog (LogLevel.Info))
-                return;
-            Debug.Log (string.Format (format, args));
-        }
-
+        
         [Conditional ("DEBUG_WARNING")]
-        public static void Warning (string error)
+        public static void Warning (string warning)
         {
             if (!CanLog (LogLevel.Warning))
                 return;
-            Debug.LogWarning (error);
+            Debug.LogWarning (warning);
         }
 
         [Conditional ("DEBUG_ERROR")]
@@ -93,22 +61,6 @@ namespace DarcyStudio.GameComponent.Tools
             if (!CanLog (LogLevel.Error))
                 return;
             Debug.LogError (error);
-        }
-
-        [Conditional ("DEBUG_ERROR")]
-        public static void Error (string format, object arg0)
-        {
-            if (!CanLog (LogLevel.Info))
-                return;
-            Debug.LogError (string.Format (format, arg0));
-        }
-
-        [Conditional ("DEBUG_ERROR")]
-        public static void Error (string format, object arg0, object arg1)
-        {
-            if (!CanLog (LogLevel.Info))
-                return;
-            Debug.LogError (string.Format (format, arg0, arg1));
         }
 
         private static bool CanLog (LogLevel level)
@@ -158,5 +110,31 @@ namespace DarcyStudio.GameComponent.Tools
             return new List<string> (PlayerSettings.GetScriptingDefineSymbolsForGroup (group).Split (';'));
         }
 
+        // 看起来这个单元测试很简单
+        // 但是刚刚同步改了项目里的 Log，
+        // 也觉得改的很简单，不会出什么问题，
+        // 但是打包测试发现竟然导致游戏卡死。。。
+        // 如果有这个单元测试那么只要修改后一运行就知道是否有问题了
+        // 第一次尝试增加单元测试脚本，虽然很简单😁
+        public static void Test ()
+        {
+            Debug.Log ($"Set log level: {LogLevel.Info}");
+            SetLogLevel (LogLevel.Info);
+            Info ("<color=cyan>Test LogInfo</color>");
+            Warning ("Test warning");
+            Error ("Test error");
+            
+            Debug.Log ($"Set log level: {LogLevel.Warning}");
+            SetLogLevel (LogLevel.Warning);
+            Info ("<color=cyan>Test LogInfo</color>");
+            Warning ("Test warning");
+            Error ("Test error");
+            
+            Debug.Log ($"Set log level: {LogLevel.Error}");
+            SetLogLevel (LogLevel.Error);
+            Info ("<color=cyan>Test LogInfo</color>");
+            Warning ("Test warning");
+            Error ("Test error");
+        }
     }
 }

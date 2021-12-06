@@ -31,7 +31,7 @@ namespace DarcyStudio.GameComponent.TimeLine.Actor
             {
                 if (_boneConfigDict.ContainsKey (info.key))
                 {
-                    Log.Error ("Dont allow multi config with same key: {0} in \"{1}\"", info.key, transform.GetPath ());
+                    Log.Error ($"Dont allow multi config with same key: {info.key} in \"{transform.GetPath ()}\"");
                     return;
                 }
 

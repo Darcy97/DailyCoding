@@ -47,8 +47,7 @@ namespace DarcyStudio.GameComponent.TimeLine.ForAction.ActionPerformer
             _attackActionConfig = _attackActionConfigData.GetActionInfoByPreviousAction (_statusOwner.GetStatus ());
             if (_attackActionConfig.Equals (default (AttackActionConfig)))
             {
-                Log.Error ("No suitable action info for previous action ->{0}<-  in {1}",
-                    _statusOwner.GetStatus (), _sender.GetTransform ().GetPath ());
+                Log.Error ("No suitable action info for previous action ->{_statusOwner.GetStatus ()}<-  in {_sender.GetTransform ().GetPath ()}");
                 _endCallback?.Invoke ();
                 _endCallback = null;
                 return;
@@ -57,8 +56,7 @@ namespace DarcyStudio.GameComponent.TimeLine.ForAction.ActionPerformer
             var selfActionConfig = GetSelfActionConfig (_attackActionConfig.afterActionType);
             if (selfActionConfig.Equals (default (ActionPerformConfig)))
             {
-                Log.Error ("No suitable action info for ->{0}<-  in  ->{1}<-", _attackActionConfig.afterActionType,
-                    _sender.GetTransform ().GetPath ());
+                Log.Error ($"No suitable action info for ->{_attackActionConfig.afterActionType}<-  in  ->{_sender.GetTransform ().GetPath ()}<-");
                 EndCallback ();
                 return;
             }
