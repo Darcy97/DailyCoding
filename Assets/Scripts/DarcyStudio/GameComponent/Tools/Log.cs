@@ -24,6 +24,9 @@ namespace DarcyStudio.GameComponent.Tools
 {
     public static class Log
     {
+        
+        //其实通过 Conditional 标志来区分 Log 这个标志就可以去除了
+        //鉴于这是一个测试工程 也不做发布，就先保留吧
         public enum LogLevel
         {
             Info,
