@@ -49,6 +49,8 @@ namespace DarcyStudio.Task
                 if (task == null)
                     continue;
 
+                Log.Info ($"<color=cyan>### Task System ### --- Execute task: {task.GetType ()}</color>");
+
                 task.Execute ();
 
                 while (task.IsBlock () && !task.IsFinish ())
@@ -56,8 +58,11 @@ namespace DarcyStudio.Task
                     yield return YieldUtils.WaitForEndOfFrame;
                 }
 
-                if (task.InterruptSubsequent ())
-                    break;
+                if (!task.InterruptSubsequent ())
+                    continue;
+
+                Log.Info ($"<color=red>### Task System ### --- Interrupt by task: {task.GetType ()}</color>");
+                break;
             }
 
             _enumerator.Dispose ();

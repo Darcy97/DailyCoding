@@ -9,6 +9,11 @@ namespace DarcyStudio.Task
 {
     public interface ITask
     {
+        
+        /// <summary>
+        /// 任务要做的事
+        /// 在这个接口的实现里添加你的具体逻辑
+        /// </summary>
         void Execute ();
 
         /// <summary>
