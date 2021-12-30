@@ -19,10 +19,10 @@ namespace DarcyStudio.Task
 
         public delegate void ExecuteFinish ();
 
-        private          List<ITask>.Enumerator _enumerator;
-        private readonly ExecuteFinish          _callBack;
+        private readonly IEnumerator<ITask> _enumerator;
+        private readonly ExecuteFinish      _callBack;
 
-        public Driver (List<ITask>.Enumerator enumerator, ExecuteFinish callBack)
+        public Driver (IEnumerator<ITask> enumerator, ExecuteFinish callBack)
         {
             _enumerator = enumerator;
             _callBack   = callBack;
