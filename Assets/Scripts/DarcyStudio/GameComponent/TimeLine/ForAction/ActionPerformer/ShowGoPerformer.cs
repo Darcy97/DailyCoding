@@ -44,7 +44,7 @@ namespace DarcyStudio.GameComponent.TimeLine.ForAction.ActionPerformer
         private void OnShow ()
         {
             if (_config.duration > 0)
-                YieldUtils.DelayActionWithOutContext (OnDisappear, _config.duration);
+                YieldUtils.DelayActionWithOutContext (_config.duration, OnDisappear);
             else
             {
                 Log.Error ("Make sure you set the duration in perform data");

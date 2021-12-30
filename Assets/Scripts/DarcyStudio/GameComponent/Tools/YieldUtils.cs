@@ -96,7 +96,7 @@ namespace DarcyStudio.GameComponent.Tools
         /// <param name="delay">delay time</param>
         /// <param name="action">action</param>
         /// <returns>协程句柄</returns>
-        public static Coroutine DelayActionWithOutContext (Action action, float delay)
+        public static Coroutine DelayActionWithOutContext (float delay, Action action)
         {
             return CoroutineUtil.DoDelayAction (delay, action);
         }
