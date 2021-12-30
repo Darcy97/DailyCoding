@@ -19,8 +19,9 @@ namespace DarcyStudio.Task
 
         protected abstract void LogError ();
 
-        public bool IsFinish () => _isFinish;
+        public bool IsBlock ()   => false;
+        public bool IsFinish ()  => _isFinish;
+        public bool InterruptSubsequent () => false;
 
-        public bool IsBlock () => false;
     }
 }

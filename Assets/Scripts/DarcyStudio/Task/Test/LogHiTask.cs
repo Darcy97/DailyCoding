@@ -9,7 +9,7 @@ using DarcyStudio.GameComponent.Tools;
 
 namespace DarcyStudio.Task.Test
 {
-    public class LogHiTask:ITask
+    public class LogHiTask : ITask
     {
 
         private bool _isFinish;
@@ -20,8 +20,9 @@ namespace DarcyStudio.Task.Test
             _isFinish = true;
         }
 
-        public bool IsFinish () => _isFinish;
+        public bool IsBlock ()   => true;
+        public bool IsFinish ()  => _isFinish;
+        public bool InterruptSubsequent () => false;
 
-        public bool IsBlock () => true;
     }
 }

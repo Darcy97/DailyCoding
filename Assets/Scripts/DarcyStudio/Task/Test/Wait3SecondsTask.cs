@@ -19,8 +19,9 @@ namespace DarcyStudio.Task.Test
             YieldUtils.DelayActionWithOutContext (3, () => _isFinish = true);
         }
 
-        public bool IsFinish () => _isFinish;
+        public bool IsBlock ()   => true;
+        public bool IsFinish ()  => _isFinish;
+        public bool InterruptSubsequent () => false;
 
-        public bool IsBlock () => true;
     }
 }

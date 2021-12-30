@@ -19,10 +19,12 @@ namespace DarcyStudio.Task.Test
             var tasks = new List<ITask>
                         {
                             factory.Create (LogTaskType.LogHi),
-                            factory.Create (LogTaskType.Default),
+                            factory.Create (LogTaskType.Invalid),
                             factory.Create (LogTaskType.LogHello),
                             factory.Create (LogTaskType.Wait3Seconds),
-                            factory.Create (LogTaskType.LogGoodbye)
+                            factory.Create (LogTaskType.LogGoodbye),
+                            factory.Create (LogTaskType.Interrupt),
+                            factory.Create (LogTaskType.LogHello)
                         };
 
             var driver = TaskUtils.CreateDriver (tasks.GetEnumerator (), OnDriverExecuteEnd);

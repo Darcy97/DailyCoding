@@ -23,6 +23,11 @@ namespace DarcyStudio.Task.Test
                     return new LogGoodbyeTask ();
                 case LogTaskType.Wait3Seconds:
                     return new Wait3SecondsTask ();
+                case LogTaskType.Invalid:
+                    Log.Error ($"Un fix type: {type.ToString ()}");
+                    return new InvalidLogTask (type);
+                case LogTaskType.Interrupt:
+                    return new InterruptTask ();
                 default:
                 {
                     Log.Error ($"Un fix type: {type.ToString ()}");
@@ -34,10 +39,11 @@ namespace DarcyStudio.Task.Test
 
     public enum LogTaskType
     {
-        Default,
+        Invalid,
         LogHello,
         LogHi,
         LogGoodbye,
-        Wait3Seconds
+        Wait3Seconds,
+        Interrupt
     }
 }

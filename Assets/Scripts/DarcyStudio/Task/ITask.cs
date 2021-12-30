@@ -13,7 +13,7 @@ namespace DarcyStudio.Task
 
         /// <summary>
         /// 是否阻塞
-        /// True 阻塞队列中下一个命令执行，直至 IsFinish 返回 true 才执行下一个命令
+        /// True 阻塞队列中下一个任务执行，直至 IsFinish 返回 true 才执行下一个任务
         /// False 不阻塞
         /// </summary>
         /// <returns></returns>
@@ -25,6 +25,11 @@ namespace DarcyStudio.Task
         /// <returns></returns>
         bool IsFinish ();
 
+        /// <summary>
+        /// 返回 ture 则中断后面任务的执行
+        /// </summary>
+        /// <returns></returns>
+        bool InterruptSubsequent ();
 
     }
 }
