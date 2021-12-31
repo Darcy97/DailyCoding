@@ -37,6 +37,9 @@ namespace DarcyStudio.Task
 
         public void Stop ()
         {
+            if (_executeCoroutine == null)
+                return;
+
             YieldUtils.StopCoroutine (_executeCoroutine);
         }
 
@@ -49,7 +52,7 @@ namespace DarcyStudio.Task
                 if (task == null)
                     continue;
 
-                Log.Info ($"<color=cyan>### Task System ### --- Execute task: {task.GetType ()}</color>");
+                LogExecute (task.GetType ());
 
                 task.Execute ();
 
@@ -61,12 +64,22 @@ namespace DarcyStudio.Task
                 if (!task.InterruptSubsequent ())
                     continue;
 
-                Log.Info ($"<color=red>### Task System ### --- Interrupt by task: {task.GetType ()}</color>");
+                LogInterrupt (task.GetType ());
                 break;
             }
 
             _enumerator.Dispose ();
             _callBack?.Invoke ();
+        }
+
+        private static void LogExecute (Type taskType)
+        {
+            Log.Info ($"<color=cyan>### Task System ### --- Execute task: {taskType}</color>");
+        }
+
+        private static void LogInterrupt (Type taskType)
+        {
+            Log.Info ($"<color=red>### Task System ### --- Interrupt by task: {taskType}</color>");
         }
 
         public void Dispose ()

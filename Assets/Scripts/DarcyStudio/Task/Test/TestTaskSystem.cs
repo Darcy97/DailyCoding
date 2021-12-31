@@ -29,6 +29,10 @@ namespace DarcyStudio.Task.Test
 
             var driver = TaskUtils.CreateDriver (tasks.GetEnumerator (), OnDriverExecuteEnd);
             driver.Execute ();
+            
+            var tDriver = TaskUtils.CreateDriver (tasks.GetEnumerator (), OnDriverExecuteEnd);
+            tDriver.Execute ();
+            tDriver.Stop ();
         }
 
         private static void OnDriverExecuteEnd ()
