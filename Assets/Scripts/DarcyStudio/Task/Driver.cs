@@ -36,6 +36,8 @@ namespace DarcyStudio.Task
             _disposable = disposable;
         }
 
+        #region Interface
+        
         public void Execute ()
         {
             if (_isExecuting)
@@ -91,6 +93,8 @@ namespace DarcyStudio.Task
         {
             return _isExecuting;
         }
+        
+        #endregion
 
         private void StartExecute ()
         {
