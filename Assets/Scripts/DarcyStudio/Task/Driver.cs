@@ -21,26 +21,72 @@ namespace DarcyStudio.Task
 
         private readonly IEnumerator<ITask> _enumerator;
         private readonly ExecuteFinish      _callBack;
+        private readonly bool               _disposable;
 
-        public Driver (IEnumerator<ITask> enumerator, ExecuteFinish callBack)
+        private Coroutine _executeCoroutine;
+        private bool      _isExecuting;
+
+        /// <param name="callBack"></param>
+        /// <param name="disposable">一次性的, 为 true 运行一次自动释放, 不可反复运行, 为 false 时需要自己手动释放</param>
+        /// <param name="enumerator">任务迭代器, Driver 未执行完请勿手动释放, 默认情况下 Driver 运行完毕会自动释放</param>
+        public Driver (IEnumerator<ITask> enumerator, ExecuteFinish callBack, bool disposable = true)
         {
             _enumerator = enumerator;
             _callBack   = callBack;
+            _disposable = disposable;
         }
-
-        private Coroutine _executeCoroutine;
 
         public void Execute ()
         {
-            _executeCoroutine = YieldUtils.StartCoroutine (ExecuteOneByOne ());
-        }
-
-        public void Stop ()
-        {
-            if (_executeCoroutine == null)
+            if (_isExecuting)
                 return;
 
-            YieldUtils.StopCoroutine (_executeCoroutine);
+            _isExecuting = true;
+
+            StartExecute ();
+        }
+
+        public void Restart ()
+        {
+            if (_isExecuting)
+                return;
+
+            _isExecuting = true;
+            _enumerator.Reset ();
+            StartExecute ();
+        }
+
+        public void Pause ()
+        {
+            if (!_isExecuting)
+                return;
+
+            StopExecute ();
+        }
+
+        public void Resume ()
+        {
+            if (_isExecuting)
+                return;
+
+            StartExecute ();
+        }
+
+        public void Kill ()
+        {
+            if (_isExecuting)
+            {
+                _isExecuting = false;
+                StopExecute ();
+            }
+
+            _enumerator.Dispose ();
+        }
+
+
+        private void StartExecute ()
+        {
+            _executeCoroutine = YieldUtils.StartCoroutine (ExecuteOneByOne ());
         }
 
         private IEnumerator ExecuteOneByOne ()
@@ -68,8 +114,18 @@ namespace DarcyStudio.Task
                 break;
             }
 
-            _enumerator.Dispose ();
+            if (_disposable)
+                _enumerator.Dispose ();
             _callBack?.Invoke ();
+        }
+
+        private void StopExecute ()
+        {
+            if (_executeCoroutine == null)
+                return;
+
+            YieldUtils.StopCoroutine (_executeCoroutine);
+            _executeCoroutine = null;
         }
 
         private static void LogExecute (Type taskType)
@@ -84,7 +140,9 @@ namespace DarcyStudio.Task
 
         public void Dispose ()
         {
-            Stop ();
+            if (_isExecuting)
+                StopExecute ();
+
             _enumerator.Dispose ();
         }
     }
