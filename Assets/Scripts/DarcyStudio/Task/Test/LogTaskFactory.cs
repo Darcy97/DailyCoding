@@ -9,29 +9,29 @@ using DarcyStudio.GameComponent.Tools;
 
 namespace DarcyStudio.Task.Test
 {
-    public class LogTaskFactory : ITaskFactory<LogTaskType>
+    public class LogTaskFactory : ITaskFactory<LogTaskType, Logger>
     {
-        public ITask Create (LogTaskType type)
+        public ITask Create (LogTaskType type, Logger logger)
         {
             switch (type)
             {
                 case LogTaskType.LogHello:
-                    return new LogHelloTask ();
+                    return new LogHelloTask (logger);
                 case LogTaskType.LogHi:
-                    return new LogHiTask ();
+                    return new LogHiTask (logger);
                 case LogTaskType.LogGoodbye:
-                    return new LogGoodbyeTask ();
+                    return new LogGoodbyeTask (logger);
                 case LogTaskType.Wait3Seconds:
-                    return new Wait3SecondsTask ();
+                    return new Wait3SecondsTask (logger);
                 case LogTaskType.Invalid:
                     Log.Error ($"Un fix type: {type.ToString ()}");
-                    return new InvalidLogTask (type);
+                    return new InvalidLogTask (type, logger);
                 case LogTaskType.Interrupt:
-                    return new InterruptTask ();
+                    return new InterruptLogTask (logger);
                 default:
                 {
                     Log.Error ($"Un fix type: {type.ToString ()}");
-                    return new InvalidLogTask (type);
+                    return new InvalidLogTask (type, logger);
                 }
             }
         }

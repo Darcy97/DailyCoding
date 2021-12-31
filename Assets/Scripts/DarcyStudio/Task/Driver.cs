@@ -49,7 +49,7 @@ namespace DarcyStudio.Task
         public void Restart ()
         {
             if (_isExecuting)
-                return;
+                StopExecute ();
 
             _isExecuting = true;
             _enumerator.Reset ();
@@ -61,6 +61,8 @@ namespace DarcyStudio.Task
             if (!_isExecuting)
                 return;
 
+            _isExecuting = false;
+
             StopExecute ();
         }
 
@@ -68,6 +70,8 @@ namespace DarcyStudio.Task
         {
             if (_isExecuting)
                 return;
+
+            _isExecuting = true;
 
             StartExecute ();
         }
@@ -83,6 +87,10 @@ namespace DarcyStudio.Task
             _enumerator.Dispose ();
         }
 
+        public bool IsExecuting ()
+        {
+            return _isExecuting;
+        }
 
         private void StartExecute ()
         {
@@ -117,6 +125,7 @@ namespace DarcyStudio.Task
             if (_disposable)
                 _enumerator.Dispose ();
             _callBack?.Invoke ();
+            _isExecuting = false;
         }
 
         private void StopExecute ()

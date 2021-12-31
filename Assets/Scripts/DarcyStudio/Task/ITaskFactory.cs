@@ -8,12 +8,16 @@
 
 namespace DarcyStudio.Task
 {
-    /// <summary>
-    /// 
-    /// </summary>
     /// <typeparam name="T"> Task 类型 枚举 </typeparam>
     public interface ITaskFactory<in T>
     {
         ITask Create (T type);
+    }
+
+    /// <typeparam name="T1"> Task 类型 枚举 </typeparam>
+    /// <typeparam name="T2"> 参数 </typeparam>
+    public interface ITaskFactory<in T1, in T2>
+    {
+        ITask Create (T1 type, T2 para);
     }
 }

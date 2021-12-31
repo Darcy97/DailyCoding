@@ -6,6 +6,7 @@
  ***/
 
 using DarcyStudio.GameComponent.Tools;
+using UnityEngine.UI;
 
 namespace DarcyStudio.Task.Test
 {
@@ -13,14 +14,22 @@ namespace DarcyStudio.Task.Test
     {
         private bool _isFinish;
 
-        public void Execute ()
+        private readonly Logger _logger;
+
+        public LogHelloTask (Logger logger)
         {
-            Log.Info ("Hello");
-            _isFinish = true;
+            _logger = logger;
         }
 
-        public bool IsBlock ()   => true;
-        public bool IsFinish ()  => _isFinish;
+        public void Execute ()
+        {
+            _logger.AddLog ("Hello");
+            _isFinish = false;
+            YieldUtils.DelayActionWithOutContext (1, () => _isFinish = true);
+        }
+
+        public bool IsBlock ()             => true;
+        public bool IsFinish ()            => _isFinish;
         public bool InterruptSubsequent () => false;
 
     }

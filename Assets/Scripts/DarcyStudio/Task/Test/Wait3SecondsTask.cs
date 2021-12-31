@@ -13,14 +13,22 @@ namespace DarcyStudio.Task.Test
     {
         private bool _isFinish;
 
+        private Logger _logger;
+
+        public Wait3SecondsTask (Logger logger)
+        {
+            _logger = logger;
+        }
+
         public void Execute ()
         {
-            Log.Info ("Wait 3 seconds");
+            _isFinish = false;
+            _logger.AddLog ("Wait 3 seconds ...");
             YieldUtils.DelayActionWithOutContext (3, () => _isFinish = true);
         }
 
-        public bool IsBlock ()   => true;
-        public bool IsFinish ()  => _isFinish;
+        public bool IsBlock ()             => true;
+        public bool IsFinish ()            => _isFinish;
         public bool InterruptSubsequent () => false;
 
     }

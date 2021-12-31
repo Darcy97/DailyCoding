@@ -11,9 +11,9 @@ namespace DarcyStudio.Task
 {
     public static class TaskUtils
     {
-        public static Driver CreateDriver (IEnumerator<ITask> enumerator, Driver.ExecuteFinish callBack)
+        public static Driver CreateDriver (IEnumerator<ITask> enumerator, Driver.ExecuteFinish callBack, bool disposable = true)
         {
-            return new Driver (enumerator, callBack);
+            return new Driver (enumerator, callBack, disposable);
         }
     }
 }

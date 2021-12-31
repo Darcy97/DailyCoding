@@ -9,14 +9,21 @@ using DarcyStudio.GameComponent.Tools;
 
 namespace DarcyStudio.Task.Test
 {
-    public class InterruptTask : ITask
+    public class InterruptLogTask : ITask
     {
 
         private bool _isFinish;
 
+        private readonly Logger _logger;
+
+        public InterruptLogTask (Logger logger)
+        {
+            _logger = logger;
+        }
+
         public void Execute ()
         {
-            Log.Info ("Execute Interrupt task");
+            _logger.AddLog ("Interrupt ...");
             _isFinish = true;
         }
 

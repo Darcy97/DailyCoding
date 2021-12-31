@@ -14,14 +14,22 @@ namespace DarcyStudio.Task.Test
 
         private bool _isFinish;
 
-        public void Execute ()
+        private readonly Logger _logger;
+
+        public LogHiTask (Logger logger)
         {
-            Log.Info ("Hi");
-            _isFinish = true;
+            _logger = logger;
         }
 
-        public bool IsBlock ()   => true;
-        public bool IsFinish ()  => _isFinish;
+        public void Execute ()
+        {
+            _logger.AddLog ("Hi");
+            _isFinish = false;
+            YieldUtils.DelayActionWithOutContext (1, () => _isFinish = true);
+        }
+
+        public bool IsBlock ()             => true;
+        public bool IsFinish ()            => _isFinish;
         public bool InterruptSubsequent () => false;
 
     }

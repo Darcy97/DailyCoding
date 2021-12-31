@@ -11,16 +11,19 @@ namespace DarcyStudio.Task.Test
 {
     public class InvalidLogTask : InvalidTask
     {
-        private LogTaskType _type;
+        private readonly LogTaskType _type;
 
-        public InvalidLogTask (LogTaskType type)
+        private readonly Logger _logger;
+        
+        public InvalidLogTask (LogTaskType type, Logger logger)
         {
-            _type = type;
+            _type   = type;
+            _logger = logger;
         }
 
         protected override void LogError ()
         {
-            Log.Error ($"Execute a invalid log task --- task type: {_type.ToString ()}");
+            _logger.AddLog ($"Execute a invalid log task --- task type: {_type.ToString ()}");
         }
     }
 }
