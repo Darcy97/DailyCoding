@@ -5,7 +5,6 @@
  * Time: 15:47:43
  ***/
 
-using System;
 using System.Collections.Generic;
 using System.Text;
 using DarcyStudio.GameComponent.Tools;
