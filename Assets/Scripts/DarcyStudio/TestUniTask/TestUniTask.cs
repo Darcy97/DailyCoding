@@ -6,12 +6,15 @@
  ***/
 
 using System;
+using System.Collections.Generic;
 using System.Globalization;
 using System.Threading;
 using Cysharp.Threading.Tasks;
+using Cysharp.Threading.Tasks.Linq;
 using DarcyStudio.GameComponent.Tools;
 using UnityEngine;
 using UnityEngine.Networking;
+using UnityEngine.UI;
 
 namespace DarcyStudio.TestUniTask
 {
@@ -41,7 +44,44 @@ namespace DarcyStudio.TestUniTask
 
         public void OnClickStart ()
         {
-            StartAsyncLog ();
+            // StartAsyncLog ().Forget ();
+            ForeachAsync ().Forget ();
+        }
+
+
+        [SerializeField] private Button button;
+
+        private async UniTaskVoid TestButton ()
+        {
+            await button.OnClickAsync ();
+            await button.OnClickAsync ();
+            Log.Info ("Click twice");
+        }
+
+        private async UniTaskVoid ForeachAsync ()
+        {
+            _cancellationResource?.Dispose ();
+
+            _cancellationResource = new CancellationTokenSource ();
+
+            _cancellationResource.CancelAfterSlim (TimeSpan.FromSeconds (3));
+
+            // 逐帧遍历
+            var list = new List<int> {1, 2, 3, 4, 5}.GetEnumerator ();
+            await UniTaskAsyncEnumerable.EveryUpdate ()
+                .ForEachAsync (_ =>
+                {
+                    if (list.MoveNext ())
+                    {
+                        Log.Info ("Update() " + Time.frameCount);
+                        Log.Info ($"Current: {list.Current}");
+                    }
+                    else
+                    {
+                        _cancellationResource.Cancel ();
+                    }
+                }, _cancellationResource.Token);
+            list.Dispose ();
         }
 
         private async UniTaskVoid DoAsync ()
