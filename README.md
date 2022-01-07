@@ -20,6 +20,7 @@
 > - [ExcellentPackages] - 记录一些优质插件
 > - [HugePit] - 记录一些踩过的坑～
 > - [StudyNotes] - 读书笔记
+> - [Plugins] - 一些第三方工具的使用
 
 [DarcyStudio]: /Assets/Scripts/DarcyStudio
 
@@ -28,6 +29,8 @@
 [HugePit]: /Assets/HugePit
 
 [StudyNotes]: /Assets/StudyNotes
+
+[Plugins]: /Assets/ExperienceOfSomePlugins
 
 ---
 

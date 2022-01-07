@@ -16,7 +16,7 @@ using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.UI;
 
-namespace DarcyStudio.TestUniTask
+namespace ExperienceOfSomePlugins.UniTask
 {
     public class TestUniTask : MonoBehaviour, IProgress<float>
     {
@@ -34,7 +34,7 @@ namespace DarcyStudio.TestUniTask
             Log.Info (value.ToString (CultureInfo.InvariantCulture));
         }
 
-        private async UniTask WebRequest ()
+        private async Cysharp.Threading.Tasks.UniTask WebRequest ()
         {
             var request = await UnityWebRequest.Get ("https://www.baidu.com")
                 .SendWebRequest ()
@@ -127,18 +127,20 @@ namespace DarcyStudio.TestUniTask
 
         private async UniTaskVoid IsFinish ()
         {
-            await UniTask.WaitUntil (() => _isFinish);
+            await Cysharp.Threading.Tasks.UniTask.WaitUntil (() => _isFinish);
         }
 
         private async UniTask<string> LogAsync ()
         {
-            await UniTask.DelayFrame (2, cancellationToken: _cancellationResource.Token);
+            await Cysharp.Threading.Tasks.UniTask.DelayFrame (2, cancellationToken: _cancellationResource.Token);
             Log.Info ("Step one");
 
-            await UniTask.Delay (TimeSpan.FromSeconds (1), cancellationToken: _cancellationResource.Token);
+            await Cysharp.Threading.Tasks.UniTask.Delay (TimeSpan.FromSeconds (1),
+                cancellationToken: _cancellationResource.Token);
             Log.Info ("Step two");
 
-            await UniTask.Delay (TimeSpan.FromSeconds (2), cancellationToken: _cancellationResource.Token);
+            await Cysharp.Threading.Tasks.UniTask.Delay (TimeSpan.FromSeconds (2),
+                cancellationToken: _cancellationResource.Token);
             Log.Info ("Step three");
 
             return "end";
