@@ -25,7 +25,8 @@ namespace DarcyStudio.SequenceTaskWithUniTask.Test
             tasks.Add (factory.Create (LogTaskType.Hello));
             tasks.Add (factory.Create (LogTaskType.Hello));
             tasks.Add (factory.Create (LogTaskType.Hello));
-            tasks.Add (factory.Create (LogTaskType.Hello));
+            tasks.Add (factory.Create (LogTaskType.Hi));
+            tasks.Add (null);
             tasks.Add (factory.Create (LogTaskType.Hello));
             tasks.Add (factory.Create (LogTaskType.Hello));
 

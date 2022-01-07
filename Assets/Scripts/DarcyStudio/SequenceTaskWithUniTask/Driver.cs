@@ -24,13 +24,13 @@ namespace DarcyStudio.SequenceTaskWithUniTask
         private bool _isExecuting;
         private bool _isOver;
 
-        private CancellationTokenSource _cancellation;
+        private readonly CancellationTokenSource _cancellation;
 
         public Driver (IEnumerator<ISequenceTask> taskEnumerator, ExecuteFinish callBack)
         {
-            _taskEnumerator   = taskEnumerator;
-            _callBack     = callBack;
-            _cancellation = new CancellationTokenSource ();
+            _taskEnumerator = taskEnumerator;
+            _callBack       = callBack;
+            _cancellation   = new CancellationTokenSource ();
         }
 
         #region Interface
@@ -78,13 +78,14 @@ namespace DarcyStudio.SequenceTaskWithUniTask
             End ();
         }
 
+        // ReSharper disable once PossibleNullReferenceException
         private async UniTask ExecuteOneByOne ()
         {
             while (_taskEnumerator.MoveNext ())
             {
                 var task = _taskEnumerator.Current;
 
-                if (task == null)
+                if (CheckNull (task))
                     continue;
 
                 LogExecute (task.GetType ());
@@ -110,6 +111,14 @@ namespace DarcyStudio.SequenceTaskWithUniTask
         private void StopExecute ()
         {
             _cancellation.Cancel ();
+        }
+
+        private static bool CheckNull (ISequenceTask task)
+        {
+            if (task != null)
+                return false;
+            Log.Warning ("Input a null task, ignore");
+            return true;
         }
 
         private static void LogExecute (Type taskType)

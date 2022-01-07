@@ -18,7 +18,7 @@ namespace DarcyStudio.SequenceTaskWithUniTask.Test
             Log.Info ("Hello");
 
 
-            //这部分是模拟一个延时操作，操作结束会把 finish 改为 true
+            //这部分是模拟一个异步操作，操作结束会把 finish 改为 true
             var finish = false;
             YieldUtils.DelayActionWithOutContext (2, () => finish = true);
 
