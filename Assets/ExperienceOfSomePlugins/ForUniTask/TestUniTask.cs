@@ -16,7 +16,7 @@ using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.UI;
 
-namespace ExperienceOfSomePlugins.UniTask
+namespace ExperienceOfSomePlugins.ForUniTask
 {
     public class TestUniTask : MonoBehaviour, IProgress<float>
     {
@@ -24,9 +24,9 @@ namespace ExperienceOfSomePlugins.UniTask
 
         private void Awake ()
         {
-            UniTaskScheduler.UnobservedTaskException += exception => { Log.Error ($"Exception: {exception.Message}"); };
-            UniTaskScheduler.PropagateOperationCanceledException = true;
-            UniTaskScheduler.UnobservedExceptionWriteLogType = LogType.Error;
+            // UniTaskScheduler.UnobservedTaskException += exception => { Log.Error ($"Exception: {exception.Message}"); };
+            // UniTaskScheduler.PropagateOperationCanceledException = true;
+            // UniTaskScheduler.UnobservedExceptionWriteLogType = LogType.Error;
         }
 
         public void Report (float value)
@@ -51,6 +51,11 @@ namespace ExperienceOfSomePlugins.UniTask
 
         [SerializeField] private Button button;
 
+
+        /// <summary>
+        /// 这里备注一下 不要用 async void 要用 async UniTaskVoid 这样整个流程都处于 UniTask 的控制
+        /// </summary>
+        /// <returns></returns>
         private async UniTaskVoid TestButton ()
         {
             await button.OnClickAsync ();
@@ -109,37 +114,32 @@ namespace ExperienceOfSomePlugins.UniTask
             var task = LogAsync ();
             // _cancellationResource.CancelAfterSlim (TimeSpan.FromSeconds (2));
 
-
-            var tResult = await task;
-
-            Log.Info ($"End: {tResult}");
-
             Log.Info ("End");
 
-            // var (isCanceled, result) = await task.SuppressCancellationThrow ();
-            // if (isCanceled)
-            // return;
+            var (isCanceled, result) = await task.SuppressCancellationThrow ();
+            if (isCanceled)
+                return;
 
-            // Log.Info ($"End: {result}");
+            Log.Info ($"End: {result}");
         }
 
         private bool _isFinish;
 
         private async UniTaskVoid IsFinish ()
         {
-            await Cysharp.Threading.Tasks.UniTask.WaitUntil (() => _isFinish);
+            await UniTask.WaitUntil (() => _isFinish);
         }
 
         private async UniTask<string> LogAsync ()
         {
-            await Cysharp.Threading.Tasks.UniTask.DelayFrame (2, cancellationToken: _cancellationResource.Token);
+            await UniTask.DelayFrame (2, cancellationToken: _cancellationResource.Token);
             Log.Info ("Step one");
 
-            await Cysharp.Threading.Tasks.UniTask.Delay (TimeSpan.FromSeconds (1),
+            await UniTask.Delay (TimeSpan.FromSeconds (1),
                 cancellationToken: _cancellationResource.Token);
             Log.Info ("Step two");
 
-            await Cysharp.Threading.Tasks.UniTask.Delay (TimeSpan.FromSeconds (2),
+            await UniTask.Delay (TimeSpan.FromSeconds (2),
                 cancellationToken: _cancellationResource.Token);
             Log.Info ("Step three");
 
