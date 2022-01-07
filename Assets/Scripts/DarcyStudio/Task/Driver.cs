@@ -14,6 +14,7 @@ using UnityEngine;
 
 namespace DarcyStudio.Task
 {
+    [Obsolete]
     public class Driver : IDisposable
     {
 
@@ -37,7 +38,7 @@ namespace DarcyStudio.Task
         }
 
         #region Interface
-        
+
         public void Execute ()
         {
             if (_isExecuting)
@@ -93,7 +94,7 @@ namespace DarcyStudio.Task
         {
             return _isExecuting;
         }
-        
+
         #endregion
 
         private void StartExecute ()

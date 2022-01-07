@@ -5,8 +5,11 @@
  * Time: 15:27:37
  ***/
 
+using System;
+
 namespace DarcyStudio.Task
 {
+    [Obsolete]
     public abstract class InvalidTask : ITask
     {
         private bool _isFinish;

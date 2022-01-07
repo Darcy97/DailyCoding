@@ -5,8 +5,11 @@
  * Time: 14:49:34
  ***/
 
+using System;
+
 namespace DarcyStudio.Task
 {
+    [Obsolete]
     public interface ITask
     {
         

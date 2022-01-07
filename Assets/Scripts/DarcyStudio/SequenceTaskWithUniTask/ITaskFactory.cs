@@ -1,26 +1,22 @@
 /***
  * Created by Darcy 
  * Github: https://github.com/Darcy97
- * Date: Thursday, 30 December 2021
- * Time: 14:50:09
- * Description: Task 生成器
+ * Date: Friday, 07 January 2022
+ * Time: 11:24:45
  ***/
 
-using System;
-
-namespace DarcyStudio.Task
+namespace DarcyStudio.SequenceTaskWithUniTask
 {
-    [Obsolete]
     /// <typeparam name="T"> Task 类型 枚举 </typeparam>
     public interface ITaskFactory<in T>
     {
-        ITask Create (T type);
+        ISequenceTask Create (T type);
     }
 
     /// <typeparam name="T1"> Task 类型 枚举 </typeparam>
     /// <typeparam name="T2"> 参数 </typeparam>
     public interface ITaskFactory<in T1, in T2>
     {
-        ITask Create (T1 type, T2 para);
+        ISequenceTask Create (T1 type, T2 para);
     }
 }
