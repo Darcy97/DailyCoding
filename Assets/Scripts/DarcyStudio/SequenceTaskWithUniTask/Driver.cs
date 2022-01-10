@@ -5,8 +5,11 @@
  * Time: 11:25:06
  ***/
 
+// #define DEBUG_LOG
+
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Threading;
 using Cysharp.Threading.Tasks;
 using DarcyStudio.GameComponent.Tools;
@@ -121,11 +124,13 @@ namespace DarcyStudio.SequenceTaskWithUniTask
             return true;
         }
 
+        [Conditional("DEBUG_LOG")]
         private static void LogExecute (ISequenceTask task)
         {
             Log.Info ($"<color=cyan>### Task System ### --- Execute task: {task.GetType ()}</color>");
         }
 
+        [Conditional("DEBUG_LOG")]
         private static void LogInterrupt (ISequenceTask task)
         {
             Log.Info ($"<color=red>### Task System ### --- Interrupt by task: {task.GetType ()}</color>");
