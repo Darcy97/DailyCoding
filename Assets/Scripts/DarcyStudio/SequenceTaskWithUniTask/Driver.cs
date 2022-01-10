@@ -88,14 +88,14 @@ namespace DarcyStudio.SequenceTaskWithUniTask
                 if (CheckNull (task))
                     continue;
 
-                LogExecute (task.GetType ());
+                LogExecute (task);
 
                 await task.Execute ().AttachExternalCancellation (_cancellation.Token);
 
                 if (!task.InterruptSubsequent ())
                     continue;
 
-                LogInterrupt (task.GetType ());
+                LogInterrupt (task);
                 break;
             }
         }
@@ -121,14 +121,14 @@ namespace DarcyStudio.SequenceTaskWithUniTask
             return true;
         }
 
-        private static void LogExecute (Type taskType)
+        private static void LogExecute (ISequenceTask task)
         {
-            Log.Info ($"<color=cyan>### Task System ### --- Execute task: {taskType}</color>");
+            Log.Info ($"<color=cyan>### Task System ### --- Execute task: {task.GetType ()}</color>");
         }
 
-        private static void LogInterrupt (Type taskType)
+        private static void LogInterrupt (ISequenceTask task)
         {
-            Log.Info ($"<color=red>### Task System ### --- Interrupt by task: {taskType}</color>");
+            Log.Info ($"<color=red>### Task System ### --- Interrupt by task: {task.GetType ()}</color>");
         }
 
         public void Dispose ()
