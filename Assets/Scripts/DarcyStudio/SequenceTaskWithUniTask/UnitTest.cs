@@ -10,7 +10,6 @@ using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
 using DarcyStudio.GameComponent.Tools;
 using UnityEditor;
-using UnityEngine;
 using UnityEngine.Assertions;
 
 namespace DarcyStudio.SequenceTaskWithUniTask

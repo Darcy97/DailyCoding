@@ -43,6 +43,7 @@
 >   - [目前读到这](https://github.com/Cysharp/UniTask#channel)
 > - [x] 使用 UniTask 重写一版 Task 队列
 > - [ ] 仔细读一下 `C# in Depth` 异步部分（之前读时候觉得写 `Unity` 几乎用不到就跳过了）`Deadline: 2022.1.14`
+>   - 呼～ 终于读完了一章(还差一页) 还有一章。。。明天继续～
 
 > - [x] `代表完成`
 > - [ ] `代表未完成`
