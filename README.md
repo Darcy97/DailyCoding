@@ -39,9 +39,10 @@
 
 > - [x] 玩一下 [UniTask](https://github.com/Cysharp/UniTask) 之前项目用过, 但是不是自己接的, 准备自己接入一下
 > - [ ] 了解一下 Rx(Reactive Programming), 接入 [UniRx](https://github.com/neuecc/UniRx) `Deadline: 2022.1.31`
-> - [ ] 仔细读一下 [UniTask](https://github.com/Cysharp/UniTask) 说明文档, 深入理解 `Deadline: 2022.1.12`
+> - [ ] 仔细读一下 [UniTask](https://github.com/Cysharp/UniTask) 说明文档, 深入理解 `Deadline: 2022.1.14`
 >   - [目前读到这](https://github.com/Cysharp/UniTask#channel)
 > - [x] 使用 UniTask 重写一版 Task 队列
+> - [ ] 仔细读一下 `C# in Depth` 异步部分（之前读时候觉得写 `Unity` 几乎用不到就跳过了）`Deadline: 2022.1.14`
 
 > - [x] `代表完成`
 > - [ ] `代表未完成`
