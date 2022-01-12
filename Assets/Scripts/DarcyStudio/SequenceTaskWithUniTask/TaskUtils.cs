@@ -11,9 +11,9 @@ namespace DarcyStudio.SequenceTaskWithUniTask
 {
     public static class TaskUtils
     {
-        public static Driver CreateDriver (IEnumerator<ISequenceTask> enumerator, Driver.ExecuteFinish callBack)
+        public static Driver CreateDriver (IEnumerator<ISequenceTask> enumerator, Driver.ExecuteFinish callback)
         {
-            return new Driver (enumerator, callBack);
+            return new Driver (enumerator, callback);
         }
     }
 }

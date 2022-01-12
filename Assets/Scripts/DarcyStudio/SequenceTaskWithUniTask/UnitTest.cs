@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
 using DarcyStudio.GameComponent.Tools;
 using UnityEditor;
+using UnityEngine;
 using UnityEngine.Assertions;
 
 namespace DarcyStudio.SequenceTaskWithUniTask
@@ -27,6 +28,7 @@ namespace DarcyStudio.SequenceTaskWithUniTask
         {
             await DoTestBaseAndCancel ();
             await DoTestInterrupt ();
+            await DoTestBaseAndCancelWithFinishCallback ();
             Log.Info ("Test finish");
         }
 
@@ -42,7 +44,7 @@ namespace DarcyStudio.SequenceTaskWithUniTask
                             factory.Create (TaskType.Add, number), // 4
                             factory.Create (TaskType.Add, number)  // 5
                         };
-            var driver = TaskUtils.CreateDriver (tasks.GetEnumerator (), null);
+            var driver = TaskUtils.CreateDriver (tasks.GetEnumerator (), () => { number.Value = 111; });
 
             number.Value = 0;
 
@@ -82,6 +84,61 @@ namespace DarcyStudio.SequenceTaskWithUniTask
 
             Log.Info ("Test cancel finish: 没有报错就代表成功，这样还是不太好，有时间改一改");
         }
+
+
+        private static async UniTask DoTestBaseAndCancelWithFinishCallback ()
+        {
+            var factory = new Factory ();
+            var number  = new Number ();
+            var tasks = new List<ISequenceTask>
+                        {
+                            factory.Create (TaskType.Add, number), // 1
+                            factory.Create (TaskType.Sub, number), // 2
+                            factory.Create (TaskType.Add, number), // 3
+                            factory.Create (TaskType.Add, number), // 4
+                            factory.Create (TaskType.Add, number)  // 5
+                        };
+            var driver = TaskUtils.CreateDriver (tasks.GetEnumerator (), () => { number.Value = 111; });
+
+            number.Value = 0;
+
+            driver.Execute ();
+
+            // 1
+
+            Assert.AreEqual (number.Value, 1, $"expect: 1 but: {number.Value}");
+
+            await UniTask.NextFrame (PlayerLoopTiming.PostLateUpdate);
+            // 2
+
+            Assert.AreEqual (number.Value, 0, $"expect: 0 but: {number.Value}");
+
+            Assert.IsTrue (driver.IsExecuting (), "driver.IsExecuting ()");
+
+            await UniTask.NextFrame (PlayerLoopTiming.PostLateUpdate);
+            // 3
+
+            Assert.AreEqual (number.Value, 1, $"expect: 1 but: {number.Value}");
+
+            driver.Kill (true);
+
+            await UniTask.NextFrame (PlayerLoopTiming.PostLateUpdate);
+            // 4
+
+            Assert.AreEqual (number.Value, 111, $"expect: 1 but: {number.Value}");
+
+            Assert.IsFalse (driver.IsExecuting (), "driver.IsExecuting ()");
+
+            await UniTask.NextFrame (PlayerLoopTiming.PostLateUpdate);
+            // 5
+
+            Assert.IsFalse (driver.IsExecuting ());
+
+            Assert.AreEqual (number.Value, 111, $"expect: 1 but: {number.Value}");
+
+            Log.Info ("Test cancel with callback finish ...: 没有报错就代表成功，这样还是不太好，有时间改一改");
+        }
+
 
         private static async UniTask DoTestInterrupt ()
         {

@@ -22,17 +22,17 @@ namespace DarcyStudio.SequenceTaskWithUniTask
         public delegate void ExecuteFinish ();
 
         private readonly IEnumerator<ISequenceTask> _taskEnumerator;
-        private readonly ExecuteFinish              _callBack;
+        private readonly ExecuteFinish              _callback;
 
         private bool _isExecuting;
         private bool _isOver;
 
         private readonly CancellationTokenSource _cancellation;
 
-        public Driver (IEnumerator<ISequenceTask> taskEnumerator, ExecuteFinish callBack)
+        public Driver (IEnumerator<ISequenceTask> taskEnumerator, ExecuteFinish callback)
         {
             _taskEnumerator = taskEnumerator;
-            _callBack       = callBack;
+            _callback       = callback;
             _cancellation   = new CancellationTokenSource ();
         }
 
@@ -56,8 +56,11 @@ namespace DarcyStudio.SequenceTaskWithUniTask
             StartExecute ().Forget ();
         }
 
-        public void Kill ()
+        public void Kill (bool executeCallback = false)
         {
+            if (_isOver)
+                return;
+
             if (_isExecuting)
             {
                 _isExecuting = false;
@@ -65,6 +68,9 @@ namespace DarcyStudio.SequenceTaskWithUniTask
             }
 
             End ();
+            
+            if(executeCallback)
+                _callback?.Invoke ();
         }
 
         public bool IsExecuting ()
@@ -77,8 +83,8 @@ namespace DarcyStudio.SequenceTaskWithUniTask
         private async UniTaskVoid StartExecute ()
         {
             await ExecuteOneByOne ();
-            _callBack?.Invoke ();
             End ();
+            _callback?.Invoke ();
         }
 
         // ReSharper disable once PossibleNullReferenceException
