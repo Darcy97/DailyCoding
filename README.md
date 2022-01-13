@@ -15,13 +15,13 @@
     3. 一些提高效率的小工具
     4. UGUI 的一些拓展
     5. C# 特性与语法糖的探索
-    6. 一些优质第三方工具的使用
+    6. 一些优质第三方工具的探索
 
 > - [DarcyStudio] - 一些小工具及小想法
 > - [ExcellentPackages] - 记录一些优质插件
 > - [HugePit] - 记录一些踩过的坑～
 > - [StudyNotes] - 读书笔记
-> - [Plugins] - 一些第三方工具的使用
+> - [Plugins] - 一些第三方工具的探索
 
 [DarcyStudio]: /Assets/Scripts/DarcyStudio
 
