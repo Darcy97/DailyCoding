@@ -40,11 +40,9 @@
 > - [ ] `2021` 年终总结！（回顾了一下之前的读书笔记，发现在角落里还给自己加了个一个 `TODO` 。。。） 
 >   - `Deadline: 2022.1.31`
 > - [x] 玩一下 [UniTask](https://github.com/Cysharp/UniTask) 之前项目用过, 但是不是自己接的, 准备自己接入一下
-> - [ ] 仔细读一下 [UniTask](https://github.com/Cysharp/UniTask) 说明文档, 深入理解 `Deadline: 2022.1.14`
->   - [目前读到这](https://github.com/Cysharp/UniTask#channel)
+> - [x] 仔细读一下 [UniTask](https://github.com/Cysharp/UniTask) 说明文档, 深入理解 `Deadline: 2022.1.14`
 > - [x] 使用 UniTask 重写一版 Task 队列
-> - [ ] 仔细读一下 `C# in Depth` 异步部分（之前读时候觉得写 `Unity` 几乎用不到就跳过了）`Deadline: 2022.1.14`
->   - 呼～ 终于读完了一章(还差一页) 还有一章。。。明天继续～
+> - [x] 仔细读一下 `C# in Depth` 异步部分（之前读时候觉得写 `Unity` 几乎用不到就跳过了）`Deadline: 2022.1.14`
 > - [ ] 了解一下 Rx(Reactive Programming), 接入 [UniRx](https://github.com/neuecc/UniRx) `Deadline: 2022.1.31`
 
 > - [x] `代表完成`
