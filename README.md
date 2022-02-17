@@ -45,7 +45,7 @@
 > - [x] 仔细读一下 `C# in Depth` 异步部分（之前读时候觉得写 `Unity` 几乎用不到就跳过了）`Deadline: 2022.1.14`
 > - [x] 了解一下 Rx(Reactive Programming)
 >   - [一篇不错的文章](https://gist.github.com/staltz/868e7e9bc2a7b8c1f754) ([译文](https://zhuanlan.zhihu.com/p/27678951))
-> - [ ] 接入 [UniRx](https://github.com/neuecc/UniRx) `Deadline: 2022.2.18`
+> - [ ] ~~接入~~ [~~UniRx~~](https://github.com/neuecc/UniRx) (简单看了下, 关于异步的部分已经独立到 UniTask 并且该项目好久没更新了）
 
 > - [x] `代表完成`
 > - [ ] `代表未完成`
