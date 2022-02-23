@@ -17,14 +17,16 @@
 
 using System.Collections.Generic;
 using System.Diagnostics;
+#if UNITY_EDITOR
 using UnityEditor;
+#endif
 using Debug = UnityEngine.Debug;
 
 namespace DarcyStudio.GameComponent.Tools
 {
     public static class Log
     {
-        
+
         //其实通过 Conditional 标志来区分 Log 这个标志就可以去除了
         //鉴于这是一个测试工程 也不做发布，就先保留吧
         public enum LogLevel
@@ -49,7 +51,7 @@ namespace DarcyStudio.GameComponent.Tools
                 return;
             Debug.Log (info);
         }
-        
+
         [Conditional ("DEBUG_WARNING")]
         public static void Warning (string warning)
         {
@@ -70,6 +72,7 @@ namespace DarcyStudio.GameComponent.Tools
         {
             return level >= _logLevel;
         }
+#if UNITY_EDITOR
 
         private static void PreBuildEnableLog ()
         {
@@ -112,6 +115,8 @@ namespace DarcyStudio.GameComponent.Tools
         {
             return new List<string> (PlayerSettings.GetScriptingDefineSymbolsForGroup (group).Split (';'));
         }
+#endif
+
 
         // 看起来这个单元测试很简单
         // 但是刚刚同步改了项目里的 Log，
@@ -126,13 +131,13 @@ namespace DarcyStudio.GameComponent.Tools
             Info ("<color=cyan>Test LogInfo</color>");
             Warning ("Test warning");
             Error ("Test error");
-            
+
             Debug.Log ($"Set log level: {LogLevel.Warning}");
             SetLogLevel (LogLevel.Warning);
             Info ("<color=cyan>Test LogInfo</color>");
             Warning ("Test warning");
             Error ("Test error");
-            
+
             Debug.Log ($"Set log level: {LogLevel.Error}");
             SetLogLevel (LogLevel.Error);
             Info ("<color=cyan>Test LogInfo</color>");

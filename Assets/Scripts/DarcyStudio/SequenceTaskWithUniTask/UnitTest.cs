@@ -4,6 +4,7 @@
  * Date: Monday, 10 January 2022
  * Time: 15:22:34
  ***/
+#if UNITY_EDITOR
 
 using System;
 using System.Collections.Generic;
@@ -277,3 +278,4 @@ namespace DarcyStudio.SequenceTaskWithUniTask
         }
     }
 }
+#endif
