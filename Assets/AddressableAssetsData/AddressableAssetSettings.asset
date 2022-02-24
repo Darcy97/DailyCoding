@@ -59,6 +59,20 @@ MonoBehaviour:
         m_Value: ServerData/[BuildTarget]
       - m_Id: 9ce376b7a09044719a81e3ff04c96eb0
         m_Value: http://localhost/[BuildTarget]
+    - m_InheritedParent: 
+      m_Id: b46f5b1b2e295488c891e71d3b831590
+      m_ProfileName: New Profile
+      m_Values:
+      - m_Id: c079a0b97e99e4a00948d2c2aa1e4e9f
+        m_Value: '[UnityEditor.EditorUserBuildSettings.activeBuildTarget]'
+      - m_Id: 4522b0cd069614e439dbddff401934e4
+        m_Value: '[UnityEngine.AddressableAssets.Addressables.BuildPath]/[BuildTarget]'
+      - m_Id: a96dabbe9a6f44b03bde9958f8af2000
+        m_Value: '{UnityEngine.AddressableAssets.Addressables.RuntimePath}/[BuildTarget]'
+      - m_Id: 3f8038a53c0f449d3a60026cc0d0a7f7
+        m_Value: ServerData/[BuildTarget]
+      - m_Id: 9ce376b7a09044719a81e3ff04c96eb0
+        m_Value: http://localhost/[BuildTarget]
     m_ProfileEntryNames:
     - m_Id: c079a0b97e99e4a00948d2c2aa1e4e9f
       m_Name: BuildTarget

@@ -16,15 +16,7 @@ MonoBehaviour:
   m_Data:
     m_SerializedData: []
   m_GUID: b1a312510db534a0b8b1a9ec10991aaf
-  m_SerializeEntries:
-  - m_GUID: e6160ba70f4e345f6b8f4890b5cd822c
-    m_Address: Icon_Avatar_Girl
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 1b0f115debe5e4416a14dbd4aebd7609
-    m_Address: Icon_Avatar_Boy
-    m_ReadOnly: 0
-    m_SerializedLabels: []
+  m_SerializeEntries: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 69ecc22fd297f458d9d89e1297805bd9, type: 2}
   m_SchemaSet:
