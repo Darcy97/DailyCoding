@@ -8,12 +8,6 @@ Shader "DarcyStudio/Start"
     }
     SubShader
     {
-
-        Tags
-        {
-            "RenderType"="Transparent" "Queue"="Transparent"
-        }
-
         Pass
         {
             CGPROGRAM
@@ -39,18 +33,14 @@ Shader "DarcyStudio/Start"
             {
                 v2f o;
                 o.pos = UnityObjectToClipPos(v.vertex);
-
-                float2 size = float2(300, 300);
-                float x = v.texcoord * size.x - size.x/2;
-
-                o.color = fixed3(1.0, 1.0, x / 150);
+                o.color = v.normal * 0.2 + fixed3(0.5, 0.5, 0.5) + 0.3 * v.vertex.xyz;
                 return o;
             }
 
             fixed4 frag(const v2f i) : SV_Target
             {
                 fixed3 c = i.color;
-                // c *= _Color.rgb;
+                c *= _Color.rgb;
                 return fixed4(c, 1.0);
             }
             ENDCG
