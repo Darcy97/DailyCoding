@@ -4,6 +4,8 @@ Shader "DarcyStudio/Rotate"
     Properties
     {
         _MainTex ("Texture", 2D) = "white" {}
+        _Accuracy ("Accuracy", Range(1, 100)) = 1
+        _Proportion ("Proportion", Range(0.1, 1)) = 1
     }
     SubShader
     {
@@ -34,8 +36,9 @@ Shader "DarcyStudio/Rotate"
 
             sampler2D _MainTex;
             float4 _MainTex_ST;
-            // float4 _Time;
-
+            float _Accuracy;
+            float _Proportion;
+            
             // float2x2 R(float a)
             // {
             //     float c = cos(a / 4.0 + 0.0);
@@ -55,10 +58,8 @@ Shader "DarcyStudio/Rotate"
             {
                 v2f o;
                 o.vertex = UnityObjectToClipPos(v.vertex);
-                // o.uv = TRANSFORM_TEX(v.uv, _MainTex);
+                o.uv = v.uv * _ScreenParams.x * _Accuracy - _ScreenParams.x * _Accuracy * (1 - _Proportion) / 2;
 
-                float2 size = float2(300, 300);
-                o.uv = v.uv * size.xy;
 
                 return o;
             }
@@ -69,7 +70,8 @@ Shader "DarcyStudio/Rotate"
                 h += 1;
                 fixed4 O = h;
 
-                float2 u, r = float2(300, 300);
+                float t = _ScreenParams.x * _Accuracy * _Proportion;
+                float2 u, r = float2(t, t);
                 float A, l, L, a;
                 float i_time = 7.0;
                 // fixed4 h = 0, O = 0;
