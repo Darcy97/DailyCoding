@@ -207,10 +207,58 @@ namespace DarcyStudio.Tools.Editor.VersionControl
 
             //不同，文件变了，更新 version 及 md5
             AddInfoToFile (filePath, curMD5);
-            AddLabel (obj, label);
+            AddVersionLabel (obj, label);
+            AddTypeLabel (obj);
+
+        }
+        
+        private void AddTypeLabel (Object asset)
+        {
+            if (!(asset is Texture2D texture2D))
+                return;
+
+            var path = AssetDatabase.GetAssetPath (asset);
+
+            var importer = AssetImporter.GetAtPath (path);
+
+
+            if (!(importer is TextureImporter textureImporter))
+                return;
+
+            if (textureImporter.maxTextureSize >= 2048 && texture2D.width >= 2048)
+            {
+                AddLabel (asset, "texture_2048");
+            }
+            else if (textureImporter.maxTextureSize >= 1024 && texture2D.width >= 1024)
+            {
+                AddLabel (asset, "texture_1024");
+            }
+            else if (textureImporter.maxTextureSize >= 512 && texture2D.width >= 512)
+            {
+                AddLabel (asset, "texture_512");
+            }
+            else
+            {
+                AddLabel (asset, "texture_<512");
+            }
         }
 
         private void AddLabel (Object obj, string label)
+        {
+            var labels = AssetDatabase.GetLabels (obj);
+
+
+            if (labels.Contains (label))
+            {
+                return;
+            }
+
+            var tLabels = labels.ToList ();
+            tLabels.Add (label);
+            AssetDatabase.SetLabels (obj, tLabels.ToArray ());
+        }
+
+        private void AddVersionLabel (Object obj, string label)
         {
             var labels = AssetDatabase.GetLabels (obj);
 
