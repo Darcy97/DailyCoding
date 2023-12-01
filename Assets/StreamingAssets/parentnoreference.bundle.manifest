@@ -1,0 +1,22 @@
+ManifestFileVersion: 0
+CRC: 1131304413
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 502a0bd673d763885a0606d79ccf2b77
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 0b8576c19b9b5e01baf40f045340b2d3
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 4
+  Script: {instanceID: 0}
+- Class: 198
+  Script: {instanceID: 0}
+- Class: 199
+  Script: {instanceID: 0}
+Assets:
+- Assets/NestPrefab/ParentNoReference.prefab
+Dependencies: []

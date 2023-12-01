@@ -1,0 +1,14 @@
+ManifestFileVersion: 0
+CRC: 2739023043
+AssetBundleManifest:
+  AssetBundleInfos:
+    Info_0:
+      Name: parentnoreference.bundle
+      Dependencies: {}
+    Info_1:
+      Name: parentreference.bundle
+      Dependencies:
+        Dependency_0: child.bundle
+    Info_2:
+      Name: child.bundle
+      Dependencies: {}
